@@ -52,3 +52,4 @@ kotlinCompose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kot
 
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlintGradlePlugin" }
 
+buildLogic-lint = { id = "buildLogic.lint", version = "unspecified" }
