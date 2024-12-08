@@ -1,0 +1,54 @@
+[versions]
+# TODO Replace your package
+app-applicationId = "projectpackage"
+app-compileSdk = "34"
+app-minSdk = "24"
+app-targetSdk = "34"
+app-versionCode = "1"
+app-versionName = "1.0"
+
+androidGradle = "8.7.3"
+kotlin = "2.0.21"
+coreKtx = "1.15.0"
+junit = "4.13.2"
+androidxJunit = "1.2.1"
+kotlinxCoroutines = "1.9.0"
+espressoCore = "3.6.1"
+lifecycleRuntimeKtx = "2.8.7"
+activityCompose = "1.9.3"
+composeBom = "2024.11.00"
+
+ktlintGradlePlugin = "12.1.1"
+
+[libraries]
+androidxCoreKtx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+kotlinTestJunit = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+kotlinxCoroutinesTest = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
+androidxJunit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxJunit" }
+androidxEspressoCore = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidxLifecycleRuntimeKtx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+activityCompose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+composeBom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+composeUi = { group = "androidx.compose.ui", name = "ui" }
+composeUiGraphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+composeUiTooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+composeUiToolingPreview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+composeUiTestManifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+composeUiTestJunit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+composeMaterial3 = { group = "androidx.compose.material3", name = "material3" }
+
+# build-logic
+kotlinGradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlinGradlePluginApi = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin-api", version.ref = "kotlin" }
+ktlintGradlePlugin = { module = "org.jlleitschuh.gradle:ktlint-gradle", version.ref = "ktlintGradlePlugin" }
+
+[plugins]
+androidApplication = { id = "com.android.application", version.ref = "androidGradle" }
+androidLibrary = { id = "com.android.library", version.ref = "androidGradle" }
+kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlinCompose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlintGradlePlugin" }
+
