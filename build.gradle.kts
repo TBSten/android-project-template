@@ -3,7 +3,8 @@ plugins {
     alias(libs.plugins.buildLogicPrimitiveLint) apply false
     alias(libs.plugins.buildLogicPrimitiveCompose) apply false
 
-    // build-logic convention plugins
+    // build-logic module plugins
+    alias(libs.plugins.buildLogicModuleApplication) apply false
 
     // other plugins
     alias(libs.plugins.androidApplication) apply false

@@ -1,9 +1,9 @@
 [versions]
 # TODO Replace your package
-app-applicationId = "projectpackage"
-app-compileSdk = "34"
+app-applicationId = "your.projectpackage"
+app-compileSdk = "35"
 app-minSdk = "24"
-app-targetSdk = "34"
+app-targetSdk = "35"
 app-versionCode = "1"
 app-versionName = "1.0"
 
@@ -41,6 +41,7 @@ composeMaterial3 = { module = "androidx.compose.material3:material3" }
 # build-logic
 kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlinGradlePluginApi = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin-api", version.ref = "kotlin" }
+androidGradlePlugin = { module = "com.android.tools.build:gradle", version.ref = "androidGradle" }
 ktlintGradlePlugin = { module = "org.jlleitschuh.gradle:ktlint-gradle", version.ref = "ktlintGradlePlugin" }
 composeGradlePlugin = { module = "org.jetbrains.kotlin.plugin.compose:org.jetbrains.kotlin.plugin.compose.gradle.plugin", version.ref = "kotlin" }
 
@@ -53,5 +54,6 @@ kotlinCompose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kot
 
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlintGradlePlugin" }
 
+buildLogicModuleAndroidApplication = { id = "buildLogic.module.android.application", version = "unspecified" }
 buildLogicPrimitiveLint = { id = "buildLogic.primitive.lint", version = "unspecified" }
 buildLogicPrimitiveCompose = { id = "buildLogic.primitive.compose", version = "unspecified" }

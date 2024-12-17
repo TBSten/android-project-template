@@ -22,12 +22,18 @@ dependencies {
     implementation(libs.kotlinGradlePlugin)
     implementation(libs.kotlinGradlePluginApi)
 
+    implementation(libs.androidGradlePlugin)
     implementation(libs.composeGradlePlugin)
     implementation(libs.ktlintGradlePlugin)
 }
 
 gradlePlugin {
     plugins {
+        register("android.application") {
+            id = "buildLogic.module.android.application"
+            implementationClass = "module.AndroidApplicationModulePlugin"
+        }
+
         register("lint") {
             id = "buildLogic.primitive.lint"
             implementationClass = "primitive.LintPlugin"
