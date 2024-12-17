@@ -21,26 +21,26 @@ composeBom = "2024.11.00"
 ktlintGradlePlugin = "12.1.1"
 
 [libraries]
-androidxCoreKtx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidxCoreKtx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
+junit = { module = "junit:junit", version.ref = "junit" }
 kotlinTestJunit = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlinxCoroutinesTest = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
-androidxJunit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxJunit" }
-androidxEspressoCore = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
-androidxLifecycleRuntimeKtx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
-activityCompose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
-composeBom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
-composeUi = { group = "androidx.compose.ui", name = "ui" }
-composeUiGraphics = { group = "androidx.compose.ui", name = "ui-graphics" }
-composeUiTooling = { group = "androidx.compose.ui", name = "ui-tooling" }
-composeUiToolingPreview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
-composeUiTestManifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
-composeUiTestJunit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
-composeMaterial3 = { group = "androidx.compose.material3", name = "material3" }
+androidxJunit = { module = "androidx.test.ext:junit", version.ref = "androidxJunit" }
+androidxEspressoCore = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCore" }
+androidxLifecycleRuntimeKtx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+activityCompose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
+composeBom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
+composeUi = { module = "androidx.compose.ui:ui" }
+composeUiGraphics = { module = "androidx.compose.ui:ui-graphics" }
+composeUiTooling = { module = "androidx.compose.ui:ui-tooling" }
+composeUiToolingPreview = { module = "androidx.compose.ui:ui-tooling-preview" }
+composeUiTestManifest = { module = "androidx.compose.ui:ui-test-manifest" }
+composeUiTestJunit4 = { module = "androidx.compose.ui:ui-test-junit4" }
+composeMaterial3 = { module = "androidx.compose.material3:material3" }
 
 # build-logic
-kotlinGradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
-kotlinGradlePluginApi = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin-api", version.ref = "kotlin" }
+kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlinGradlePluginApi = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin-api", version.ref = "kotlin" }
 ktlintGradlePlugin = { module = "org.jlleitschuh.gradle:ktlint-gradle", version.ref = "ktlintGradlePlugin" }
 
 [plugins]
