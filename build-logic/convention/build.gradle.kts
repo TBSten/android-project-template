@@ -18,6 +18,7 @@ kotlin {
 }
 
 dependencies {
+    // TODO compileOnly に replace
     implementation(libs.kotlinGradlePlugin)
     implementation(libs.kotlinGradlePluginApi)
 
@@ -27,8 +28,9 @@ dependencies {
 gradlePlugin {
     plugins {
         register("lint") {
-            id = "buildLogic.lint"
-            implementationClass = "LintPlugin"
+            id = "buildLogic.primitive.lint"
+            implementationClass = "primitive.LintPlugin"
+        }
         }
     }
 }

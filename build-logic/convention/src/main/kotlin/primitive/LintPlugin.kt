@@ -1,3 +1,5 @@
+package primitive
+
 import dsl.alias
 import dsl.ktlint
 import dsl.libs

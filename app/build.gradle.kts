@@ -1,8 +1,9 @@
 plugins {
-    alias(libs.plugins.buildLogic.lint)
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.kotlinCompose)
+
+    alias(libs.plugins.buildLogicPrimitiveLint)
 }
 
 android {
