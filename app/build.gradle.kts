@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlinCompose)
 
     alias(libs.plugins.buildLogicPrimitiveLint)
+    alias(libs.plugins.buildLogicPrimitiveCompose)
 }
 
 android {
@@ -53,9 +54,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = "17"
-    }
-    buildFeatures {
-        compose = true
     }
 }
 

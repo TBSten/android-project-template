@@ -1,6 +1,7 @@
 plugins {
     // build-logic primitive plugins
     alias(libs.plugins.buildLogicPrimitiveLint) apply false
+    alias(libs.plugins.buildLogicPrimitiveCompose) apply false
 
     // build-logic convention plugins
 

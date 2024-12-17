@@ -22,6 +22,7 @@ dependencies {
     implementation(libs.kotlinGradlePlugin)
     implementation(libs.kotlinGradlePluginApi)
 
+    implementation(libs.composeGradlePlugin)
     implementation(libs.ktlintGradlePlugin)
 }
 
@@ -31,6 +32,9 @@ gradlePlugin {
             id = "buildLogic.primitive.lint"
             implementationClass = "primitive.LintPlugin"
         }
+        register("compose") {
+            id = "buildLogic.primitive.compose"
+            implementationClass = "primitive.ComposePlugin"
         }
     }
 }
