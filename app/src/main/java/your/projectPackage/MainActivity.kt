@@ -1,4 +1,4 @@
-package projectPackage
+package your.projectPackage
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,6 +10,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            AppNavHost()
         }
     }
 }

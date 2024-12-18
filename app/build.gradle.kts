@@ -23,8 +23,7 @@ android {
 }
 
 dependencies {
-    // In many cases, please add dependencies to `build-logic/convention/src/main/kotlin/module/AndroidApplicationModulePlugin` .
-    // FIXME
+    // feature modules
     implementation(projects.domain)
     implementation(projects.feature.test)
 }
