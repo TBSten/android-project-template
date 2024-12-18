@@ -69,6 +69,7 @@ open class AndroidApplicationModulePlugin : Plugin<Project> {
 
                 lint {
                     baseline = file("lint-baseline.xml")
+                    abortOnError = true
                 }
             }
 
