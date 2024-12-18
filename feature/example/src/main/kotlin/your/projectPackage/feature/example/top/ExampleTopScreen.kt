@@ -1,4 +1,4 @@
-package your.projectPackage.feature.test
+package your.projectPackage.feature.example.top
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-internal fun TestScreen(modifier: Modifier = Modifier) {
+internal fun ExampleTopScreen(modifier: Modifier = Modifier) {
     Scaffold(modifier = modifier) { innerPadding ->
         Box(
             modifier = Modifier
@@ -26,7 +26,7 @@ internal fun TestScreen(modifier: Modifier = Modifier) {
 
 @Preview
 @Composable
-private fun TestScreenPreview() {
+private fun ExampleScreenPreview() {
     // TODO apply app theme
-    TestScreen()
+    ExampleTopScreen()
 }

@@ -25,5 +25,5 @@ android {
 dependencies {
     // feature modules
     implementation(projects.domain)
-    implementation(projects.feature.test)
+    implementation(projects.feature.example)
 }
