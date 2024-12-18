@@ -13,6 +13,7 @@ local.properties
 !.idea/icon.png
 !.idea/icon_dark.png
 !.idea/runConfigurations
+!.idea/codeInsightSettings.xml
 
 build/
 

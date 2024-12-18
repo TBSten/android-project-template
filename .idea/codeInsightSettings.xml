@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+    <component name="JavaProjectCodeInsightSettings">
+        <excluded-names>
+            <!-- Navigation Compose, use :ui:navigation 's NavigationDsl -->
+            <name>androidx.navigation.compose.composable</name>
+            <name>androidx.navigation.compose.dialog</name>
+            <name>androidx.navigation.compose.navigation</name>
+            <name>androidx.navigation.navigation</name>
+
+            <!-- Text -->
+            <name>org.w3c.dom.Text</name>
+            <name>androidx.compose.foundation.content.MediaType.Companion.Text</name>
+            <name>androidx.compose.ui.input.pointer.PointerIcon.Companion.Text</name>
+            <name>androidx.compose.ui.semantics.SemanticsProperties</name>
+            <name>androidx.compose.ui.text.input.KeyboardType.Companion.Text</name>
+        </excluded-names>
+    </component>
+</project>
