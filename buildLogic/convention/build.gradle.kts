@@ -35,7 +35,7 @@ gradlePlugin {
         }
         register("android.library") {
             id = "buildLogic.module.android.library"
-            implementationClass = "module.AndroidApplicationModulePlugin"
+            implementationClass = "module.AndroidLibraryModulePlugin"
         }
         register("feature") {
             id = "buildLogic.module.feature"

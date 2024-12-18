@@ -48,10 +48,13 @@ open class AndroidLibraryModulePlugin : Plugin<Project> {
                     sourceCompatibility = JavaVersion.VERSION_17
                     targetCompatibility = JavaVersion.VERSION_17
                 }
+                lint {
+                    baseline = file("lint-baseline.xml")
+                }
             }
 
-            val kotlin = kotlinExtension as? KotlinAndroidProjectExtension
-            kotlin?.compilerOptions {
+            val kotlin = kotlinExtension as KotlinAndroidProjectExtension
+            kotlin.compilerOptions {
                 jvmTarget.set(JvmTarget.JVM_17)
             }
 
