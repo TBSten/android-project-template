@@ -19,8 +19,12 @@ open class LintPlugin : Plugin<Project> {
             }
 
             tasks.withType(GenerateReportsTask::class.java) {
+                val projectDir = target.path
+                    .split(":")
+                    .filter { it.isNotEmpty() }
+                    .joinToString("/")
                 reportsOutputDirectory.set(
-                    rootProject.layout.buildDirectory.dir("ktlint-report"),
+                    rootProject.layout.buildDirectory.dir("ktlint-report").map { it.dir(projectDir) },
                 )
             }
         }
