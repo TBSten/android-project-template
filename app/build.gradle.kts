@@ -23,4 +23,5 @@ android {
 
 dependencies {
     // In many cases, please add dependencies to `build-logic/convention/src/main/kotlin/module/AndroidApplicationModulePlugin` .
+    implementation(projects.domain)
 }
