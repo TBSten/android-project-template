@@ -1,5 +1,6 @@
 package your.projectPackage.ui.navigation
 
+import android.annotation.SuppressLint
 import androidx.compose.animation.AnimatedContentScope
 import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.EnterTransition
@@ -19,6 +20,7 @@ import kotlin.reflect.KType
 @PublishedApi
 internal val customTypeMap: Map<KType, @JvmSuppressWildcards NavType<*>> = emptyMap()
 
+@SuppressLint("DoNotUseLibraryNavigationDsl")
 inline fun <reified S : Screen> NavGraphBuilder.composable(
     deepLinks: List<NavDeepLink> = emptyList(),
     noinline enterTransition: (AnimatedContentTransitionScope<NavBackStackEntry>.() -> @JvmSuppressWildcards EnterTransition?)? = null,
@@ -38,6 +40,7 @@ inline fun <reified S : Screen> NavGraphBuilder.composable(
     content = content,
 )
 
+@SuppressLint("DoNotUseLibraryNavigationDsl")
 inline fun <reified N : Navigation> NavGraphBuilder.navigation(
     startDestination: Route,
     deepLinks: List<NavDeepLink> = emptyList(),
@@ -59,6 +62,7 @@ inline fun <reified N : Navigation> NavGraphBuilder.navigation(
     builder = builder,
 )
 
+@SuppressLint("DoNotUseLibraryNavigationDsl")
 inline fun <reified D : Dialog> NavGraphBuilder.dialog(
     deepLinks: List<NavDeepLink> = emptyList(),
     dialogProperties: DialogProperties = DialogProperties(),

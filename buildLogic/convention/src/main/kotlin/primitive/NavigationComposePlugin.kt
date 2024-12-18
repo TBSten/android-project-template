@@ -17,6 +17,7 @@ open class NavigationComposePlugin : Plugin<Project> {
 
             dependencies {
                 implementation(libs.library("navigationCompose"))
+                "lintChecks"(rootProject.project(":lintRules:composeNavigation"))
             }
         }
     }
