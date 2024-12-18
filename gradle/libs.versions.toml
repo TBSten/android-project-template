@@ -67,3 +67,5 @@ buildLogicModuleAndroidLibrary = { id = "buildLogic.module.android.library", ver
 buildLogicModuleFeature = { id = "buildLogic.module.feature", version = "unspecified" }
 buildLogicPrimitiveLint = { id = "buildLogic.primitive.lint", version = "unspecified" }
 buildLogicPrimitiveCompose = { id = "buildLogic.primitive.compose", version = "unspecified" }
+buildLogicPrimitiveNavigationCompose = { id = "buildLogic.primitive.navigation.compose", version = "unspecified" }
+buildLogicPrimitiveKotlinxSerialization = { id = "buildLogic.primitive.kotlinx.serialization", version = "unspecified" }

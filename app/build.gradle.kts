@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.buildLogicModuleAndroidApplication)
+    alias(libs.plugins.buildLogicPrimitiveNavigationCompose)
 }
 
 android {

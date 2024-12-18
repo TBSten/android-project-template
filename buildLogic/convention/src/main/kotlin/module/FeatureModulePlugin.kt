@@ -11,7 +11,7 @@ import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.dependencies
 import primitive.ComposePlugin
-import primitive.KotlinxSerializationPlugin
+import primitive.NavigationComposePlugin
 
 open class FeatureModulePlugin : Plugin<Project> {
     override fun apply(target: Project) {
@@ -19,15 +19,16 @@ open class FeatureModulePlugin : Plugin<Project> {
             pluginManager.apply {
                 apply(AndroidLibraryModulePlugin::class)
                 apply(ComposePlugin::class)
-                apply(KotlinxSerializationPlugin::class)
+                apply(NavigationComposePlugin::class)
             }
 
             dependencies {
+                implementation(rootProject.project(":ui"))
+
                 implementation(libs.library("composeUi"))
                 implementation(libs.library("composeUiGraphics"))
                 implementation(libs.library("composeUiToolingPreview"))
                 implementation(libs.library("composeMaterial3"))
-                implementation(libs.library("navigationCompose"))
 
                 testImplementation(libs.library("junit"))
 

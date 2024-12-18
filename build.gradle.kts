@@ -2,6 +2,8 @@ plugins {
     // build-logic primitive plugins
     alias(libs.plugins.buildLogicPrimitiveLint) apply false
     alias(libs.plugins.buildLogicPrimitiveCompose) apply false
+    alias(libs.plugins.buildLogicPrimitiveNavigationCompose) apply false
+    alias(libs.plugins.buildLogicPrimitiveKotlinxSerialization) apply false
 
     // build-logic module plugins
     alias(libs.plugins.buildLogicModuleAndroidApplication) apply false

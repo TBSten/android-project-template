@@ -50,5 +50,13 @@ gradlePlugin {
             id = "buildLogic.primitive.compose"
             implementationClass = "primitive.ComposePlugin"
         }
+        register("navigation.compose") {
+            id = "buildLogic.primitive.navigation.compose"
+            implementationClass = "primitive.NavigationComposePlugin"
+        }
+        register("kotlinx.serialization") {
+            id = "buildLogic.primitive.kotlinx.serialization"
+            implementationClass = "primitive.KotlinxSerializationPlugin"
+        }
     }
 }
