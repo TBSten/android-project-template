@@ -33,6 +33,10 @@ gradlePlugin {
             id = "buildLogic.module.android.application"
             implementationClass = "module.AndroidApplicationModulePlugin"
         }
+        register("android.library") {
+            id = "buildLogic.module.android.library"
+            implementationClass = "module.AndroidApplicationModulePlugin"
+        }
 
         register("lint") {
             id = "buildLogic.primitive.lint"

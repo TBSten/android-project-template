@@ -4,7 +4,8 @@ plugins {
     alias(libs.plugins.buildLogicPrimitiveCompose) apply false
 
     // build-logic module plugins
-    alias(libs.plugins.buildLogicModuleApplication) apply false
+    alias(libs.plugins.buildLogicModuleAndroidApplication) apply false
+    alias(libs.plugins.buildLogicModuleAndroidLibrary) apply false
 
     // other plugins
     alias(libs.plugins.androidApplication) apply false

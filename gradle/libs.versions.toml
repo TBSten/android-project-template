@@ -19,6 +19,7 @@ activityCompose = "1.9.3"
 composeBom = "2024.11.00"
 
 ktlintGradlePlugin = "12.1.1"
+appcompat = "1.7.0"
 
 [libraries]
 androidxCoreKtx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
@@ -37,6 +38,8 @@ composeUiToolingPreview = { module = "androidx.compose.ui:ui-tooling-preview" }
 composeUiTestManifest = { module = "androidx.compose.ui:ui-test-manifest" }
 composeUiTestJunit4 = { module = "androidx.compose.ui:ui-test-junit4" }
 composeMaterial3 = { module = "androidx.compose.material3:material3" }
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
 
 # build-logic
 kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -55,5 +58,6 @@ kotlinCompose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kot
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlintGradlePlugin" }
 
 buildLogicModuleAndroidApplication = { id = "buildLogic.module.android.application", version = "unspecified" }
+buildLogicModuleAndroidLibrary = { id = "buildLogic.module.android.library", version = "unspecified" }
 buildLogicPrimitiveLint = { id = "buildLogic.primitive.lint", version = "unspecified" }
 buildLogicPrimitiveCompose = { id = "buildLogic.primitive.compose", version = "unspecified" }
