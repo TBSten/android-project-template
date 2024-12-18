@@ -6,6 +6,7 @@ plugins {
     // build-logic module plugins
     alias(libs.plugins.buildLogicModuleAndroidApplication) apply false
     alias(libs.plugins.buildLogicModuleAndroidLibrary) apply false
+    alias(libs.plugins.buildLogicModuleFeature) apply false
 
     // other plugins
     alias(libs.plugins.androidApplication) apply false
@@ -13,5 +14,6 @@ plugins {
     alias(libs.plugins.kotlinJvm) apply false
     alias(libs.plugins.kotlinAndroid) apply false
     alias(libs.plugins.kotlinCompose) apply false
+    alias(libs.plugins.kotlinPluginSerialization) apply false
     alias(libs.plugins.ktlint) apply false
 }

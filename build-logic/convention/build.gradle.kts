@@ -37,6 +37,10 @@ gradlePlugin {
             id = "buildLogic.module.android.library"
             implementationClass = "module.AndroidApplicationModulePlugin"
         }
+        register("feature") {
+            id = "buildLogic.module.feature"
+            implementationClass = "module.FeatureModulePlugin"
+        }
 
         register("lint") {
             id = "buildLogic.primitive.lint"
