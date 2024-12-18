@@ -7,4 +7,6 @@ android {
 }
 
 dependencies {
+    api(projects.ui.navigation)
+    api(projects.ui.designSystem)
 }
