@@ -9,6 +9,7 @@ import dsl.implementation
 import dsl.library
 import dsl.libs
 import dsl.plugin
+import dsl.plugins
 import dsl.testImplementation
 import dsl.version
 import org.gradle.api.JavaVersion
@@ -26,7 +27,7 @@ import primitive.LintPlugin
 open class AndroidApplicationModulePlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            pluginManager.apply {
+            plugins {
                 alias(libs.plugin("androidApplication"))
                 alias(libs.plugin("kotlinAndroid"))
                 apply(ComposePlugin::class)

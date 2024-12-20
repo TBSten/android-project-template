@@ -5,6 +5,7 @@ import dsl.debugImplementation
 import dsl.implementation
 import dsl.library
 import dsl.libs
+import dsl.plugins
 import dsl.testImplementation
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -16,7 +17,7 @@ import primitive.NavigationComposePlugin
 open class FeatureModulePlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            pluginManager.apply {
+            plugins {
                 apply(AndroidLibraryModulePlugin::class)
                 apply(ComposePlugin::class)
                 apply(NavigationComposePlugin::class)
