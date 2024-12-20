@@ -25,6 +25,7 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 rootProject.name = "AndroidProjectTemplate"
 include(":app")
 include(":domain")
+include(":domain:error")
 include(":data")
 include(":data:api")
 include(":data:database")

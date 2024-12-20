@@ -7,4 +7,5 @@ android {
 }
 
 dependencies {
+    api(projects.domain.error)
 }
