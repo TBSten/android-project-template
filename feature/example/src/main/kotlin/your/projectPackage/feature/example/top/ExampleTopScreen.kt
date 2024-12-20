@@ -18,6 +18,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.hilt.navigation.compose.hiltViewModel
 import your.projectPackage.ui.component.AppButton
 import your.projectPackage.ui.consumeViewModel
+import your.projectPackage.ui.error.handleUiEvent
 
 @Composable
 internal fun ExampleTopScreen(
@@ -60,7 +61,7 @@ private fun ExampleTopScreen(
                         verticalArrangement = Arrangement.Center,
                     ) {
                         Text("data: ${uiState.count}")
-                        AppButton(onClick = { dispatch(ExampleTopUiAction.OnButtonClick) }) {
+                        AppButton(onClick = handleUiEvent { dispatch(ExampleTopUiAction.OnButtonClick) }) {
                             Text("+")
                         }
                     }
