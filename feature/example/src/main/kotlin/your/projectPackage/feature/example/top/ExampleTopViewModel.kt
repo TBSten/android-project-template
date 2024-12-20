@@ -9,17 +9,19 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
+import your.projectPackage.error.ApplicationErrorStateHolder
 import your.projectPackage.ui.BaseViewModel
 
 @HiltViewModel
-internal class ExampleTopViewModel @Inject constructor() : BaseViewModel<ExampleTopUiState, ExampleTopUiAction>() {
+internal class ExampleTopViewModel @Inject constructor(
+    applicationErrorStateHolder: ApplicationErrorStateHolder,
+) : BaseViewModel<ExampleTopUiState, ExampleTopUiAction>(applicationErrorStateHolder) {
     private val _uiState = MutableStateFlow<ExampleTopUiState>(ExampleTopUiState.InitialLoading)
     override val uiState = _uiState.asStateFlow()
 
     override fun init() {
         // TODO エラーハンドリング
-        viewModelScope.launch {
+        viewModelScope.launchSafe {
             delay(1000)
             _uiState.update {
                 ExampleTopUiState.Success(count = Random.nextInt(10..1000))

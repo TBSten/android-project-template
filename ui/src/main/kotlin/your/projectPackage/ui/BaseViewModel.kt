@@ -5,9 +5,13 @@ import androidx.compose.runtime.getValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import kotlinx.coroutines.flow.StateFlow
+import your.projectPackage.error.ErrorStateHolder
+import your.projectPackage.error.LaunchSafe
 
 // TODO エラーハンドリング
-abstract class BaseViewModel<State, Action> : ViewModel() {
+abstract class BaseViewModel<State, Action>(exceptionStateHolder: ErrorStateHolder) :
+    ViewModel(),
+    LaunchSafe by LaunchSafe(exceptionStateHolder) {
     abstract val uiState: StateFlow<State>
     abstract fun dispatch(action: Action)
 
