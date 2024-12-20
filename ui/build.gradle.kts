@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.buildLogicModuleAndroidLibrary)
+    alias(libs.plugins.buildLogicPrimitiveCompose)
 }
 
 android {
@@ -9,4 +10,9 @@ android {
 dependencies {
     api(projects.ui.navigation)
     api(projects.ui.designSystem)
+
+    implementation(libs.composeUi)
+    implementation(libs.composeUiGraphics)
+    implementation(libs.composeUiToolingPreview)
+    implementation(libs.composeMaterial3)
 }
