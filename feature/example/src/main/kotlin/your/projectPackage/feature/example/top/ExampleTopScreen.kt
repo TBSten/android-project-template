@@ -29,7 +29,7 @@ internal fun ExampleTopScreen(
 
     ExampleTopScreen(
         uiState = uiState,
-        dispatch = viewModel::dispatch,
+        dispatch = dispatch,
         modifier = modifier,
     )
 }
