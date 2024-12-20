@@ -17,10 +17,18 @@ internal fun DependencyHandlerScope.debugImplementation(artifact: Dependency) {
 }
 
 internal fun DependencyHandlerScope.testImplementation(artifact: Dependency) {
-    add("debugImplementation", artifact)
+    add("testImplementation", artifact)
+}
+
+internal fun DependencyHandlerScope.testImplementation(artifact: Project) {
+    add("testImplementation", artifact)
 }
 
 internal fun DependencyHandlerScope.androidTestImplementation(artifact: Dependency) {
+    add("androidTestImplementation", artifact)
+}
+
+internal fun DependencyHandlerScope.androidTestImplementation(artifact: Project) {
     add("androidTestImplementation", artifact)
 }
 

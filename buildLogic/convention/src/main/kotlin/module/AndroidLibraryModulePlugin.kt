@@ -66,6 +66,10 @@ open class AndroidLibraryModulePlugin : Plugin<Project> {
                 testImplementation(libs.library("junit"))
                 androidTestImplementation(libs.library("androidxJunit"))
                 androidTestImplementation(libs.library("androidxEspressoCore"))
+
+                if (target.path != ":testing") {
+                    testImplementation(project(":testing"))
+                }
             }
         }
     }
