@@ -58,5 +58,9 @@ gradlePlugin {
             id = "buildLogic.primitive.kotlinx.serialization"
             implementationClass = "primitive.KotlinxSerializationPlugin"
         }
+        register("hilt") {
+            id = "buildLogic.primitive.hilt"
+            implementationClass = "primitive.HiltPlugin"
+        }
     }
 }

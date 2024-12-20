@@ -22,6 +22,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
 import primitive.ComposePlugin
+import primitive.HiltPlugin
 import primitive.LintPlugin
 
 open class AndroidApplicationModulePlugin : Plugin<Project> {
@@ -32,6 +33,7 @@ open class AndroidApplicationModulePlugin : Plugin<Project> {
                 alias(libs.plugin("kotlinAndroid"))
                 apply(ComposePlugin::class)
                 apply(LintPlugin::class)
+                apply(HiltPlugin::class)
             }
 
             androidApplication {

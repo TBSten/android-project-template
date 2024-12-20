@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.buildLogicPrimitiveCompose) apply false
     alias(libs.plugins.buildLogicPrimitiveNavigationCompose) apply false
     alias(libs.plugins.buildLogicPrimitiveKotlinxSerialization) apply false
+    alias(libs.plugins.buildLogicPrimitiveHilt) apply false
 
     // build-logic module plugins
     alias(libs.plugins.buildLogicModuleAndroidApplication) apply false
@@ -18,4 +19,6 @@ plugins {
     alias(libs.plugins.kotlinCompose) apply false
     alias(libs.plugins.kotlinPluginSerialization) apply false
     alias(libs.plugins.ktlint) apply false
+    alias(libs.plugins.ksp) apply false
+    alias(libs.plugins.hilt) apply false
 }

@@ -23,3 +23,7 @@ internal fun DependencyHandlerScope.testImplementation(artifact: Dependency) {
 internal fun DependencyHandlerScope.androidTestImplementation(artifact: Dependency) {
     add("androidTestImplementation", artifact)
 }
+
+internal fun DependencyHandlerScope.ksp(artifact: Dependency) {
+    add("ksp", artifact)
+}

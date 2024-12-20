@@ -12,6 +12,7 @@ import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.dependencies
 import primitive.ComposePlugin
+import primitive.HiltPlugin
 import primitive.NavigationComposePlugin
 
 open class FeatureModulePlugin : Plugin<Project> {
@@ -21,6 +22,7 @@ open class FeatureModulePlugin : Plugin<Project> {
                 apply(AndroidLibraryModulePlugin::class)
                 apply(ComposePlugin::class)
                 apply(NavigationComposePlugin::class)
+                apply(HiltPlugin::class)
             }
 
             dependencies {
@@ -30,6 +32,8 @@ open class FeatureModulePlugin : Plugin<Project> {
                 implementation(libs.library("composeUiGraphics"))
                 implementation(libs.library("composeUiToolingPreview"))
                 implementation(libs.library("composeMaterial3"))
+                implementation(libs.library("hiltNavigationCompose"))
+                implementation(libs.library("androidxLifecycleViewModelKtx"))
 
                 testImplementation(libs.library("junit"))
 
