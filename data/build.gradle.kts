@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.buildLogicModuleAndroidLibrary)
+    alias(libs.plugins.buildLogicPrimitiveHilt)
 }
 
 android {
@@ -7,4 +8,8 @@ android {
 }
 
 dependencies {
+    implementation(projects.data.preferences)
+    implementation(projects.data.database)
+    implementation(projects.data.api)
+    implementation(projects.domain)
 }

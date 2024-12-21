@@ -62,5 +62,9 @@ gradlePlugin {
             id = "buildLogic.primitive.hilt"
             implementationClass = "primitive.HiltPlugin"
         }
+        register("room") {
+            id = "buildLogic.primitive.room"
+            implementationClass = "primitive.RoomPlugin"
+        }
     }
 }

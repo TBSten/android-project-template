@@ -23,9 +23,10 @@ kotlinx-serialization = "1.8.0-RC"
 androidLint = "31.7.3"
 hilt = "2.51.1"
 hiltNavigationCompose = "1.2.0"
+appcompat = "1.7.0"
+room = "2.6.1"
 
 ktlintGradlePlugin = "12.1.1"
-appcompat = "1.7.0"
 
 [libraries]
 # TODO 並び順を build-logic用 > 通常のライブラリ にする
@@ -54,6 +55,9 @@ androidLintChecks = { module = "com.android.tools.lint:lint-checks", version.ref
 hiltAndroid = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hiltCompiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
 hiltNavigationCompose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
+roomRuntime = { module = "androidx.room:room-runtime", version.ref = "room" }
+roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+roomKtx = { module = "androidx.room:room-ktx", version.ref = "room" }
 
 # build-logic
 kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -82,3 +86,4 @@ buildLogicPrimitiveCompose = { id = "buildLogic.primitive.compose", version = "u
 buildLogicPrimitiveNavigationCompose = { id = "buildLogic.primitive.navigation.compose", version = "unspecified" }
 buildLogicPrimitiveKotlinxSerialization = { id = "buildLogic.primitive.kotlinx.serialization", version = "unspecified" }
 buildLogicPrimitiveHilt = { id = "buildLogic.primitive.hilt", version = "unspecified" }
+buildLogicPrimitiveRoom = { id = "buildLogic.primitive.room", version = "unspecified" }

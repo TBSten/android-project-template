@@ -1,5 +1,7 @@
 plugins {
     alias(libs.plugins.buildLogicModuleAndroidLibrary)
+    alias(libs.plugins.buildLogicPrimitiveRoom)
+    alias(libs.plugins.buildLogicPrimitiveHilt)
 }
 
 android {
@@ -7,4 +9,6 @@ android {
 }
 
 dependencies {
+    api(libs.roomRuntime)
+    api(libs.roomKtx)
 }
