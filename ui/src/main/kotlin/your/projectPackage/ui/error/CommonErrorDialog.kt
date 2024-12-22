@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import your.projectPackage.error.ErrorHandleType
 import your.projectPackage.error.ErrorState
+import your.projectPackage.ui.PreviewRoot
 import your.projectPackage.ui.component.AppButton
 
 @Composable
@@ -57,9 +58,8 @@ private val Throwable.displayText: String?
 
 @Preview
 @Composable
-private fun CommonErrorDialogPreview() {
+private fun CommonErrorDialogPreview() = PreviewRoot {
     val errorHandleType = ErrorHandleType.Dialog
-    // TODO apply AppTheme
     CommonErrorDialog(
         errorState = ErrorState.HandleError(Exception("test exception"), errorHandleType),
         errorHandleType = errorHandleType,

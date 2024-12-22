@@ -8,6 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import your.projectPackage.ui.Dispatch
+import your.projectPackage.ui.PreviewRoot
 import your.projectPackage.ui.error.handleUiEvent
 import your.projectpackage.debug.ui.DebugMenuTab
 import your.projectpackage.debug.ui.DebugMenuUiAction
@@ -38,8 +39,7 @@ internal fun DebugMenuTabSection(
 
 @Preview
 @Composable
-private fun DebugMenuTabSectionPreview() {
-    // TODO apply AppTheme
+private fun DebugMenuTabSectionPreview() = PreviewRoot {
     DebugMenuTabSection(
         uiState = DebugMenuUiState(DebugMenuTab.SampleDebugMenuTab),
         dispatch = {},

@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.pager.HorizontalPager
@@ -16,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import your.projectPackage.ui.Dispatch
+import your.projectPackage.ui.PreviewRoot
 import your.projectPackage.ui.consumeViewModel
 import your.projectpackage.debug.ui.component.DebugMenuTabSection
 
@@ -71,8 +71,7 @@ private fun DebugMenu(
 
 @Preview(showBackground = true)
 @Composable
-private fun DebugMenuPreview() {
-    // TODO apply AppTheme
+private fun DebugMenuPreview() = PreviewRoot {
     DebugMenu(
         uiState = DebugMenuUiState(DebugMenuTab.SampleDebugMenuTab),
         dispatch = { },
