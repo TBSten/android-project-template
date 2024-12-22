@@ -25,6 +25,7 @@ dependencies {
     implementation(libs.androidGradlePlugin)
     implementation(libs.composeGradlePlugin)
     implementation(libs.ktlintGradlePlugin)
+    implementation(libs.roborazziGradlePlugin)
 }
 
 gradlePlugin {
@@ -66,5 +67,9 @@ gradlePlugin {
             id = "buildLogic.primitive.room"
             implementationClass = "primitive.RoomPlugin"
         }
+//        register("roborazzi") {
+//            id = "buildLogic.primitive.roborazzi"
+//            implementationClass = "primitive.RoborazziPlugin"
+//        }
     }
 }

@@ -1,5 +1,6 @@
 package primitive
 
+import RoborazziPlugin
 import dsl.alias
 import dsl.androidTestImplementation
 import dsl.composeCompiler
@@ -10,6 +11,7 @@ import dsl.plugin
 import dsl.plugins
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.assign
 import org.gradle.kotlin.dsl.dependencies
 
@@ -18,6 +20,7 @@ open class ComposePlugin : Plugin<Project> {
         with(target) {
             plugins {
                 alias(libs.plugin("kotlinCompose"))
+                apply(RoborazziPlugin::class)
             }
 
             composeCompiler {
