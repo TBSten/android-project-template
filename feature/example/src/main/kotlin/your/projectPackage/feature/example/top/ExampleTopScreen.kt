@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import your.projectPackage.domain.example.User
 import your.projectPackage.domain.example.UserId
+import your.projectPackage.ui.Dispatch
 import your.projectPackage.ui.component.AppButton
 import your.projectPackage.ui.consumeViewModel
 import your.projectPackage.ui.error.handleUiEvent
@@ -51,7 +52,7 @@ internal fun ExampleTopScreen(
 @Composable
 private fun ExampleTopScreen(
     uiState: ExampleTopUiState,
-    dispatch: (ExampleTopUiAction) -> Unit,
+    dispatch: Dispatch<ExampleTopUiAction>,
     modifier: Modifier = Modifier,
 ) {
     Scaffold(modifier = modifier) { innerPadding ->

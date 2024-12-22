@@ -18,6 +18,8 @@ abstract class BaseViewModel<State, Action>(exceptionStateHolder: ErrorStateHold
     open fun init() {}
 }
 
+typealias Dispatch<Action> = (Action) -> Unit
+
 @Composable
 fun <State, Action, VM : BaseViewModel<State, Action>> consumeViewModel(viewModel: VM): Pair<State, (Action) -> Unit> {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
