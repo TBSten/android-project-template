@@ -25,6 +25,7 @@ hilt = "2.51.1"
 hiltNavigationCompose = "1.2.0"
 appcompat = "1.7.0"
 room = "2.6.1"
+datastore = "1.1.1"
 
 ktlintGradlePlugin = "12.1.1"
 
@@ -58,6 +59,7 @@ hiltNavigationCompose = { module = "androidx.hilt:hilt-navigation-compose", vers
 roomRuntime = { module = "androidx.room:room-runtime", version.ref = "room" }
 roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 roomKtx = { module = "androidx.room:room-ktx", version.ref = "room" }
+datastorePreferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastore" }
 
 # build-logic
 kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
