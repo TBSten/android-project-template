@@ -8,6 +8,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import your.projectPackage.error.ApplicationErrorStateHolder
 import your.projectPackage.ui.error.HandleErrors
+import your.projectpackage.debug.ui.InjectDebugMenu
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -19,6 +20,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             HandleErrors(applicationErrorStateHolder) {
+                InjectDebugMenu()
                 AppNavHost()
             }
         }

@@ -16,6 +16,10 @@ internal fun DependencyHandlerScope.debugImplementation(artifact: Dependency) {
     add("debugImplementation", artifact)
 }
 
+internal fun DependencyHandlerScope.debugImplementation(artifact: Project) {
+    add("debugImplementation", artifact)
+}
+
 internal fun DependencyHandlerScope.testImplementation(artifact: Dependency) {
     add("testImplementation", artifact)
 }

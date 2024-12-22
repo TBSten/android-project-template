@@ -1,5 +1,7 @@
 plugins {
     alias(libs.plugins.buildLogicModuleAndroidLibrary)
+    alias(libs.plugins.buildLogicPrimitiveCompose)
+    alias(libs.plugins.buildLogicPrimitiveHilt)
 }
 
 android {
@@ -7,14 +9,22 @@ android {
 }
 
 dependencies {
-}
+    implementation(projects.ui)
+    implementation(projects.domain)
+    implementation(libs.composeUi)
+    implementation(libs.composeUiGraphics)
+    implementation(libs.composeUiToolingPreview)
+    implementation(libs.composeMaterial3)
+    implementation(libs.hiltNavigationCompose)
+    implementation(libs.androidxLifecycleViewModelKtx)
+    implementation(libs.hiltNavigationCompose)
 
-// androidComponents {
-//    beforeVariants { variantBuilder ->
-//        // To check for a certain build type, use variantBuilder.buildType == "<buildType>"
-//        if (variantBuilder.productFlavors.containsAll(listOf("api" to "minApi21", "mode" to "demo"))) {
-//            // Gradle ignores any variants that satisfy the conditions above.
-//            variantBuilder.enable = false
-//        }
-//    }
-// }
+    testImplementation(libs.junit)
+
+    androidTestImplementation(libs.androidxJunit)
+    androidTestImplementation(libs.androidxEspressoCore)
+    androidTestImplementation(libs.composeUiTestJunit4)
+
+    debugImplementation(libs.composeUiTooling)
+    debugImplementation(libs.composeUiTestManifest)
+}
