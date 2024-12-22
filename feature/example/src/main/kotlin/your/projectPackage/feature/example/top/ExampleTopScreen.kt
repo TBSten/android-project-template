@@ -31,6 +31,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import your.projectPackage.domain.example.User
 import your.projectPackage.domain.example.UserId
 import your.projectPackage.ui.Dispatch
+import your.projectPackage.ui.PreviewRoot
 import your.projectPackage.ui.component.AppButton
 import your.projectPackage.ui.consumeViewModel
 import your.projectPackage.ui.error.handleUiEvent
@@ -141,8 +142,7 @@ private class ExampleTopUiStatePreviewParameterProvider : PreviewParameterProvid
 private fun ExampleTopScreenPreview(
     @PreviewParameter(ExampleTopUiStatePreviewParameterProvider::class)
     uiState: ExampleTopUiState,
-) {
-    // TODO apply app theme
+) = PreviewRoot {
     ExampleTopScreen(
         uiState = uiState,
         dispatch = { },
