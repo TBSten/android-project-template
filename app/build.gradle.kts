@@ -4,9 +4,11 @@ plugins {
 }
 
 android {
-    namespace =
-        libs.versions.app.applicationId
-            .get()
+    /*
+    roborazzi Compose Preview Support で他モジュールのファイルが収集されないようにするために
+    namespace の suffix として app を使用している。
+     */
+    namespace = "${libs.versions.app.applicationId.get()}.app"
 
     defaultConfig {
         applicationId =

@@ -1,4 +1,4 @@
-package your.projectPackage
+package your.projectPackage.app
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
