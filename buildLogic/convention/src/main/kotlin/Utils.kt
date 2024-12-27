@@ -1,6 +1,6 @@
-import org.gradle.api.Project
 import java.io.File
 import java.util.Properties
+import org.gradle.api.Project
 
 val Project.localProperties
     get() = loadProperties(filePath = "local.properties")

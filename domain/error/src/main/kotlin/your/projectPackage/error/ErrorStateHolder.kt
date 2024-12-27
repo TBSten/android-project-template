@@ -13,7 +13,7 @@ interface ErrorStateHolder {
 }
 
 abstract class AbstractErrorStateHolder : ErrorStateHolder {
-    @Suppress("ktlint:standard:backing-property-naming", "PropertyName", "MemberVisibilityCanBePrivate")
+    @Suppress("PropertyName", "MemberVisibilityCanBePrivate")
     protected val _errorState = MutableStateFlow<ErrorState>(ErrorState.NoError)
     override val errorState = _errorState.asStateFlow()
     override fun sendErrorState(errorState: ErrorState) {

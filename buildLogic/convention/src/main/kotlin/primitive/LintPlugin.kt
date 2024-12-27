@@ -8,6 +8,7 @@ import dsl.plugin
 import dsl.plugins
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 import org.jlleitschuh.gradle.ktlint.tasks.GenerateReportsTask
 
 open class LintPlugin : Plugin<Project> {
@@ -18,6 +19,9 @@ open class LintPlugin : Plugin<Project> {
             }
 
             ktlint {
+                reporters {
+                    reporter(ReporterType.SARIF)
+                }
             }
 
             tasks.withType(GenerateReportsTask::class.java) {
