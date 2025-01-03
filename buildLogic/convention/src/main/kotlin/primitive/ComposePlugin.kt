@@ -4,6 +4,7 @@ import RoborazziPlugin
 import dsl.alias
 import dsl.androidTestImplementation
 import dsl.composeCompiler
+import dsl.debugImplementation
 import dsl.implementation
 import dsl.library
 import dsl.libs
@@ -31,7 +32,16 @@ open class ComposePlugin : Plugin<Project> {
 
             dependencies {
                 implementation(platform(libs.library("composeBom")))
+                implementation(libs.library("composeUi"))
+                implementation(libs.library("composeUiGraphics"))
+                implementation(libs.library("composeUiToolingPreview"))
+                implementation(libs.library("composeMaterial3"))
+
                 androidTestImplementation(platform(libs.library("composeBom")))
+                androidTestImplementation(libs.library("composeUiTestJunit4"))
+
+                debugImplementation(libs.library("composeUiTooling"))
+                debugImplementation(libs.library("composeUiTestManifest"))
             }
         }
     }
