@@ -14,6 +14,12 @@
             <name>androidx.compose.ui.input.pointer.PointerIcon.Companion.Text</name>
             <name>androidx.compose.ui.semantics.SemanticsProperties</name>
             <name>androidx.compose.ui.text.input.KeyboardType.Companion.Text</name>
+
+            <!-- Gradle Plugin -->
+            <name>org.gradle.internal.impldep.org.apache.maven.artifact.repository.metadata.Plugin</name>
+            <name>org.gradle.internal.impldep.org.apache.maven.model.Plugin</name>
+            <name>com.sun.source.util.Plugin</name>
+            <name>jdk.tools.jlink.plugin.Plugin</name>
         </excluded-names>
     </component>
 </project>
