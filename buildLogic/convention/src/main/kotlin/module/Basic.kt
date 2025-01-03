@@ -1,6 +1,7 @@
 package module
 
 import dsl.implementation
+import dsl.testImplementation
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
 
@@ -11,6 +12,10 @@ internal fun Project.configureBasic() {
     dependencies {
         if (path != ":common") {
             implementation(project(":common"))
+        }
+
+        if (project.path != ":testing") {
+            testImplementation(project(":testing"))
         }
     }
 }

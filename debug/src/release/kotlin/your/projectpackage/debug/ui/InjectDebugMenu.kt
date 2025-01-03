@@ -1,8 +1,7 @@
 package your.projectpackage.debug.ui
 
+import android.annotation.SuppressLint
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 
 @SuppressLint("ComposeModifierMissing")
 @Composable

@@ -20,8 +20,6 @@ import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
 import primitive.LintPlugin
 
 internal fun Project.configureAndroid() {
-    val project = this
-
     plugins {
         alias(libs.plugin("kotlinAndroid"))
         apply(LintPlugin::class)
@@ -59,9 +57,5 @@ internal fun Project.configureAndroid() {
 
         androidTestImplementation(libs.library("androidxJunit"))
         androidTestImplementation(libs.library("androidxEspressoCore"))
-
-        if (project.path != ":testing") {
-            testImplementation(project(":testing"))
-        }
     }
 }

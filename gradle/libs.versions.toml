@@ -30,6 +30,7 @@ roborazzi = "1.37.0"
 robolectric = "4.14"
 composePreviewScanner = "0.4.0"
 slackComposeLint = "1.4.2"
+mockk = "1.13.14"
 
 ktlintGradlePlugin = "12.1.1"
 
@@ -71,6 +72,7 @@ roborazziComposePreviewScannerSupport = { module = "io.github.takahirom.roborazz
 robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
 composePreviewScanner = { module = "io.github.sergio-sastre.ComposablePreviewScanner:android", version.ref = "composePreviewScanner" }
 slackComposeLint = { module = "com.slack.lint.compose:compose-lint-checks", version.ref = "slackComposeLint" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 
 # build-logic
 kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }

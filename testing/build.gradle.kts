@@ -8,4 +8,7 @@ android {
 
 dependencies {
     api(libs.kotlinxCoroutinesTest)
+    api(libs.junit)
+    api(libs.kotlinTestJunit)
+    api(libs.mockk)
 }

@@ -30,36 +30,34 @@ internal class ExampleTopViewModel @Inject constructor(
         }
     }
 
-    override fun dispatch(action: ExampleTopUiAction) = when (action) {
-        ExampleTopUiAction.OnButtonClick -> onButtonClick()
-        ExampleTopUiAction.OnAddUser -> onAddUser()
-        is ExampleTopUiAction.OnDeleteUser -> onDeleteUser(action.user)
-    }
-
-    private fun onButtonClick() {
+    override fun dispatch(action: ExampleTopUiAction) {
         viewModelScope.launchSafe {
-            refresh()
+            when (action) {
+                ExampleTopUiAction.OnButtonClick -> onButtonClick()
+                ExampleTopUiAction.OnAddUser -> onAddUser()
+                is ExampleTopUiAction.OnDeleteUser -> onDeleteUser(action.user)
+            }
         }
     }
 
-    private fun onAddUser() {
-        viewModelScope.launchSafe {
-            val randomId = Random.nextInt(1..1_000_000)
-            userRepository.createUser(
-                User(
-                    uid = UserId(randomId),
-                    name = "User-$randomId",
-                ),
-            )
-            refresh()
-        }
+    private suspend fun onButtonClick() {
+        refresh()
     }
 
-    private fun onDeleteUser(user: User) {
-        viewModelScope.launchSafe {
-            userRepository.deleteUser(user)
-            refresh()
-        }
+    private suspend fun onAddUser() {
+        val randomId = Random.nextInt(1..1_000_000)
+        userRepository.createUser(
+            User(
+                uid = UserId(randomId),
+                name = "User-$randomId",
+            ),
+        )
+        refresh()
+    }
+
+    private suspend fun onDeleteUser(user: User) {
+        userRepository.deleteUser(user)
+        refresh()
     }
 
     private suspend fun refresh() {
