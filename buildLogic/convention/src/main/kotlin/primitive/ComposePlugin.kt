@@ -42,6 +42,8 @@ open class ComposePlugin : Plugin<Project> {
 
                 debugImplementation(libs.library("composeUiTooling"))
                 debugImplementation(libs.library("composeUiTestManifest"))
+
+                "lintChecks"(libs.library("slackComposeLint"))
             }
         }
     }
