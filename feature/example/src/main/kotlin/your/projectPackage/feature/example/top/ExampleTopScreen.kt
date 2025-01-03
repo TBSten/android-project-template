@@ -38,8 +38,8 @@ import your.projectPackage.ui.error.handleUiEvent
 
 @Composable
 internal fun ExampleTopScreen(
-    viewModel: ExampleTopViewModel = hiltViewModel(),
     modifier: Modifier = Modifier,
+    viewModel: ExampleTopViewModel = hiltViewModel(),
 ) {
     val (uiState, dispatch) = consumeViewModel(viewModel)
 

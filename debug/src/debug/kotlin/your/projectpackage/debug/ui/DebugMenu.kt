@@ -21,8 +21,8 @@ import your.projectpackage.debug.ui.component.DebugMenuTabSection
 
 @Composable
 internal fun DebugMenu(
-    viewModel: DebugMenuViewModel = hiltViewModel(),
     modifier: Modifier = Modifier,
+    viewModel: DebugMenuViewModel = hiltViewModel(),
 ) {
     val (uiState, dispatch) = consumeViewModel(viewModel)
 

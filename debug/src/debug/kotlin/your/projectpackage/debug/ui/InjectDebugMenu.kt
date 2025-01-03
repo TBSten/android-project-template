@@ -1,5 +1,6 @@
 package your.projectpackage.debug.ui
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.view.KeyEvent
 import android.view.Window
@@ -17,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 
+@SuppressLint("ComposeModifierMissing")
 @Composable
 fun InjectDebugMenu() {
     var show by remember { mutableStateOf(false) }
