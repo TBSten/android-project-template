@@ -24,6 +24,7 @@ open class AndroidApplicationModulePlugin : Plugin<Project> {
                 alias(libs.plugin("androidApplication"))
             }
 
+            configureBasic()
             configureAndroid()
 
             plugins {

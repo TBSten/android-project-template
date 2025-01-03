@@ -18,6 +18,7 @@ open class AndroidLibraryModulePlugin : Plugin<Project> {
                 alias(libs.plugin("androidLibrary"))
             }
 
+            configureBasic()
             configureAndroid()
 
             androidLibrary {
