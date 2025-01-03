@@ -9,6 +9,7 @@ import javax.inject.Inject
 import your.projectPackage.error.ApplicationErrorStateHolder
 import your.projectPackage.ui.error.HandleErrors
 import your.projectpackage.debug.ui.InjectDebugMenu
+import your.projectpackage.ui.designSystem.AppTheme
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -19,9 +20,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            HandleErrors(applicationErrorStateHolder) {
-                InjectDebugMenu()
-                AppNavHost()
+            AppTheme {
+                HandleErrors(applicationErrorStateHolder) {
+                    InjectDebugMenu()
+                    AppNavHost()
+                }
             }
         }
     }
