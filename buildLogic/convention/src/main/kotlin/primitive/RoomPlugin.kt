@@ -7,6 +7,7 @@ import dsl.library
 import dsl.libs
 import dsl.plugin
 import dsl.plugins
+import dsl.room
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
@@ -16,11 +17,16 @@ open class RoomPlugin : Plugin<Project> {
         with(target) {
             plugins {
                 alias(libs.plugin("ksp"))
+                alias(libs.plugin("room"))
             }
             dependencies {
                 implementation(libs.library("roomRuntime"))
                 ksp(libs.library("roomCompiler"))
                 implementation(libs.library("roomKtx"))
+            }
+
+            room {
+                schemaDirectory("$projectDir/room-schemas/")
             }
         }
     }

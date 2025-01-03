@@ -26,6 +26,7 @@ dependencies {
     implementation(libs.composeGradlePlugin)
     implementation(libs.ktlintGradlePlugin)
     implementation(libs.roborazziGradlePlugin)
+    implementation(libs.roomGradlePlugin)
 }
 
 gradlePlugin {
