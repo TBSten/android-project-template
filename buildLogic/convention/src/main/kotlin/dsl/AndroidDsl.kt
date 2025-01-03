@@ -7,12 +7,17 @@ import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.findByType
 
-internal val Project.android: CommonExtension<*, *, *, *, *, *>
-    get() = extensions.findByType(LibraryExtension::class)
-        ?: extensions.findByType(BaseAppModuleExtension::class)
-        ?: error("Can not find `android` extension")
+internal fun Project.android(action: CommonExtension<*, *, *, *, *, *>.() -> Unit) {
+    android.apply(action)
+}
 
-internal fun Project.android(block: CommonExtension<*, *, *, *, *, *>.() -> Unit) = android.apply(block)
+internal val Project.android: CommonExtension<*, *, *, *, *, *>
+    get() = extensions.findByType<BaseAppModuleExtension>()
+        ?: extensions.findByType<LibraryExtension>()
+        ?: error(
+            "Can not find android extension." +
+                "You may have forgotten to apply the `androidLibrary` or `androidApplication` plugin.",
+        )
 
 internal fun Project.androidApplication(action: BaseAppModuleExtension.() -> Unit) {
     extensions.configure(action)
