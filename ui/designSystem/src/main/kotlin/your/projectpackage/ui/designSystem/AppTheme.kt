@@ -1,4 +1,4 @@
-package your.projectpackage.ui.designSystem
+package your.projectPackage.ui.designSystem
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable

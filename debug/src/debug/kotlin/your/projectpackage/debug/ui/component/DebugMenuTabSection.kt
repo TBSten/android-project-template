@@ -1,4 +1,4 @@
-package your.projectpackage.debug.ui.component
+package your.projectPackage.debug.ui.component
 
 import androidx.compose.material3.ScrollableTabRow
 import androidx.compose.material3.Tab
@@ -7,12 +7,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import your.projectPackage.debug.ui.DebugMenuTab
+import your.projectPackage.debug.ui.DebugMenuUiAction
+import your.projectPackage.debug.ui.DebugMenuUiState
 import your.projectPackage.ui.Dispatch
 import your.projectPackage.ui.PreviewRoot
 import your.projectPackage.ui.error.handleUiEvent
-import your.projectpackage.debug.ui.DebugMenuTab
-import your.projectpackage.debug.ui.DebugMenuUiAction
-import your.projectpackage.debug.ui.DebugMenuUiState
 
 @Composable
 internal fun DebugMenuTabSection(

@@ -1,4 +1,4 @@
-package your.projectpackage.debug.ui
+package your.projectPackage.debug.ui
 
 import android.annotation.SuppressLint
 import androidx.compose.runtime.Composable

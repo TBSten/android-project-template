@@ -1,4 +1,4 @@
-package your.projectpackage.debug.ui
+package your.projectPackage.debug.ui
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,10 +14,10 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
+import your.projectPackage.debug.ui.component.DebugMenuTabSection
 import your.projectPackage.ui.Dispatch
 import your.projectPackage.ui.PreviewRoot
 import your.projectPackage.ui.consumeViewModel
-import your.projectpackage.debug.ui.component.DebugMenuTabSection
 
 @Composable
 internal fun DebugMenu(

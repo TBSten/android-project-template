@@ -1,8 +1,8 @@
-package your.projectpackage.ui.designSystem
+package your.projectPackage.ui.designSystem
 
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.sp
-import your.projectpackage.common.lazyWithReceiver
+import your.projectPackage.common.lazyWithReceiver
 
 interface AppTextStyles {
     /* Add your text styles */

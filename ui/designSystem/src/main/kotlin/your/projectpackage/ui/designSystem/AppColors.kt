@@ -1,8 +1,8 @@
-package your.projectpackage.ui.designSystem
+package your.projectPackage.ui.designSystem
 
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.ui.graphics.Color
-import your.projectpackage.common.lazyWithReceiver
+import your.projectPackage.common.lazyWithReceiver
 
 interface AppColors {
     /* Add your colors */

@@ -1,4 +1,4 @@
-package your.projectpackage.debug.ui
+package your.projectPackage.debug.ui
 
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject

@@ -1,6 +1,6 @@
 @file:Suppress("ktlint:standard:filename")
 
-package your.projectpackage.common
+package your.projectPackage.common
 
 fun <Receiver, Value> lazyWithReceiver(init: Receiver.() -> Value): Lazy<Receiver, Value> = LazyImpl(init)
 

@@ -16,7 +16,7 @@ import your.projectPackage.domain.example.User
 import your.projectPackage.domain.example.UserId
 import your.projectPackage.domain.example.UserRepository
 import your.projectPackage.error.ApplicationErrorStateHolder
-import your.projectpackage.testing.CoroutineRule
+import your.projectPackage.testing.CoroutineRule
 
 internal class ExampleTopViewModelTest {
     @get:Rule

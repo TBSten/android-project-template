@@ -1,6 +1,6 @@
 [versions]
 # TODO Replace your package
-app-applicationId = "your.projectpackage"
+app-applicationId = "your.projectPackage"
 app-compileSdk = "35"
 app-minSdk = "24"
 app-targetSdk = "35"

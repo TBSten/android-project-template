@@ -1,9 +1,9 @@
-package your.projectpackage.ui.designSystem
+package your.projectPackage.ui.designSystem
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
-import your.projectpackage.common.lazyWithReceiver
+import your.projectPackage.common.lazyWithReceiver
 
 interface AppShapes {
     /* Add your shapes */
