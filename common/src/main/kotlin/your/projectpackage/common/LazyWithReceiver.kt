@@ -5,7 +5,8 @@ package your.projectpackage.common
 fun <Receiver, Value> lazyWithReceiver(init: Receiver.() -> Value): Lazy<Receiver, Value> = LazyImpl(init)
 
 interface Lazy<Receiver, Value> {
-    operator fun getValue(thisRef: Receiver, property: Any?): Value
+// indent が不正
+operator fun getValue(thisRef: Receiver, property: Any?): Value
 }
 
 private class LazyImpl<Receiver, Value>(private val init: Receiver.() -> Value) : Lazy<Receiver, Value> {
