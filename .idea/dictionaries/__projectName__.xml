@@ -3,8 +3,11 @@
     <words>
       <w>crossfade</w>
       <w>ktlint</w>
+      <w>multitool</w>
       <w>retryable</w>
+      <w>reviewdog</w>
       <w>roborazzi</w>
+      <w>yumemi</w>
       <w>{{projectName}}</w>
     </words>
   </dictionary>

@@ -1,5 +1,6 @@
 package module
 
+import BuildOutputFiles
 import dsl.alias
 import dsl.android
 import dsl.androidTestImplementation
@@ -20,6 +21,8 @@ import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
 import primitive.LintPlugin
 
 internal fun Project.configureAndroid() {
+    val project = this
+
     plugins {
         alias(libs.plugin("kotlinAndroid"))
         apply(LintPlugin::class)
@@ -41,6 +44,10 @@ internal fun Project.configureAndroid() {
         lint {
             baseline = file("lint-baseline.xml")
             abortOnError = true
+            sarifReport = true
+            sarifOutput = BuildOutputFiles(rootProject)
+                .androidLintReport(project)
+                .asFile
         }
     }
 
