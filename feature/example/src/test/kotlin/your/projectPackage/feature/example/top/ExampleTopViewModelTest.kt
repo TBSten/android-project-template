@@ -64,13 +64,3 @@ internal class ExampleTopViewModelTest {
         advanceTimeBy(2.seconds)
     }
 }
-
-fun interface HogeUseCase {
-    suspend operator fun invoke()
-}
-
-class HogeUseCaseImpl : HogeUseCase {
-    override suspend operator fun invoke() {
-        TODO("Not yet implemented")
-    }
-}

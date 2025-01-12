@@ -24,7 +24,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
-import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -32,6 +31,7 @@ import your.projectPackage.domain.example.User
 import your.projectPackage.domain.example.UserId
 import your.projectPackage.ui.Dispatch
 import your.projectPackage.ui.PreviewRoot
+import your.projectPackage.ui.ValuesPreviewParameterProvider
 import your.projectPackage.ui.component.AppButton
 import your.projectPackage.ui.consumeViewModel
 import your.projectPackage.ui.error.handleUiEvent
@@ -124,8 +124,8 @@ private fun ExampleTopScreen(
     }
 }
 
-private class ExampleTopUiStatePreviewParameterProvider : PreviewParameterProvider<ExampleTopUiState> {
-    override val values = sequenceOf(
+private class ExampleTopUiStatePreviewParameterProvider :
+    ValuesPreviewParameterProvider<ExampleTopUiState>(
         ExampleTopUiState.InitialLoading,
         ExampleTopUiState.Success(
             count = 123456,
@@ -135,7 +135,6 @@ private class ExampleTopUiStatePreviewParameterProvider : PreviewParameterProvid
             ),
         ),
     )
-}
 
 @Preview
 @Composable

@@ -1,5 +1,6 @@
 package module
 
+import AndroidLintReportType
 import BuildOutputFiles
 import dsl.alias
 import dsl.android
@@ -44,9 +45,15 @@ internal fun Project.configureAndroid() {
         lint {
             baseline = file("lint-baseline.xml")
             abortOnError = true
+
             sarifReport = true
             sarifOutput = BuildOutputFiles(rootProject)
-                .androidLintReport(project)
+                .androidLintReport(project, AndroidLintReportType.Sarif)
+                .asFile
+
+            htmlReport = true
+            htmlOutput = BuildOutputFiles(rootProject)
+                .androidLintReport(project, AndroidLintReportType.Html)
                 .asFile
         }
     }

@@ -1,6 +1,5 @@
 package primitive
 
-import RoborazziPlugin
 import dsl.alias
 import dsl.androidTestImplementation
 import dsl.composeCompiler

@@ -8,7 +8,6 @@ import kotlinx.coroutines.flow.StateFlow
 import your.projectPackage.error.ErrorStateHolder
 import your.projectPackage.error.LaunchSafe
 
-// TODO エラーハンドリング
 abstract class BaseViewModel<State, Action>(exceptionStateHolder: ErrorStateHolder) :
     ViewModel(),
     LaunchSafe by LaunchSafe(exceptionStateHolder) {

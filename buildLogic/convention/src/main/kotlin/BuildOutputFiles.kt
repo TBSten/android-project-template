@@ -14,8 +14,13 @@ internal class BuildOutputFiles(private val rootDir: Directory) {
         .dir(projectDir(project))
         .dir("ktlint-report")
 
-    fun androidLintReport(project: Project): RegularFile = rootDir
+    fun androidLintReport(project: Project, type: AndroidLintReportType): RegularFile = rootDir
         .dir(projectDir(project))
         .dir("android-lint-report")
-        .file("lint-result.sarif")
+        .file("lint-result.${type.extension}")
+}
+
+internal enum class AndroidLintReportType(val extension: String) {
+    Sarif("sarif"),
+    Html("html"),
 }

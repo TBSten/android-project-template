@@ -1,3 +1,6 @@
+package primitive
+
+import BuildOutputFiles
 import dsl.alias
 import dsl.android
 import dsl.library
@@ -11,7 +14,6 @@ import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.assign
 import org.gradle.kotlin.dsl.dependencies
-import primitive.RobolectricPlugin
 
 open class RoborazziPlugin : Plugin<Project> {
     override fun apply(target: Project) {
@@ -52,7 +54,7 @@ private fun Project.configureComposePreviewTests() {
         @Suppress("OPT_IN_USAGE")
         generateComposePreviewRobolectricTests {
             enable = true
-            packages.set(provider { listOf(android.namespace) })
+            packages = provider { listOf(android.namespace) }
             robolectricConfig =
                 mapOf(
                     "sdk" to "[32]",

@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "${libs.versions.app.applicationId.get()}.feature.test"
+    namespace = "${libs.versions.app.applicationId.get()}.feature.example"
 }
 
 dependencies {
