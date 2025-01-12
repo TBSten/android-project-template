@@ -114,8 +114,8 @@ jobs:
           clean: false
       - name: Take Actual Screenshot from Head Branch
         run: ./gradlew recordRoborazziDebug
-      - run: mkdir -p .reg && mv build/roborazzi-outputs .reg && mv .reg/roborazzi-outputs .reg/actual
       - run: tree .reg # for debug
+      - run: tree build/roborazzi-outputs # for debug
 
       - run: npx reg-suit run
 

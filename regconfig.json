@@ -1,7 +1,7 @@
 {
   "core": {
     "workingDir": ".reg",
-    "actualDir": ".reg/actual",
+    "actualDir": "build/roborazzi-outputs",
     "thresholdRate": 0,
     "ximgdiff": {
       "invocationType": "client"
