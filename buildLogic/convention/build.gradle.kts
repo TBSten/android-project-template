@@ -68,9 +68,9 @@ gradlePlugin {
             id = "buildLogic.primitive.room"
             implementationClass = "primitive.RoomPlugin"
         }
-//        register("roborazzi") {
-//            id = "buildLogic.primitive.roborazzi"
-//            implementationClass = "primitive.RoborazziPlugin"
-//        }
+        register("roborazzi") {
+            id = "buildLogic.primitive.roborazzi"
+            implementationClass = "primitive.RoborazziPlugin"
+        }
     }
 }

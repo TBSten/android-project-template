@@ -2,8 +2,12 @@ name: Pull Request Check
 
 on: [ pull_request ]
 
+concurrency:
+  group: pull-request-check-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 permissions:
-  pull-requests: write
+  pull-requests: write # for yumemi-inc/comment-pull-request
 
 jobs:
   android-lint:
@@ -54,17 +58,17 @@ jobs:
         run: |
           sarifs=$(find . -regex "^./build/build-outputs/.*/ktlint-report/.*\.sarif$" | xargs echo)
           echo $sarifs
-          npx @microsoft/sarif-multitool merge $sarifs --output-file merged-android-lint.sarif
+          npx @microsoft/sarif-multitool merge $sarifs --output-file merged-ktlint.sarif
         env:
           DOTNET_SYSTEM_GLOBALIZATION_INVARIANT: 1 # refs: https://stackoverflow.com/questions/59119904/process-terminated-couldnt-find-a-valid-icu-package-installed-on-the-system-in
       - if: ${{ !cancelled() }}
         run: |
           reviewdog \
-            -name="Android Lint" \
+            -name="Ktlint" \
             -f=sarif \
             -reporter=github-pr-review \
             -filter-mode=file \
-            < merged-android-lint.sarif
+            < merged-ktlint.sarif
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -86,8 +90,8 @@ jobs:
     strategy:
       matrix:
         variants:
-          - Debug
-          - Release
+          - debug
+          - release
     steps:
       - uses: actions/checkout@v4
       - uses: yumemi-inc/setup-java-gradle@v2
