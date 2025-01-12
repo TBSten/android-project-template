@@ -137,7 +137,7 @@ jobs:
           repo_name=$(echo ${{ github.repository }} | cut -d'/' -f2)
           pages_url="https://$owner_name.github.io/$repo_name/"
           echo "owner_name=$owner_name repo_name=$repo_name pages_url=$pages_url"
-          echo $pages_url >> $GITHUB_OUTPUT
+          echo "pages_url=$pages_url" >> $GITHUB_OUTPUT
       - uses: yumemi-inc/comment-pull-request@v1
         with:
           comment: |
