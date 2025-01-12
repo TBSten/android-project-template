@@ -101,7 +101,7 @@ jobs:
       - name: Take Expect Screenshot from Base Branch
         run: ./gradlew recordRoborazziDebug
       - run: mkdir -p .reg && mv build/roborazzi-outputs .reg && mv .reg/roborazzi-outputs .reg/expected
-      - run: ls -la # for debug
+      - run: tree .reg # for debug
 
       - name: Checkout Head Branch
         uses: actions/checkout@v4
@@ -110,7 +110,7 @@ jobs:
       - name: Take Actual Screenshot from Head Branch
         run: ./gradlew recordRoborazziDebug
       - run: mkdir -p .reg && mv build/roborazzi-outputs .reg && mv .reg/roborazzi-outputs .reg/actual
-      - run: ls -la # for debug
+      - run: tree .reg # for debug
 
       - id: reg-suit
         run: npx reg-suit run
