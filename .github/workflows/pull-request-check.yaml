@@ -107,6 +107,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
+          clean: false
       - name: Take Actual Screenshot from Head Branch
         run: ./gradlew recordRoborazziDebug
       - run: mkdir -p .reg && mv build/roborazzi-outputs .reg && mv .reg/roborazzi-outputs .reg/actual
