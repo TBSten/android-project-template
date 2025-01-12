@@ -45,6 +45,7 @@ jobs:
       - uses: reviewdog/action-setup@v1
       - uses: actions/setup-node@v4 # for merge sarif
       - run: npm i -g @microsoft/sarif-multitool
+
       - name: Ktlint
         run: ./gradlew ktlintCheck --continue
 
@@ -120,13 +121,13 @@ jobs:
 
       - run: |
           newItems=$(jq ".newItems | length" .reg/out.json)
-          echo "$newItems" >> $GITHUB_OUTPUT
+          echo "newItems=$newItems" >> $GITHUB_OUTPUT
 
           diffItems=$(jq ".diffItems | length" .reg/out.json)
-          echo "diffItems" >> $GITHUB_OUTPUT
+          echo "diffItems=$diffItems" >> $GITHUB_OUTPUT
 
           deletedItems=$(jq ".deletedItems | length" .reg/out.json)
-          echo "deletedItems" >> $GITHUB_OUTPUT
+          echo "deletedItems=$deletedItems" >> $GITHUB_OUTPUT
 
           echo "newItems=$newItems diffItems=$diffItems deletedItems=$deletedItems"
 
