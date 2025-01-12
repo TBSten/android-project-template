@@ -113,8 +113,7 @@ jobs:
       - run: mkdir -p .reg && mv build/roborazzi-outputs .reg && mv .reg/roborazzi-outputs .reg/actual
       - run: tree . # for debug
 
-      - id: reg-suit
-        run: npx reg-suit run
+      - run: npx reg-suit run
 
       - uses: peaceiris/actions-gh-pages@v4
         with:
@@ -123,7 +122,8 @@ jobs:
           destination_dir: ./pr/${{ github.event.pull_request.number }}/vrt/
           keep_files: true
 
-      - run: |
+      - id: get_outputs
+        run: |
           newItems=$(jq ".newItems | length" .reg/out.json)
           echo "newItems=$newItems" >> $GITHUB_OUTPUT
 
@@ -149,9 +149,9 @@ jobs:
 
             ${{
               (
-                steps.reg-suit.outputs.newItems != '0' ||
-                  steps.reg-suit.outputs.diffItems != '0' ||
-                  steps.reg-suit.outputs.deletedItems != '0'
+                steps.get_outputs.outputs.newItems != '0' ||
+                  steps.get_outputs.outputs.diffItems != '0' ||
+                  steps.get_outputs.outputs.deletedItems != '0'
               ) && '> [!CAUTION]\n> There are visual changes 🔥'
                 || '> [!TIP]\n> No visual changes 👍'
             }}
@@ -162,9 +162,9 @@ jobs:
 
             | | |
             |---|---|
-            | new    | ${{ steps.reg-suit.outputs.newItems }} |
-            | diff   | ${{ steps.reg-suit.outputs.diffItems }} |
-            | delete | ${{ steps.reg-suit.outputs.deletedItems }} |
+            | new    | ${{ steps.get_outputs.outputs.newItems }} |
+            | diff   | ${{ steps.get_outputs.outputs.diffItems }} |
+            | delete | ${{ steps.get_outputs.outputs.deletedItems }} |
 
   build:
     runs-on: ubuntu-latest
