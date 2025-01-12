@@ -2,6 +2,10 @@ name: Pull Request Check
 
 on: [ pull_request ]
 
+concurrency:
+  group: pull-request-check-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 permissions:
   pull-requests: write # for yumemi-inc/comment-pull-request
 
