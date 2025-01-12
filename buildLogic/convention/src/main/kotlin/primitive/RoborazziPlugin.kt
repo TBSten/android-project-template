@@ -1,6 +1,5 @@
 package primitive
 
-import BuildOutputFiles
 import dsl.alias
 import dsl.android
 import dsl.library
@@ -37,6 +36,15 @@ open class RoborazziPlugin : Plugin<Project> {
                 testImplementation(libs.library("roborazziCore"))
                 testImplementation(libs.library("roborazziCompose"))
                 testImplementation(libs.library("roborazziJunit"))
+            }
+
+            @Suppress("OPT_IN_USAGE")
+            roborazzi {
+                val projectDir = target.path.split(":").filter { it.isNotEmpty() }.joinToString("/")
+                val outputDirectory = rootProject.layout.projectDirectory.dir("build/roborazzi-outputs").dir(projectDir)
+                logger.info("roborazzi.outputDir = $outputDirectory")
+                outputDir = outputDirectory
+                compare.outputDir = outputDirectory
             }
 
             configureComposePreviewTests()
