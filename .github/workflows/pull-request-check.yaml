@@ -137,7 +137,7 @@ jobs:
           echo "deletedItems=$deletedItems" >> $GITHUB_OUTPUT
 
           hasChanges=$([ "$newItems" -ne 0 ] || [ "$diffItems" -ne 0 ] || [ "$deletedItems" -ne 0 ] && echo true || echo false)
-          echo "hasChanges=$hasChanges" >>  >> $GITHUB_OUTPUT
+          echo "hasChanges=$hasChanges" >> $GITHUB_OUTPUT
 
           echo "newItems=$newItems diffItems=$diffItems deletedItems=$deletedItems hasChanges=$hasChanges"
 
