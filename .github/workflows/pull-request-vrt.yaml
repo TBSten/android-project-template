@@ -51,6 +51,7 @@ jobs:
             build/roborazzi-outputs
 
   report:
+    needs: [ take-expect, take-actual ]
     runs-on: ubuntu-latest
     permissions:
       contents: write # for peaceiris/actions-gh-pages
