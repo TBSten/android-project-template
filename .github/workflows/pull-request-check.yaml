@@ -135,7 +135,10 @@ jobs:
           deletedItems=$(jq ".deletedItems | length" .reg/out.json)
           echo "deletedItems=$deletedItems" >> $GITHUB_OUTPUT
 
-          echo "newItems=$newItems diffItems=$diffItems deletedItems=$deletedItems"
+          hasChanges=$([ "$newItems" -ne 0 ] || [ "$diffItems" -ne 0 ] || [ "$deletedItems" -ne 0 ] && echo true || echo false)
+          echo "hasChanges=$hasChanges" >>  >> $GITHUB_OUTPUT
+
+          echo "newItems=$newItems diffItems=$diffItems deletedItems=$deletedItems hasChanges=$hasChanges"
 
           # pages_url
           owner_name=${{ github.repository_owner }}
@@ -151,11 +154,8 @@ jobs:
             ### VRT
 
             ${{
-              (
-                steps.get_outputs.outputs.newItems != '0' ||
-                  steps.get_outputs.outputs.diffItems != '0' ||
-                  steps.get_outputs.outputs.deletedItems != '0'
-              ) && '> [!CAUTION]\n> There are visual changes 🔥'
+              steps.get_outputs.outputs.hasChanges == "true"
+                && '> [!CAUTION]\n> There are visual changes 🔥'
                 || '> [!TIP]\n> No visual changes 👍'
             }}
 
@@ -168,6 +168,12 @@ jobs:
             | [new](${{ steps.get_outputs.outputs.pages_url }}#new)    | [${{ steps.get_outputs.outputs.newItems }}](${{ steps.get_outputs.outputs.pages_url }}#new) |
             | [diff](${{ steps.get_outputs.outputs.pages_url }}#changed)   | [${{ steps.get_outputs.outputs.diffItems }}](${{ steps.get_outputs.outputs.pages_url }}#changed) |
             | [delete](${{ steps.get_outputs.outputs.pages_url }}#deleted) | [${{ steps.get_outputs.outputs.deletedItems }}](${{ steps.get_outputs.outputs.pages_url }}#deleted) |
+
+      - name: Fail on Has Changes
+        run: |
+          if [ ${{ steps.get_outputs.outputs.hasChanges }} == "true" ]; then
+            exit 1
+          fi
 
   build:
     runs-on: ubuntu-latest
