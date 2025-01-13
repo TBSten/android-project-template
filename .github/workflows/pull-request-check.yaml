@@ -155,7 +155,7 @@ jobs:
             ### VRT
 
             ${{
-              steps.get_outputs.outputs.hasChanges == "true"
+              steps.get_outputs.outputs.hasChanges == 'true'
                 && '> [!CAUTION]\n> There are visual changes 🔥'
                 || '> [!TIP]\n> No visual changes 👍'
             }}
