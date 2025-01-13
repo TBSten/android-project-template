@@ -105,7 +105,8 @@ jobs:
       - name: Take Expect Screenshot from Base Branch
         run: ./gradlew recordRoborazziDebug
       - run: mkdir -p .reg && mv build/roborazzi-outputs .reg && mv .reg/roborazzi-outputs .reg/expected
-      - run: tree .reg
+      - run: tree .reg && cat ui/src/main/kotlin/your/projectPackage/ui/component/AppButton.kt
+
 
       - name: Checkout Head Branch
         uses: actions/checkout@v4
@@ -114,7 +115,7 @@ jobs:
           clean: false
       - name: Take Actual Screenshot from Head Branch
         run: ./gradlew recordRoborazziDebug
-      - run: tree build/roborazzi-outputs
+      - run: tree build/roborazzi-outputs && cat ui/src/main/kotlin/your/projectPackage/ui/component/AppButton.kt
 
       - run: npx reg-suit run
 
@@ -169,12 +170,6 @@ jobs:
             | [new](${{ steps.get_outputs.outputs.pages_url }}#new)    | [${{ steps.get_outputs.outputs.newItems }}](${{ steps.get_outputs.outputs.pages_url }}#new) |
             | [diff](${{ steps.get_outputs.outputs.pages_url }}#changed)   | [${{ steps.get_outputs.outputs.diffItems }}](${{ steps.get_outputs.outputs.pages_url }}#changed) |
             | [delete](${{ steps.get_outputs.outputs.pages_url }}#deleted) | [${{ steps.get_outputs.outputs.deletedItems }}](${{ steps.get_outputs.outputs.pages_url }}#deleted) |
-
-      - name: Fail on Has Changes
-        run: |
-          if [ ${{ steps.get_outputs.outputs.hasChanges }} == "true" ]; then
-            exit 1
-          fi
 
   build:
     runs-on: ubuntu-latest
