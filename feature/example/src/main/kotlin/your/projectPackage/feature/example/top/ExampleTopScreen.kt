@@ -146,11 +146,4 @@ private fun ExampleTopScreenPreview(
         uiState = uiState,
         dispatch = { },
     )
-    Text("VRT Test Debug: Expect diff")
-}
-
-@Preview
-@Composable
-private fun NewPreview() = PreviewRoot {
-    Text("VRT Test Debug: Expect new")
 }
