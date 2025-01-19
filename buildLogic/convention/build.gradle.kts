@@ -19,14 +19,14 @@ kotlin {
 
 dependencies {
     // TODO compileOnly に replace
-    implementation(libs.kotlinGradlePlugin)
-    implementation(libs.kotlinGradlePluginApi)
+    compileOnly(libs.kotlinGradlePlugin)
+    compileOnly(libs.kotlinGradlePluginApi)
 
-    implementation(libs.androidGradlePlugin)
-    implementation(libs.composeGradlePlugin)
-    implementation(libs.ktlintGradlePlugin)
-    implementation(libs.roborazziGradlePlugin)
-    implementation(libs.roomGradlePlugin)
+    compileOnly(libs.androidGradlePlugin)
+    compileOnly(libs.composeGradlePlugin)
+    compileOnly(libs.ktlintGradlePlugin)
+    compileOnly(libs.roborazziGradlePlugin)
+    compileOnly(libs.roomGradlePlugin)
 }
 
 gradlePlugin {
