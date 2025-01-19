@@ -10,8 +10,8 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
-import your.projectPackage.data.database.example.UserDao
-import your.projectPackage.data.database.example.UserEntity
+import your.projectPackage.data.database.example.user.UserDao
+import your.projectPackage.data.database.example.user.UserEntity
 
 private const val DATABASE_NAME = "app-database"
 

@@ -1,5 +1,6 @@
 package your.projectPackage.ui.designSystem
 
+import android.annotation.SuppressLint
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -26,8 +27,13 @@ object AppTheme {
         get() = LocalAppTextStyles.current
 }
 
+@SuppressLint("ComposeCompositionLocalUsage")
 private val LocalAppColors = staticCompositionLocalOf<AppColors> { DefaultAppColors }
+
+@SuppressLint("ComposeCompositionLocalUsage")
 private val LocalAppShapes = staticCompositionLocalOf<AppShapes> { DefaultAppShapes }
+
+@SuppressLint("ComposeCompositionLocalUsage")
 private val LocalAppTextStyles = staticCompositionLocalOf<AppTextStyles> { DefaultAppTextStyles }
 
 @Composable

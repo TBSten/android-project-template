@@ -5,7 +5,7 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
-import your.projectPackage.domain.example.UserRepository
+import your.projectPackage.domain.example.user.UserRepository
 
 @Module
 @InstallIn(SingletonComponent::class)
