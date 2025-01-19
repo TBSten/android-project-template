@@ -9,9 +9,9 @@ import kotlinx.coroutines.test.advanceTimeBy
 import kotlinx.coroutines.test.runTest
 import org.junit.Rule
 import org.junit.Test
+import your.projectPackage.domain.example.user.GetUsersUseCase
 import your.projectPackage.domain.example.user.User
 import your.projectPackage.domain.example.user.UserId
-import your.projectPackage.domain.example.user.UserRepository
 import your.projectPackage.error.ApplicationErrorStateHolder
 import your.projectPackage.testing.CoroutineRule
 
@@ -28,10 +28,15 @@ internal class ExampleUserListViewModelTest {
         )
         val viewModel: ExampleUserListViewModel = run {
             val errorStateHolder = ApplicationErrorStateHolder()
-            val userRepository: UserRepository = mockk<UserRepository>().also {
-                coEvery { it.getUsers() } returns userList
+            val getUsers: GetUsersUseCase = mockk<GetUsersUseCase>().also {
+                coEvery { it.execute() } returns userList
             }
-            ExampleUserListViewModel(errorStateHolder, userRepository)
+            ExampleUserListViewModel(
+                errorStateHolder,
+                getUsers = getUsers,
+                createUser = mockk(),
+                deleteUser = mockk(),
+            )
         }
 
         assertEquals(viewModel.uiState.value, ExampleUserListUiState.InitialLoading)
