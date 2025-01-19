@@ -1,8 +1,10 @@
 package your.projectPackage.feature.example
 
+import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import kotlinx.serialization.Serializable
-import your.projectPackage.feature.example.top.ExampleTopScreen
+import your.projectPackage.feature.example.counter.ExampleCounterScreen
+import your.projectPackage.feature.example.userList.ExampleUserListScreen
 import your.projectPackage.ui.navigation.Navigation
 import your.projectPackage.ui.navigation.Screen
 import your.projectPackage.ui.navigation.composable
@@ -12,12 +14,22 @@ import your.projectPackage.ui.navigation.navigation
 data object Examples : Navigation
 
 @Serializable
-data object ExampleTop : Screen
+data object ExampleCounter : Screen
 
-fun NavGraphBuilder.examples() {
-    navigation<Examples>(startDestination = ExampleTop) {
-        composable<ExampleTop> {
-            ExampleTopScreen()
+@Serializable
+data object ExampleUserList : Screen
+
+fun NavGraphBuilder.examples(
+    navController: NavController,
+) {
+    navigation<Examples>(startDestination = ExampleCounter) {
+        composable<ExampleCounter> {
+            ExampleCounterScreen(
+                navigateToUserList = { navController.navigate(ExampleUserList) },
+            )
+        }
+        composable<ExampleUserList> {
+            ExampleUserListScreen()
         }
     }
 }
