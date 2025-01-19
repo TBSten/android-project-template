@@ -67,6 +67,7 @@ private fun ExampleUserListScreen(
         Crossfade(
             uiState is ExampleUserListUiState.Success,
             label = "ExampleUserListScreen Success Crossfade",
+            modifier = Modifier.padding(innerPadding),
         ) { isSuccess ->
             if (isSuccess && uiState is ExampleUserListUiState.Success) {
                 Column(
@@ -105,6 +106,9 @@ private fun ExampleUserListScreen(
 private class ExampleUserListUiStatePreviewParameterProvider :
     ValuesPreviewParameterProvider<ExampleUserListUiState>(
         ExampleUserListUiState.InitialLoading,
+        ExampleUserListUiState.Success(
+            users = listOf(),
+        ),
         ExampleUserListUiState.Success(
             users = listOf(
                 User(uid = UserId(123), name = "test 1"),
