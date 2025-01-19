@@ -21,6 +21,6 @@ fun AppButton(onClick: () -> Unit, modifier: Modifier = Modifier, content: @Comp
 @Composable
 private fun AppButtonPreview() = PreviewRoot {
     AppButton(onClick = {}) {
-        Text("AppButtonPreview")
+        Text("AppButtonPreview Expected Diff")
     }
 }
