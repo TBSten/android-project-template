@@ -1,4 +1,4 @@
-package your.projectPackage.domain.example
+package your.projectPackage.domain.example.user
 
 data class User(
     val uid: UserId,

@@ -1,34 +1,26 @@
-package your.projectPackage.feature.example.top
+package your.projectPackage.feature.example.userList
 
 import androidx.compose.animation.Crossfade
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import your.projectPackage.domain.example.User
-import your.projectPackage.domain.example.UserId
+import your.projectPackage.domain.example.user.User
+import your.projectPackage.domain.example.user.UserId
+import your.projectPackage.feature.example.userList.component.UserListItem
 import your.projectPackage.ui.Dispatch
 import your.projectPackage.ui.PreviewRoot
 import your.projectPackage.ui.ValuesPreviewParameterProvider
@@ -37,13 +29,13 @@ import your.projectPackage.ui.consumeViewModel
 import your.projectPackage.ui.error.handleUiEvent
 
 @Composable
-internal fun ExampleTopScreen(
+internal fun ExampleUserListScreen(
     modifier: Modifier = Modifier,
-    viewModel: ExampleTopViewModel = hiltViewModel(),
+    viewModel: ExampleUserListViewModel = hiltViewModel(),
 ) {
     val (uiState, dispatch) = consumeViewModel(viewModel)
 
-    ExampleTopScreen(
+    ExampleUserListScreen(
         uiState = uiState,
         dispatch = dispatch,
         modifier = modifier,
@@ -51,15 +43,15 @@ internal fun ExampleTopScreen(
 }
 
 @Composable
-private fun ExampleTopScreen(
-    uiState: ExampleTopUiState,
-    dispatch: Dispatch<ExampleTopUiAction>,
+private fun ExampleUserListScreen(
+    uiState: ExampleUserListUiState,
+    dispatch: Dispatch<ExampleUserListUiAction>,
     modifier: Modifier = Modifier,
 ) {
     Scaffold(modifier = modifier) { innerPadding ->
         Crossfade(
-            if (uiState == ExampleTopUiState.InitialLoading) uiState else null,
-            label = "ExampleTopScreen Loading Crossfade",
+            if (uiState == ExampleUserListUiState.InitialLoading) uiState else null,
+            label = "ExampleUserListScreen Loading Crossfade",
             modifier = Modifier.padding(innerPadding),
         ) { uiState ->
             uiState?.let {
@@ -73,22 +65,14 @@ private fun ExampleTopScreen(
         }
 
         Crossfade(
-            uiState is ExampleTopUiState.Success,
-            label = "ExampleTopScreen Success Crossfade",
+            uiState is ExampleUserListUiState.Success,
+            label = "ExampleUserListScreen Success Crossfade",
         ) { isSuccess ->
-            if (isSuccess && uiState is ExampleTopUiState.Success) {
+            if (isSuccess && uiState is ExampleUserListUiState.Success) {
                 Column(
                     modifier = Modifier.fillMaxSize(),
                     horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center,
                 ) {
-                    Text("data: ${uiState.count}")
-                    AppButton(onClick = handleUiEvent { dispatch(ExampleTopUiAction.OnButtonClick) }) {
-                        Text("+")
-                    }
-
-                    HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp))
-
                     LazyColumn(contentPadding = PaddingValues(16.dp)) {
                         if (uiState.users.isEmpty()) {
                             item {
@@ -96,24 +80,18 @@ private fun ExampleTopScreen(
                             }
                         } else {
                             items(uiState.users) { user ->
-                                Row(
-                                    Modifier
-                                        .fillParentMaxWidth()
-                                        .animateItem(),
-                                ) {
-                                    Column(Modifier.weight(1f)) {
-                                        Text("${user.uid}", fontSize = 14.sp)
-                                        Text(user.name ?: "<none>", fontSize = 18.sp, fontWeight = FontWeight.Bold)
-                                    }
-                                    IconButton(onClick = handleUiEvent { dispatch(ExampleTopUiAction.OnDeleteUser(user)) }) {
-                                        Icon(Icons.Default.Delete, contentDescription = "削除")
-                                    }
-                                }
+                                UserListItem(
+                                    user = user,
+                                    onDelete = { dispatch(ExampleUserListUiAction.OnDeleteUser(user)) },
+                                )
                             }
                         }
 
                         item {
-                            AppButton(onClick = handleUiEvent { dispatch(ExampleTopUiAction.OnAddUser) }) {
+                            AppButton(
+                                modifier = Modifier.padding(top = 32.dp),
+                                onClick = handleUiEvent { dispatch(ExampleUserListUiAction.OnAddUser) },
+                            ) {
                                 Text("適当なユーザを追加")
                             }
                         }
@@ -124,11 +102,10 @@ private fun ExampleTopScreen(
     }
 }
 
-private class ExampleTopUiStatePreviewParameterProvider :
-    ValuesPreviewParameterProvider<ExampleTopUiState>(
-        ExampleTopUiState.InitialLoading,
-        ExampleTopUiState.Success(
-            count = 123456,
+private class ExampleUserListUiStatePreviewParameterProvider :
+    ValuesPreviewParameterProvider<ExampleUserListUiState>(
+        ExampleUserListUiState.InitialLoading,
+        ExampleUserListUiState.Success(
             users = listOf(
                 User(uid = UserId(123), name = "test 1"),
                 User(uid = UserId(456), name = "test 2"),
@@ -138,11 +115,11 @@ private class ExampleTopUiStatePreviewParameterProvider :
 
 @Preview
 @Composable
-private fun ExampleTopScreenPreview(
-    @PreviewParameter(ExampleTopUiStatePreviewParameterProvider::class)
-    uiState: ExampleTopUiState,
+private fun ExampleUserListScreenPreview(
+    @PreviewParameter(ExampleUserListUiStatePreviewParameterProvider::class)
+    uiState: ExampleUserListUiState,
 ) = PreviewRoot {
-    ExampleTopScreen(
+    ExampleUserListScreen(
         uiState = uiState,
         dispatch = { },
     )

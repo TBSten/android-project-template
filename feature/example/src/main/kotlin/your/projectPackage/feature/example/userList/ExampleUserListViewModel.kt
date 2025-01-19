@@ -1,4 +1,4 @@
-package your.projectPackage.feature.example.top
+package your.projectPackage.feature.example.userList
 
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -9,18 +9,22 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
-import your.projectPackage.domain.example.User
-import your.projectPackage.domain.example.UserId
-import your.projectPackage.domain.example.UserRepository
+import your.projectPackage.domain.example.user.CreateUserUseCase
+import your.projectPackage.domain.example.user.DeleteUserUseCase
+import your.projectPackage.domain.example.user.GetUsersUseCase
+import your.projectPackage.domain.example.user.User
+import your.projectPackage.domain.example.user.UserId
 import your.projectPackage.error.ApplicationErrorStateHolder
 import your.projectPackage.ui.BaseViewModel
 
 @HiltViewModel
-internal class ExampleTopViewModel @Inject constructor(
+internal class ExampleUserListViewModel @Inject constructor(
     applicationErrorStateHolder: ApplicationErrorStateHolder,
-    private val userRepository: UserRepository,
-) : BaseViewModel<ExampleTopUiState, ExampleTopUiAction>(applicationErrorStateHolder) {
-    private val _uiState = MutableStateFlow<ExampleTopUiState>(ExampleTopUiState.InitialLoading)
+    private val getUsers: GetUsersUseCase,
+    private val createUser: CreateUserUseCase,
+    private val deleteUser: DeleteUserUseCase,
+) : BaseViewModel<ExampleUserListUiState, ExampleUserListUiAction>(applicationErrorStateHolder) {
+    private val _uiState = MutableStateFlow<ExampleUserListUiState>(ExampleUserListUiState.InitialLoading)
     override val uiState = _uiState.asStateFlow()
 
     override fun init() {
@@ -30,23 +34,18 @@ internal class ExampleTopViewModel @Inject constructor(
         }
     }
 
-    override fun dispatch(action: ExampleTopUiAction) {
+    override fun dispatch(action: ExampleUserListUiAction) {
         viewModelScope.launchSafe {
             when (action) {
-                ExampleTopUiAction.OnButtonClick -> onButtonClick()
-                ExampleTopUiAction.OnAddUser -> onAddUser()
-                is ExampleTopUiAction.OnDeleteUser -> onDeleteUser(action.user)
+                ExampleUserListUiAction.OnAddUser -> onAddUser()
+                is ExampleUserListUiAction.OnDeleteUser -> onDeleteUser(action.user)
             }
         }
     }
 
-    private suspend fun onButtonClick() {
-        refresh()
-    }
-
     private suspend fun onAddUser() {
         val randomId = Random.nextInt(1..1_000_000)
-        userRepository.createUser(
+        createUser.execute(
             User(
                 uid = UserId(randomId),
                 name = "User-$randomId",
@@ -56,15 +55,14 @@ internal class ExampleTopViewModel @Inject constructor(
     }
 
     private suspend fun onDeleteUser(user: User) {
-        userRepository.deleteUser(user)
+        deleteUser.execute(user)
         refresh()
     }
 
     private suspend fun refresh() {
-        val users = userRepository.getUsers()
+        val users = getUsers.execute()
         _uiState.update {
-            ExampleTopUiState.Success(
-                count = Random.nextInt(10..1000),
+            ExampleUserListUiState.Success(
                 users = users,
             )
         }

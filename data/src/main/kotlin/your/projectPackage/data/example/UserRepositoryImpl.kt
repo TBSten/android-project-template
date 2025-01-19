@@ -4,10 +4,10 @@ import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import your.projectPackage.data.database.AppDatabase
-import your.projectPackage.data.database.example.UserEntity
-import your.projectPackage.domain.example.User
-import your.projectPackage.domain.example.UserId
-import your.projectPackage.domain.example.UserRepository
+import your.projectPackage.data.database.example.user.UserEntity
+import your.projectPackage.domain.example.user.User
+import your.projectPackage.domain.example.user.UserId
+import your.projectPackage.domain.example.user.UserRepository
 
 internal class UserRepositoryImpl @Inject constructor(
     appDatabase: AppDatabase,

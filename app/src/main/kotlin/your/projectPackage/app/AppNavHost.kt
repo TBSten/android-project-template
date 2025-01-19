@@ -12,6 +12,8 @@ internal fun AppNavHost(modifier: Modifier = Modifier) {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = Examples, modifier = modifier) {
-        examples()
+        examples(
+            navController = navController,
+        )
     }
 }

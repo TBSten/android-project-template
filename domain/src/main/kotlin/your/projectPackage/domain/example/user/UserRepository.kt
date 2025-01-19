@@ -1,4 +1,4 @@
-package your.projectPackage.domain.example
+package your.projectPackage.domain.example.user
 
 interface UserRepository {
     suspend fun getUsers(): List<User>
