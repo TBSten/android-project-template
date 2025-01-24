@@ -2,7 +2,7 @@
 # TODO Replace your package
 app-applicationId = "your.projectPackage"
 app-compileSdk = "35"
-app-minSdk = "24"
+app-minSdk = "28"
 app-targetSdk = "35"
 app-versionCode = "1"
 app-versionName = "1.0"
