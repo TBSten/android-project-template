@@ -52,7 +52,7 @@ components:
         - "id"
         - "userId"
         - "title"
-        - "completed"
+        - "body"
       "properties":
         id:
           type: "integer"
@@ -60,5 +60,5 @@ components:
           type: "integer"
         title:
           type: "string"
-        completed:
+        body:
           type: "string"

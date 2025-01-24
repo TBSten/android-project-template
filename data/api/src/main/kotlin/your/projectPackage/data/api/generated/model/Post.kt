@@ -26,7 +26,7 @@ import kotlinx.serialization.Contextual
  * @param id 
  * @param userId 
  * @param title 
- * @param completed 
+ * @param body 
  */
 @Serializable
 
@@ -41,8 +41,8 @@ data class Post (
     @SerialName(value = "title")
     val title: kotlin.String,
 
-    @SerialName(value = "completed")
-    val completed: kotlin.String
+    @SerialName(value = "body")
+    val body: kotlin.String
 
 ) {
 

@@ -5,11 +5,14 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
+import kotlinx.serialization.json.Json
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.converter.kotlinx.serialization.asConverterFactory
 
-private const val BASE_URL = "https://petstore3.swagger.io/api/v3/"
+private const val BASE_URL = "https://jsonplaceholder.typicode.com/"
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -27,6 +30,7 @@ internal object RetrofitModule {
         return Retrofit.Builder()
             .client(okHttpClient)
             .baseUrl(BASE_URL)
+            .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
             .build()
     }
 }
