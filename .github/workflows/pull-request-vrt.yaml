@@ -1,6 +1,6 @@
 name: Pull Request VRT
 
-on: [pull_request]
+on: [ pull_request ]
 
 concurrency:
   group: pull-request-vrt-${{ github.event.pull_request.number }}
@@ -30,6 +30,7 @@ jobs:
       - run: mkdir -p .reg && mv build/roborazzi-outputs .reg && mv .reg/roborazzi-outputs .reg/expected
 
       - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
         with:
           name: ${{ env.expect-artifact }}
           path: |
@@ -50,13 +51,14 @@ jobs:
       - run: tree build/roborazzi-outputs && cat ui/src/main/kotlin/your/projectPackage/ui/component/AppButton.kt
 
       - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
         with:
           name: ${{ env.actual-artifact }}
           path: |
             build/roborazzi-outputs
 
   report:
-    needs: [take-expect, take-actual]
+    needs: [ take-expect, take-actual ]
     runs-on: ubuntu-latest
     permissions:
       contents: write # for peaceiris/actions-gh-pages
