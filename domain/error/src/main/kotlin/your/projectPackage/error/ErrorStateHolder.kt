@@ -4,6 +4,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import your.projectPackage.common.logError
 
 interface ErrorStateHolder {
     val errorState: StateFlow<ErrorState>
@@ -17,6 +18,9 @@ abstract class AbstractErrorStateHolder : ErrorStateHolder {
     protected val _errorState = MutableStateFlow<ErrorState>(ErrorState.NoError)
     override val errorState = _errorState.asStateFlow()
     override fun sendErrorState(errorState: ErrorState) {
+        if (errorState is ErrorState.HandleError) {
+            logError(errorState.exception, "ErrorStateHolder.errorState")
+        }
         _errorState.tryEmit(errorState)
     }
 
