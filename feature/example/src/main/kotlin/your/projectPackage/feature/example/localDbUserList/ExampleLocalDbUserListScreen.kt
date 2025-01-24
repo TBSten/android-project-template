@@ -1,4 +1,4 @@
-package your.projectPackage.feature.example.userList
+package your.projectPackage.feature.example.localDbUserList
 
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.layout.Box
@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import your.projectPackage.domain.example.user.User
 import your.projectPackage.domain.example.user.UserId
-import your.projectPackage.feature.example.userList.component.UserListItem
+import your.projectPackage.feature.example.localDbUserList.component.UserListItem
 import your.projectPackage.ui.Dispatch
 import your.projectPackage.ui.PreviewRoot
 import your.projectPackage.ui.ValuesPreviewParameterProvider
@@ -29,13 +29,13 @@ import your.projectPackage.ui.consumeViewModel
 import your.projectPackage.ui.error.handleUiEvent
 
 @Composable
-internal fun ExampleUserListScreen(
+internal fun ExampleLocalDbUserListScreen(
     modifier: Modifier = Modifier,
-    viewModel: ExampleUserListViewModel = hiltViewModel(),
+    viewModel: ExampleLocalDbUserListViewModel = hiltViewModel(),
 ) {
     val (uiState, dispatch) = consumeViewModel(viewModel)
 
-    ExampleUserListScreen(
+    ExampleLocalDbUserListScreen(
         uiState = uiState,
         dispatch = dispatch,
         modifier = modifier,
@@ -43,15 +43,15 @@ internal fun ExampleUserListScreen(
 }
 
 @Composable
-private fun ExampleUserListScreen(
-    uiState: ExampleUserListUiState,
-    dispatch: Dispatch<ExampleUserListUiAction>,
+private fun ExampleLocalDbUserListScreen(
+    uiState: ExampleLocalDbUserListUiState,
+    dispatch: Dispatch<ExampleLocalDbUserListUiAction>,
     modifier: Modifier = Modifier,
 ) {
     Scaffold(modifier = modifier) { innerPadding ->
         Crossfade(
-            if (uiState == ExampleUserListUiState.InitialLoading) uiState else null,
-            label = "ExampleUserListScreen Loading Crossfade",
+            if (uiState == ExampleLocalDbUserListUiState.InitialLoading) uiState else null,
+            label = "ExampleLocalDbUserListScreen Loading Crossfade",
             modifier = Modifier.padding(innerPadding),
         ) { uiState ->
             uiState?.let {
@@ -65,11 +65,11 @@ private fun ExampleUserListScreen(
         }
 
         Crossfade(
-            uiState is ExampleUserListUiState.Success,
-            label = "ExampleUserListScreen Success Crossfade",
+            uiState is ExampleLocalDbUserListUiState.Success,
+            label = "ExampleLocalDbUserListScreen Success Crossfade",
             modifier = Modifier.padding(innerPadding),
         ) { isSuccess ->
-            if (isSuccess && uiState is ExampleUserListUiState.Success) {
+            if (isSuccess && uiState is ExampleLocalDbUserListUiState.Success) {
                 Column(
                     modifier = Modifier.fillMaxSize(),
                     horizontalAlignment = Alignment.CenterHorizontally,
@@ -83,7 +83,7 @@ private fun ExampleUserListScreen(
                             items(uiState.users) { user ->
                                 UserListItem(
                                     user = user,
-                                    onDelete = { dispatch(ExampleUserListUiAction.OnDeleteUser(user)) },
+                                    onDelete = { dispatch(ExampleLocalDbUserListUiAction.OnDeleteUser(user)) },
                                 )
                             }
                         }
@@ -91,7 +91,7 @@ private fun ExampleUserListScreen(
                         item {
                             AppButton(
                                 modifier = Modifier.padding(top = 32.dp),
-                                onClick = handleUiEvent { dispatch(ExampleUserListUiAction.OnAddUser) },
+                                onClick = handleUiEvent { dispatch(ExampleLocalDbUserListUiAction.OnAddUser) },
                             ) {
                                 Text("適当なユーザを追加")
                             }
@@ -103,13 +103,13 @@ private fun ExampleUserListScreen(
     }
 }
 
-private class ExampleUserListUiStatePreviewParameterProvider :
-    ValuesPreviewParameterProvider<ExampleUserListUiState>(
-        ExampleUserListUiState.InitialLoading,
-        ExampleUserListUiState.Success(
+private class ExampleLocalDbUserListUiStatePreviewParameterProvider :
+    ValuesPreviewParameterProvider<ExampleLocalDbUserListUiState>(
+        ExampleLocalDbUserListUiState.InitialLoading,
+        ExampleLocalDbUserListUiState.Success(
             users = listOf(),
         ),
-        ExampleUserListUiState.Success(
+        ExampleLocalDbUserListUiState.Success(
             users = listOf(
                 User(uid = UserId(123), name = "test 1"),
                 User(uid = UserId(456), name = "test 2"),
@@ -119,11 +119,11 @@ private class ExampleUserListUiStatePreviewParameterProvider :
 
 @Preview
 @Composable
-private fun ExampleUserListScreenPreview(
-    @PreviewParameter(ExampleUserListUiStatePreviewParameterProvider::class)
-    uiState: ExampleUserListUiState,
+private fun ExampleLocalDbUserListScreenPreview(
+    @PreviewParameter(ExampleLocalDbUserListUiStatePreviewParameterProvider::class)
+    uiState: ExampleLocalDbUserListUiState,
 ) = PreviewRoot {
-    ExampleUserListScreen(
+    ExampleLocalDbUserListScreen(
         uiState = uiState,
         dispatch = { },
     )

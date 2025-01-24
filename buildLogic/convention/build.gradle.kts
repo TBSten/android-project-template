@@ -27,6 +27,7 @@ dependencies {
     compileOnly(libs.ktlintGradlePlugin)
     compileOnly(libs.roborazziGradlePlugin)
     compileOnly(libs.roomGradlePlugin)
+    compileOnly(libs.openApiGradlePlugin)
 }
 
 gradlePlugin {
@@ -71,6 +72,10 @@ gradlePlugin {
         register("roborazzi") {
             id = "buildLogic.primitive.roborazzi"
             implementationClass = "primitive.RoborazziPlugin"
+        }
+        register("open.api") {
+            id = "buildLogic.primitive.open.api"
+            implementationClass = "primitive.OpenApiPlugin"
         }
     }
 }

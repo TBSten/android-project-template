@@ -3,8 +3,9 @@ package your.projectPackage.feature.example
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import kotlinx.serialization.Serializable
+import your.projectPackage.feature.example.apiPostList.ExampleApiPostListScreen
 import your.projectPackage.feature.example.counter.ExampleCounterScreen
-import your.projectPackage.feature.example.userList.ExampleUserListScreen
+import your.projectPackage.feature.example.localDbUserList.ExampleLocalDbUserListScreen
 import your.projectPackage.ui.navigation.Navigation
 import your.projectPackage.ui.navigation.Screen
 import your.projectPackage.ui.navigation.composable
@@ -17,7 +18,10 @@ data object Examples : Navigation
 data object ExampleCounter : Screen
 
 @Serializable
-data object ExampleUserList : Screen
+data object ExampleLocalDbUserList : Screen
+
+@Serializable
+data object ExampleApiPostList : Screen
 
 fun NavGraphBuilder.examples(
     navController: NavController,
@@ -25,11 +29,16 @@ fun NavGraphBuilder.examples(
     navigation<Examples>(startDestination = ExampleCounter) {
         composable<ExampleCounter> {
             ExampleCounterScreen(
-                navigateToUserList = { navController.navigate(ExampleUserList) },
+                navigateToUserList = { navController.navigate(ExampleLocalDbUserList) },
+                navigateToPostList = { navController.navigate(ExampleApiPostList) },
             )
         }
-        composable<ExampleUserList> {
-            ExampleUserListScreen()
+        composable<ExampleLocalDbUserList> {
+            ExampleLocalDbUserListScreen()
+        }
+
+        composable<ExampleApiPostList> {
+            ExampleApiPostListScreen()
         }
     }
 }

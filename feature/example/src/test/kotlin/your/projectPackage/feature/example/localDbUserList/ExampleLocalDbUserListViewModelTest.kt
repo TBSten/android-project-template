@@ -1,4 +1,4 @@
-package your.projectPackage.feature.example.userList
+package your.projectPackage.feature.example.localDbUserList
 
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -15,7 +15,7 @@ import your.projectPackage.domain.example.user.UserId
 import your.projectPackage.error.ApplicationErrorStateHolder
 import your.projectPackage.testing.CoroutineRule
 
-internal class ExampleUserListViewModelTest {
+internal class ExampleLocalDbUserListViewModelTest {
     @get:Rule
     val coroutineRule = CoroutineRule()
 
@@ -26,12 +26,12 @@ internal class ExampleUserListViewModelTest {
             User(uid = UserId(123), name = "test 1"),
             User(uid = UserId(456), name = "test 2"),
         )
-        val viewModel: ExampleUserListViewModel = run {
+        val viewModel: ExampleLocalDbUserListViewModel = run {
             val errorStateHolder = ApplicationErrorStateHolder()
             val getUsers: GetUsersUseCase = mockk<GetUsersUseCase>().also {
                 coEvery { it.execute() } returns userList
             }
-            ExampleUserListViewModel(
+            ExampleLocalDbUserListViewModel(
                 errorStateHolder,
                 getUsers = getUsers,
                 createUser = mockk(),
@@ -39,13 +39,13 @@ internal class ExampleUserListViewModelTest {
             )
         }
 
-        assertEquals(viewModel.uiState.value, ExampleUserListUiState.InitialLoading)
+        assertEquals(viewModel.uiState.value, ExampleLocalDbUserListUiState.InitialLoading)
 
         viewModel.init()
         advanceTimeBy(1001)
 
         val uiStateAfterInit = viewModel.uiState.value
-        assertIs<ExampleUserListUiState.Success>(uiStateAfterInit)
+        assertIs<ExampleLocalDbUserListUiState.Success>(uiStateAfterInit)
         assertEquals(uiStateAfterInit.users, userList)
     }
 }

@@ -1,4 +1,4 @@
-package your.projectPackage.feature.example.userList
+package your.projectPackage.feature.example.localDbUserList
 
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,13 +18,13 @@ import your.projectPackage.error.ApplicationErrorStateHolder
 import your.projectPackage.ui.BaseViewModel
 
 @HiltViewModel
-internal class ExampleUserListViewModel @Inject constructor(
+internal class ExampleLocalDbUserListViewModel @Inject constructor(
     applicationErrorStateHolder: ApplicationErrorStateHolder,
     private val getUsers: GetUsersUseCase,
     private val createUser: CreateUserUseCase,
     private val deleteUser: DeleteUserUseCase,
-) : BaseViewModel<ExampleUserListUiState, ExampleUserListUiAction>(applicationErrorStateHolder) {
-    private val _uiState = MutableStateFlow<ExampleUserListUiState>(ExampleUserListUiState.InitialLoading)
+) : BaseViewModel<ExampleLocalDbUserListUiState, ExampleLocalDbUserListUiAction>(applicationErrorStateHolder) {
+    private val _uiState = MutableStateFlow<ExampleLocalDbUserListUiState>(ExampleLocalDbUserListUiState.InitialLoading)
     override val uiState = _uiState.asStateFlow()
 
     override fun init() {
@@ -34,11 +34,11 @@ internal class ExampleUserListViewModel @Inject constructor(
         }
     }
 
-    override fun dispatch(action: ExampleUserListUiAction) {
+    override fun dispatch(action: ExampleLocalDbUserListUiAction) {
         viewModelScope.launchSafe {
             when (action) {
-                ExampleUserListUiAction.OnAddUser -> onAddUser()
-                is ExampleUserListUiAction.OnDeleteUser -> onDeleteUser(action.user)
+                ExampleLocalDbUserListUiAction.OnAddUser -> onAddUser()
+                is ExampleLocalDbUserListUiAction.OnDeleteUser -> onDeleteUser(action.user)
             }
         }
     }
@@ -62,7 +62,7 @@ internal class ExampleUserListViewModel @Inject constructor(
     private suspend fun refresh() {
         val users = getUsers.execute()
         _uiState.update {
-            ExampleUserListUiState.Success(
+            ExampleLocalDbUserListUiState.Success(
                 users = users,
             )
         }
