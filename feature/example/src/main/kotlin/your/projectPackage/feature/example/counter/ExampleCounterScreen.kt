@@ -18,7 +18,7 @@ import your.projectPackage.ui.consumeViewModel
 @Composable
 internal fun ExampleCounterScreen(
     navigateToUserList: () -> Unit,
-    navigateToPostList: ()->Unit,
+    navigateToPostList: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: ExampleCounterViewModel = hiltViewModel(),
 ) {
@@ -38,7 +38,7 @@ private fun ExampleCounterScreen(
     uiState: ExampleCounterUiState,
     dispatch: Dispatch<ExampleCounterUiAction>,
     navigateToUserList: () -> Unit,
-    navigateToPostList: ()->Unit,
+    navigateToPostList: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Scaffold(modifier = modifier) { innerPadding ->
