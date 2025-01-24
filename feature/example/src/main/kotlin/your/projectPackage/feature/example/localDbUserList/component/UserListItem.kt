@@ -1,4 +1,4 @@
-package your.projectPackage.feature.example.userList.component
+package your.projectPackage.feature.example.localDbUserList.component
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
