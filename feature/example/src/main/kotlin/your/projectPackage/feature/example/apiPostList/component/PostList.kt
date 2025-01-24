@@ -58,7 +58,7 @@ private fun EmptyListItem(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun PostItem(
+private fun PostItem(
     post: Post,
     modifier: Modifier = Modifier,
 ) {
@@ -130,10 +130,12 @@ private fun PostListPreview(
 @Preview(showBackground = true)
 @Composable
 private fun PostListItemPreview() = PreviewRoot {
-    Post(
-        id = PostId(123),
-        userId = UserId(456),
-        title = "Preview Post",
-        body = "This is a Preview Post.",
+    PostItem(
+        post = Post(
+            id = PostId(123),
+            userId = UserId(456),
+            title = "Preview Post",
+            body = "This is a Preview Post.",
+        ),
     )
 }
