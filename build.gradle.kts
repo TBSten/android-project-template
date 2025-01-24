@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.buildLogicPrimitiveKotlinxSerialization) apply false
     alias(libs.plugins.buildLogicPrimitiveHilt) apply false
     alias(libs.plugins.buildLogicPrimitiveRoom) apply false
+    alias(libs.plugins.buildLogicPrimitiveOpenApi) apply false
 
     // build-logic module plugins
     alias(libs.plugins.buildLogicModuleAndroidApplication) apply false
@@ -24,4 +25,5 @@ plugins {
     alias(libs.plugins.hilt) apply false
     alias(libs.plugins.roborazzi) apply false
     alias(libs.plugins.room) apply false
+    alias(libs.plugins.openApi) apply false
 }
