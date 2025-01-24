@@ -2,4 +2,6 @@
 <lint>
     <!-- See https://developer.android.com/studio/write/lint?hl=ja#pref -->
     <issue id="ComposeUnstableCollections" severity="ignore" />
+    <!--  依存関係のチェックは別途行うため Android Lint ではチェックしない  -->
+    <issue id="GradleDependency" severity="ignore" />
 </lint>
