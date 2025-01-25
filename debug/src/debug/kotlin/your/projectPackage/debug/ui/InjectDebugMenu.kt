@@ -7,7 +7,6 @@ import android.view.Window
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -17,6 +16,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import your.projectPackage.ui.error.SafeLaunchedEffect
 
 @SuppressLint("ComposeModifierMissing")
 @Composable
@@ -24,7 +24,7 @@ fun InjectDebugMenu() {
     var show by remember { mutableStateOf(false) }
 
     val window = (LocalContext.current as Activity).window
-    LaunchedEffect(Unit) {
+    SafeLaunchedEffect(Unit) {
         window.callback = DebugWindowCallback(
             baseCallback = window.callback,
             onKeyEvent = {

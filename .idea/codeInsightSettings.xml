@@ -15,6 +15,9 @@
             <name>androidx.compose.ui.semantics.SemanticsProperties</name>
             <name>androidx.compose.ui.text.input.KeyboardType.Companion.Text</name>
 
+            <name>androidx.compose.runtime.LaunchedEffect</name>
+            <name>androidx.compose.runtime.DisposableEffect</name>
+
             <!-- Gradle Plugin -->
             <name>org.gradle.internal.impldep.org.apache.maven.artifact.repository.metadata.Plugin</name>
             <name>org.gradle.internal.impldep.org.apache.maven.model.Plugin</name>
