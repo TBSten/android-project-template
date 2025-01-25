@@ -10,19 +10,16 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
-import your.projectPackage.data.database.example.user.UserDao
-import your.projectPackage.data.database.example.user.UserEntity
 
 private const val DATABASE_NAME = "app-database"
 
 @Database(
     entities = [
-        UserEntity::class,
     ],
     version = 1,
 )
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun userDao(): UserDao
+    // TODO Add your Dao
 }
 
 @Module
