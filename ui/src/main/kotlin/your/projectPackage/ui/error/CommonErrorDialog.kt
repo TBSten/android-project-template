@@ -3,10 +3,15 @@ package your.projectPackage.ui.error
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
+import your.projectPackage.error.AppException
 import your.projectPackage.error.ErrorHandleType
 import your.projectPackage.error.ErrorState
 import your.projectPackage.ui.PreviewRoot
+import your.projectPackage.ui.R
+import your.projectPackage.ui.ValuesPreviewParameterProvider
 import your.projectPackage.ui.component.AppButton
 
 @Composable
@@ -25,7 +30,7 @@ internal fun CommonErrorDialog(
         title = {
             Text(errorState.exception.displayTitle)
         },
-        text = errorState.exception.displayText?.let { { Text(it) } },
+        text = errorState.exception.displayText.let { { Text(it) } },
         confirmButton = {
             @Suppress("KotlinConstantConditions")
             if (retryable) {
@@ -50,19 +55,53 @@ internal fun CommonErrorDialog(
     )
 }
 
+@Suppress("ComposeUnstableReceiver")
 private val Throwable.displayTitle: String
-    get() = "エラーが発生しました"
+    @Composable
+    get() = when (this) {
+        is AppException -> when (this) {
+            is AppException.Api -> stringResource(R.string.common_error_dialog_title_api)
+            is AppException.Api.NoBody -> stringResource(R.string.common_error_dialog_title_api_no_body)
+        }
+        else -> stringResource(R.string.common_error_dialog_title_unknown)
+    }
 
-private val Throwable.displayText: String?
-    get() = this.message
+@Suppress("ComposeUnstableReceiver")
+private val Throwable.displayText: String
+    @Composable
+    get() = when (this) {
+        is AppException -> when (this) {
+            is AppException.Api -> stringResource(R.string.common_error_dialog_text_api)
+            is AppException.Api.NoBody -> stringResource(R.string.common_error_dialog_text_api_no_body)
+        }
+        else -> stringResource(R.string.common_error_dialog_text_unknown)
+    }
+
+class CommonErrorDialogPreviewParameters :
+    ValuesPreviewParameterProvider<ErrorState.HandleError>(
+        ErrorState.HandleError(
+            AppException.Api("Not Found", 404, null),
+            ErrorHandleType.Dialog,
+        ),
+        ErrorState.HandleError(
+            AppException.Api.NoBody(),
+            ErrorHandleType.Dialog,
+        ),
+        ErrorState.HandleError(
+            Exception("Normal Exception"),
+            ErrorHandleType.Dialog,
+        ),
+    )
 
 @Preview
 @Composable
-private fun CommonErrorDialogPreview() = PreviewRoot {
-    val errorHandleType = ErrorHandleType.Dialog
+private fun CommonErrorDialogPreview(
+    @PreviewParameter(CommonErrorDialogPreviewParameters::class)
+    errorState: ErrorState.HandleError,
+) = PreviewRoot {
     CommonErrorDialog(
-        errorState = ErrorState.HandleError(Exception("test exception"), errorHandleType),
-        errorHandleType = errorHandleType,
+        errorState = errorState,
+        errorHandleType = errorState.handleType as ErrorHandleType.Dialog,
         onClose = { },
         onRetry = { },
     )
