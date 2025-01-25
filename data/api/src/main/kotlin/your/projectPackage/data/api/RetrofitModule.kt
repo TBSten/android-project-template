@@ -23,7 +23,7 @@ internal object RetrofitModule {
         val okHttpClient = OkHttpClient.Builder()
             .addInterceptor(
                 HttpLoggingInterceptor().apply {
-                    setLevel(HttpLoggingInterceptor.Level.BASIC)
+                    setLevel(HttpLoggingInterceptor.Level.BODY)
                 },
             ).build()
 

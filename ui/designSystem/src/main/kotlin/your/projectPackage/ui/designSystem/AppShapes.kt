@@ -1,6 +1,7 @@
 package your.projectPackage.ui.designSystem
 
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Shapes
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
 import your.projectPackage.common.lazyWithReceiver
@@ -19,9 +20,12 @@ internal object DefaultAppShapes : AppShapes {
 /**
  * AppShapes を MaterialTheme.shapes に変換する拡張関数。
  */
-internal val AppShapes.asMaterial: androidx.compose.material3.Shapes by lazyWithReceiver {
-    androidx.compose.material3.Shapes(
+internal val AppShapes.asMaterial: Shapes by lazyWithReceiver {
+    Shapes(
+        extraSmall = this.medium as RoundedCornerShape,
+        small = this.medium as RoundedCornerShape,
         medium = this.medium as RoundedCornerShape,
-        extraLarge = this.full as RoundedCornerShape,
+        large = this.medium as RoundedCornerShape,
+        extraLarge = this.medium as RoundedCornerShape,
     )
 }

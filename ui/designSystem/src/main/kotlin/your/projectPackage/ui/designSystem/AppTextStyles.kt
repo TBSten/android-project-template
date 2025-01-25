@@ -1,5 +1,6 @@
 package your.projectPackage.ui.designSystem
 
+import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.sp
 import your.projectPackage.common.lazyWithReceiver
@@ -23,8 +24,8 @@ internal object DefaultAppTextStyles : AppTextStyles {
 /**
  * AppTextStyles を MaterialTheme.typography に変換する拡張関数。
  */
-internal val AppTextStyles.asMaterial: androidx.compose.material3.Typography by lazyWithReceiver {
-    androidx.compose.material3.Typography(
+internal val AppTextStyles.asMaterial: Typography by lazyWithReceiver {
+    Typography(
         bodyMedium = this.body,
     )
 }

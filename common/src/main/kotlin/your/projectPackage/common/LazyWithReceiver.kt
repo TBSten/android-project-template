@@ -13,7 +13,7 @@ private class LazyImpl<Receiver, Value>(private val init: Receiver.() -> Value) 
     private var value: Value? = null
 
     override operator fun getValue(thisRef: Receiver, property: Any?): Value = if (initialized) {
-        value!!
+        value ?: throw IllegalStateException("`lazyWithReceiver` not initialized.")
     } else {
         init(thisRef)
             .also { initializedValue ->

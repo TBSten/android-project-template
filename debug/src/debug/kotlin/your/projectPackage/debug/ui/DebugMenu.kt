@@ -10,7 +10,6 @@ import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -18,6 +17,7 @@ import your.projectPackage.debug.ui.component.DebugMenuTabSection
 import your.projectPackage.ui.Dispatch
 import your.projectPackage.ui.PreviewRoot
 import your.projectPackage.ui.consumeViewModel
+import your.projectPackage.ui.error.SafeLaunchedEffect
 
 @Composable
 internal fun DebugMenu(
@@ -41,11 +41,11 @@ private fun DebugMenu(
 ) {
     val pagerState = rememberPagerState { uiState.debugMenuTabs.size }
 
-    LaunchedEffect(pagerState.targetPage) {
+    SafeLaunchedEffect(pagerState.targetPage) {
         dispatch(DebugMenuUiAction.SelectTab(pagerState.targetPage))
     }
 
-    LaunchedEffect(uiState.selectedTabIndex) {
+    SafeLaunchedEffect(uiState.selectedTabIndex) {
         pagerState.animateScrollToPage(uiState.selectedTabIndex)
     }
 

@@ -5,6 +5,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import your.projectPackage.data.api.generated.api.PostsApi
 import your.projectPackage.data.api.generated.model.Post as ApiPost
+import your.projectPackage.data.example.bodyOrThrow
 import your.projectPackage.domain.example.post.Post
 import your.projectPackage.domain.example.post.PostsRepository
 
@@ -14,7 +15,7 @@ internal class PostsRepositoryImpl @Inject constructor(
     override suspend fun getPosts(): List<Post> = withContext(Dispatchers.IO) {
         postsApi
             .getPosts()
-            .body()!!
+            .bodyOrThrow()
             .map(ApiPost::toDomain)
     }
 }
