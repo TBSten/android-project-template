@@ -22,7 +22,10 @@ internal object DefaultAppShapes : AppShapes {
  */
 internal val AppShapes.asMaterial: Shapes by lazyWithReceiver {
     Shapes(
+        extraSmall = this.medium as RoundedCornerShape,
+        small = this.medium as RoundedCornerShape,
         medium = this.medium as RoundedCornerShape,
-        extraLarge = this.full as RoundedCornerShape,
+        large = this.medium as RoundedCornerShape,
+        extraLarge = this.medium as RoundedCornerShape,
     )
 }
