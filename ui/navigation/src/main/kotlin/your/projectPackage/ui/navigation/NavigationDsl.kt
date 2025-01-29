@@ -23,11 +23,21 @@ internal val customTypeMap: Map<KType, @JvmSuppressWildcards NavType<*>> = empty
 @SuppressLint("DoNotUseLibraryNavigationDsl")
 inline fun <reified S : Screen> NavGraphBuilder.composable(
     deepLinks: List<NavDeepLink> = emptyList(),
-    noinline enterTransition: (AnimatedContentTransitionScope<NavBackStackEntry>.() -> @JvmSuppressWildcards EnterTransition?)? = null,
-    noinline exitTransition: (AnimatedContentTransitionScope<NavBackStackEntry>.() -> @JvmSuppressWildcards ExitTransition?)? = null,
-    noinline popEnterTransition: (AnimatedContentTransitionScope<NavBackStackEntry>.() -> @JvmSuppressWildcards EnterTransition?)? = enterTransition,
-    noinline popExitTransition: (AnimatedContentTransitionScope<NavBackStackEntry>.() -> @JvmSuppressWildcards ExitTransition?)? = exitTransition,
-    noinline sizeTransform: (AnimatedContentTransitionScope<NavBackStackEntry>.() -> @JvmSuppressWildcards SizeTransform?)? = null,
+    noinline enterTransition: (
+        AnimatedContentTransitionScope<NavBackStackEntry>.() -> @JvmSuppressWildcards EnterTransition?
+    )? = null,
+    noinline exitTransition: (
+        AnimatedContentTransitionScope<NavBackStackEntry>.() -> @JvmSuppressWildcards ExitTransition?
+    )? = null,
+    noinline popEnterTransition: (
+        AnimatedContentTransitionScope<NavBackStackEntry>.() -> @JvmSuppressWildcards EnterTransition?
+    )? = enterTransition,
+    noinline popExitTransition: (
+        AnimatedContentTransitionScope<NavBackStackEntry>.() -> @JvmSuppressWildcards ExitTransition?
+    )? = exitTransition,
+    noinline sizeTransform: (
+        AnimatedContentTransitionScope<NavBackStackEntry>.() -> @JvmSuppressWildcards SizeTransform?
+    )? = null,
     noinline content: @Composable AnimatedContentScope.(NavBackStackEntry) -> Unit,
 ) = composable<S>(
     typeMap = customTypeMap,
@@ -44,11 +54,21 @@ inline fun <reified S : Screen> NavGraphBuilder.composable(
 inline fun <reified N : Navigation> NavGraphBuilder.navigation(
     startDestination: Route,
     deepLinks: List<NavDeepLink> = emptyList(),
-    noinline enterTransition: (AnimatedContentTransitionScope<NavBackStackEntry>.() -> @JvmSuppressWildcards EnterTransition?)? = null,
-    noinline exitTransition: (AnimatedContentTransitionScope<NavBackStackEntry>.() -> @JvmSuppressWildcards ExitTransition?)? = null,
-    noinline popEnterTransition: (AnimatedContentTransitionScope<NavBackStackEntry>.() -> @JvmSuppressWildcards EnterTransition?)? = enterTransition,
-    noinline popExitTransition: (AnimatedContentTransitionScope<NavBackStackEntry>.() -> @JvmSuppressWildcards ExitTransition?)? = exitTransition,
-    noinline sizeTransform: (AnimatedContentTransitionScope<NavBackStackEntry>.() -> @JvmSuppressWildcards SizeTransform?)? = null,
+    noinline enterTransition: (
+        AnimatedContentTransitionScope<NavBackStackEntry>.() -> @JvmSuppressWildcards EnterTransition?
+    )? = null,
+    noinline exitTransition: (
+        AnimatedContentTransitionScope<NavBackStackEntry>.() -> @JvmSuppressWildcards ExitTransition?
+    )? = null,
+    noinline popEnterTransition: (
+        AnimatedContentTransitionScope<NavBackStackEntry>.() -> @JvmSuppressWildcards EnterTransition?
+    )? = enterTransition,
+    noinline popExitTransition: (
+        AnimatedContentTransitionScope<NavBackStackEntry>.() -> @JvmSuppressWildcards ExitTransition?
+    )? = exitTransition,
+    noinline sizeTransform: (
+        AnimatedContentTransitionScope<NavBackStackEntry>.() -> @JvmSuppressWildcards SizeTransform?
+    )? = null,
     noinline builder: NavGraphBuilder.() -> Unit,
 ) = navigation<N>(
     startDestination = startDestination,

@@ -17,6 +17,9 @@ import your.projectPackage.domain.example.user.UserId
 import your.projectPackage.error.ApplicationErrorStateHolder
 import your.projectPackage.ui.BaseViewModel
 
+private const val INITIAL_FETCH_DELAY = 1000L
+private val randomRange = 1..1_000_000
+
 @HiltViewModel
 internal class ExampleLocalDbUserListViewModel @Inject constructor(
     applicationErrorStateHolder: ApplicationErrorStateHolder,
@@ -29,7 +32,7 @@ internal class ExampleLocalDbUserListViewModel @Inject constructor(
 
     override fun init() {
         viewModelScope.launchSafe {
-            delay(1000)
+            delay(INITIAL_FETCH_DELAY)
             refresh()
         }
     }
@@ -44,7 +47,7 @@ internal class ExampleLocalDbUserListViewModel @Inject constructor(
     }
 
     private suspend fun onAddUser() {
-        val randomId = Random.nextInt(1..1_000_000)
+        val randomId = Random.nextInt(randomRange)
         createUser.execute(
             User(
                 uid = UserId(randomId),

@@ -14,8 +14,8 @@ interface ErrorStateHolder {
 }
 
 abstract class AbstractErrorStateHolder : ErrorStateHolder {
-    @Suppress("PropertyName", "MemberVisibilityCanBePrivate")
-    protected val _errorState = MutableStateFlow<ErrorState>(ErrorState.NoError)
+    @Suppress("MemberVisibilityCanBePrivate")
+    private val _errorState = MutableStateFlow<ErrorState>(ErrorState.NoError)
     override val errorState = _errorState.asStateFlow()
     override fun sendErrorState(errorState: ErrorState) {
         if (errorState is ErrorState.HandleError) {
