@@ -4,4 +4,5 @@
     <issue id="ComposeUnstableCollections" severity="ignore" />
     <!--  依存関係のチェックは別途行うため Android Lint ではチェックしない  -->
     <issue id="GradleDependency" severity="ignore" />
+    <issue id="AndroidGradlePluginVersion" severity="ignore" />
 </lint>
