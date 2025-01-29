@@ -77,10 +77,11 @@ private val Throwable.displayText: String
         else -> stringResource(R.string.common_error_dialog_text_unknown)
     }
 
+private const val NOT_FOUND_STATUS_CODE = 404
 class CommonErrorDialogPreviewParameters :
     ValuesPreviewParameterProvider<ErrorState.HandleError>(
         ErrorState.HandleError(
-            AppException.Api("Not Found", 404, null),
+            AppException.Api("Not Found", NOT_FOUND_STATUS_CODE, null),
             ErrorHandleType.Dialog,
         ),
         ErrorState.HandleError(
