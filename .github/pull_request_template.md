@@ -1,6 +1,6 @@
 ## issue 等（ない場合はなにを実装したかひとこと）
 
-- issue: Close # -->
+- issue: Close #
 
 ## 背景 なぜ実装したか
 
