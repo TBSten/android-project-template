@@ -7,6 +7,7 @@ import dsl.library
 import dsl.libs
 import dsl.plugin
 import dsl.plugins
+import io.gitlab.arturbosch.detekt.Detekt
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
@@ -14,6 +15,7 @@ import org.gradle.kotlin.dsl.assign
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.exclude
 import org.gradle.kotlin.dsl.named
+import org.gradle.kotlin.dsl.withType
 import org.openapitools.generator.gradle.plugin.tasks.GenerateTask
 
 open class OpenApiPlugin : Plugin<Project> {
@@ -68,6 +70,12 @@ open class OpenApiPlugin : Plugin<Project> {
                     exclude {
                         it.path.matches(Regex(".*${packageNameDir.get()}.*"))
                     }
+                }
+            }
+
+            tasks.withType<Detekt>().configureEach {
+                exclude {
+                    it.path.matches(Regex(".*${packageNameDir.get()}.*"))
                 }
             }
 

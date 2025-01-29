@@ -25,6 +25,7 @@ dependencies {
     compileOnly(libs.androidGradlePlugin)
     compileOnly(libs.composeGradlePlugin)
     compileOnly(libs.ktlintGradlePlugin)
+    compileOnly(libs.detektGradlePlugin)
     compileOnly(libs.roborazziGradlePlugin)
     compileOnly(libs.roomGradlePlugin)
     compileOnly(libs.openApiGradlePlugin)

@@ -37,6 +37,7 @@ okhttp = "4.12.0"
 timber = "5.0.1"
 
 ktlintGradlePlugin = "12.1.1"
+detekt = "1.23.7"
 
 [libraries]
 # TODO 並び順を build-logic用 > 通常のライブラリ にする
@@ -89,6 +90,7 @@ kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", ver
 kotlinGradlePluginApi = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin-api", version.ref = "kotlin" }
 androidGradlePlugin = { module = "com.android.tools.build:gradle", version.ref = "androidGradle" }
 ktlintGradlePlugin = { module = "org.jlleitschuh.gradle:ktlint-gradle", version.ref = "ktlintGradlePlugin" }
+detektGradlePlugin = { module = "io.gitlab.arturbosch.detekt:io.gitlab.arturbosch.detekt.gradle.plugin", version.ref = "detekt" }
 composeGradlePlugin = { module = "org.jetbrains.kotlin.plugin.compose:org.jetbrains.kotlin.plugin.compose.gradle.plugin", version.ref = "kotlin" }
 roborazziGradlePlugin = { module = "io.github.takahirom.roborazzi:roborazzi-gradle-plugin", version.ref = "roborazzi" }
 roomGradlePlugin = { module = "androidx.room:room-gradle-plugin", version.ref = "room" }
@@ -108,6 +110,7 @@ room = { id = "androidx.room", version.ref = "room" }
 openApi = { id = "org.openapi.generator", version.ref = "openApi" }
 
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlintGradlePlugin" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 
 buildLogicModuleAndroidApplication = { id = "buildLogic.module.android.application", version = "unspecified" }
 buildLogicModuleAndroidLibrary = { id = "buildLogic.module.android.library", version = "unspecified" }
