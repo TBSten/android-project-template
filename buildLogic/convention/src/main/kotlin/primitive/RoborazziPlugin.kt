@@ -38,7 +38,6 @@ open class RoborazziPlugin : Plugin<Project> {
                 testImplementation(libs.library("roborazziJunit"))
             }
 
-            @Suppress("OPT_IN_USAGE")
             roborazzi {
                 val projectDir = target.path.split(":").filter { it.isNotEmpty() }.joinToString("/")
                 val outputDirectory = rootProject.layout.projectDirectory.dir("build/roborazzi-outputs").dir(projectDir)
@@ -56,10 +55,12 @@ private fun Project.configureComposePreviewTests() {
     dependencies {
         testImplementation(libs.library("roborazziComposePreviewScannerSupport"))
         testImplementation(libs.library("composePreviewScanner"))
+        if (this@configureComposePreviewTests.path != ":ui:testing") {
+            testImplementation(rootProject.project(":ui:testing"))
+        }
     }
 
     roborazzi {
-        @Suppress("OPT_IN_USAGE")
         generateComposePreviewRobolectricTests {
             enable = true
             packages = provider { listOf(android.namespace) }
@@ -69,6 +70,7 @@ private fun Project.configureComposePreviewTests() {
                     "qualifiers" to "RobolectricDeviceQualifiers.Pixel5",
                 )
             includePrivatePreviews = true
+            testerQualifiedClassName = "your.projectPackage.ui.testing.AppComposePreviewTester"
         }
     }
 }
