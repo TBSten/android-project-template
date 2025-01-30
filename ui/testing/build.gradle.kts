@@ -15,6 +15,7 @@ dependencies {
     implementation(libs.kotlinxCoroutinesTest)
     implementation(libs.androidxEspressoCore)
     implementation(libs.composeUiTestJunit4)
+    implementation(libs.composeUiTestManifest)
     implementation(libs.roborazziCore)
     implementation(libs.roborazziCompose)
     implementation(libs.roborazziJunit)

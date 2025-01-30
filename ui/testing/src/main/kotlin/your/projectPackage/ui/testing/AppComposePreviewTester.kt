@@ -1,7 +1,8 @@
 package your.projectPackage.ui.testing
 
+import androidx.activity.ComponentActivity
 import androidx.compose.ui.test.junit4.ComposeTestRule
-import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onRoot
 import com.github.takahirom.roborazzi.AndroidComposePreviewTester
 import com.github.takahirom.roborazzi.ComposePreviewTester
@@ -13,6 +14,7 @@ import com.github.takahirom.roborazzi.provideRoborazziContext
 import com.github.takahirom.roborazzi.roborazziDefaultNamingStrategy
 import com.github.takahirom.roborazzi.roborazziRecordFilePathStrategy
 import com.github.takahirom.roborazzi.roborazziSystemPropertyOutputDirectory
+import com.github.takahirom.roborazzi.toRoborazziComposeOptions
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
 import kotlinx.coroutines.test.runTest
@@ -24,7 +26,8 @@ import sergio.sastre.composable.preview.scanner.core.preview.ComposablePreview
 @Suppress("unused")
 @OptIn(ExperimentalRoborazziApi::class)
 class AppComposePreviewTester : ComposePreviewTester<AndroidPreviewInfo> by AndroidComposePreviewTester() {
-    private val composeTestRule = createComposeRule()
+    private val composeTestRule = createAndroidComposeRule<ComponentActivity>()
+
     override fun options(): ComposePreviewTester.Options {
         val testLifecycleOptions = ComposePreviewTester.Options.JUnit4TestLifecycleOptions(
             testRuleFactory = { composeTestRule },
@@ -53,9 +56,17 @@ class AppComposePreviewTester : ComposePreviewTester<AndroidPreviewInfo> by Andr
                 "$pathPrefix$name.${provideRoborazziContext().imageExtension}"
             }
 
+        // Preview アノテーションの内容を反映する
+        val previewContent =
+            preview
+                .toRoborazziComposeOptions()
+                .configured(composeTestRule.activityRule.scenario) {
+                    preview()
+                }
         composeTestRule.setContent {
-            preview()
+            previewContent()
         }
+
         // ローディングインジケータなどを含む Preview で想定以上の時間がかかるため、最大 10秒 待つようにする。
         composeTestRule.mainClock.autoAdvance = false
         composeTestRule.awaitIdle(maxDuration = 10.seconds)
