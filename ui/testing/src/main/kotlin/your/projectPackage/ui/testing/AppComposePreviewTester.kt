@@ -1,6 +1,5 @@
 package your.projectPackage.ui.testing
 
-import androidx.activity.ComponentActivity
 import androidx.compose.ui.test.junit4.ComposeTestRule
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onRoot
@@ -9,6 +8,7 @@ import com.github.takahirom.roborazzi.ComposePreviewTester
 import com.github.takahirom.roborazzi.ExperimentalRoborazziApi
 import com.github.takahirom.roborazzi.InternalRoborazziApi
 import com.github.takahirom.roborazzi.RoborazziRecordFilePathStrategy
+import com.github.takahirom.roborazzi.RoborazziTransparentActivity
 import com.github.takahirom.roborazzi.captureRoboImage
 import com.github.takahirom.roborazzi.provideRoborazziContext
 import com.github.takahirom.roborazzi.roborazziDefaultNamingStrategy
@@ -26,7 +26,7 @@ import sergio.sastre.composable.preview.scanner.core.preview.ComposablePreview
 @Suppress("unused")
 @OptIn(ExperimentalRoborazziApi::class)
 class AppComposePreviewTester : ComposePreviewTester<AndroidPreviewInfo> by AndroidComposePreviewTester() {
-    private val composeTestRule = createAndroidComposeRule<ComponentActivity>()
+    private val composeTestRule = createAndroidComposeRule<RoborazziTransparentActivity>()
 
     override fun options(): ComposePreviewTester.Options {
         val testLifecycleOptions = ComposePreviewTester.Options.JUnit4TestLifecycleOptions(
