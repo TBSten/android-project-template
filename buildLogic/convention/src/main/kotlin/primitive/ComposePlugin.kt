@@ -18,32 +18,38 @@ import org.gradle.kotlin.dsl.dependencies
 open class ComposePlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
+            setUpCompose()
             plugins {
-                alias(libs.plugin("kotlinCompose"))
                 apply(RoborazziPlugin::class)
             }
-
-            composeCompiler {
-                reportsDestination = layout.buildDirectory.dir("compose_compiler")
-                stabilityConfigurationFile =
-                    rootProject.layout.projectDirectory.file("compose_stability_config.conf")
-            }
-
-            dependencies {
-                implementation(platform(libs.library("composeBom")))
-                implementation(libs.library("composeUi"))
-                implementation(libs.library("composeUiGraphics"))
-                implementation(libs.library("composeUiToolingPreview"))
-                implementation(libs.library("composeMaterial3"))
-
-                androidTestImplementation(platform(libs.library("composeBom")))
-                androidTestImplementation(libs.library("composeUiTestJunit4"))
-
-                debugImplementation(libs.library("composeUiTooling"))
-                debugImplementation(libs.library("composeUiTestManifest"))
-
-                "lintChecks"(libs.library("slackComposeLint"))
-            }
         }
+    }
+}
+
+fun Project.setUpCompose() {
+    plugins {
+        alias(libs.plugin("kotlinCompose"))
+    }
+
+    composeCompiler {
+        reportsDestination = layout.buildDirectory.dir("compose_compiler")
+        stabilityConfigurationFile =
+            rootProject.layout.projectDirectory.file("compose_stability_config.conf")
+    }
+
+    dependencies {
+        implementation(platform(libs.library("composeBom")))
+        implementation(libs.library("composeUi"))
+        implementation(libs.library("composeUiGraphics"))
+        implementation(libs.library("composeUiToolingPreview"))
+        implementation(libs.library("composeMaterial3"))
+
+        androidTestImplementation(platform(libs.library("composeBom")))
+        androidTestImplementation(libs.library("composeUiTestJunit4"))
+
+        debugImplementation(libs.library("composeUiTooling"))
+        debugImplementation(libs.library("composeUiTestManifest"))
+
+        "lintChecks"(libs.library("slackComposeLint"))
     }
 }
