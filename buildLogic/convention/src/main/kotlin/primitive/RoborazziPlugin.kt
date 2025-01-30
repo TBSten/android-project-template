@@ -56,6 +56,9 @@ private fun Project.configureComposePreviewTests() {
     dependencies {
         testImplementation(libs.library("roborazziComposePreviewScannerSupport"))
         testImplementation(libs.library("composePreviewScanner"))
+        if (this@configureComposePreviewTests.path != ":ui:testing") {
+            testImplementation(rootProject.project(":ui:testing"))
+        }
     }
 
     roborazzi {
@@ -69,6 +72,7 @@ private fun Project.configureComposePreviewTests() {
                     "qualifiers" to "RobolectricDeviceQualifiers.Pixel5",
                 )
             includePrivatePreviews = true
+            testerQualifiedClassName = "your.projectPackage.ui.testing.AppComposePreviewTester"
         }
     }
 }
