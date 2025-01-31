@@ -1,4 +1,4 @@
-package your.projectPackage.lintRules.composeNavigation
+package your.projectPackage.tools.lintRules.composeNavigation
 
 import com.android.tools.lint.detector.api.Category
 import com.android.tools.lint.detector.api.Detector
