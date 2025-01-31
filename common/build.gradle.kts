@@ -11,5 +11,6 @@ android {
 }
 
 dependencies {
+    api(projects.common.testing)
     api(libs.timber)
 }

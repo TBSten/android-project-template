@@ -15,7 +15,7 @@ internal fun Project.configureBasic() {
         }
 
         if (project.path != ":testing") {
-            testImplementation(project(":testing"))
+            testImplementation(project(":common:testing"))
         }
     }
 }
