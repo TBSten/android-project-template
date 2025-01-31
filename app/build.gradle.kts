@@ -28,7 +28,7 @@ dependencies {
     implementation(projects.data)
     implementation(projects.domain)
     implementation(projects.ui)
-    implementation(projects.debug)
+    implementation(projects.tools.debug)
 
     // feature modules
     implementation(projects.ui.feature.example)

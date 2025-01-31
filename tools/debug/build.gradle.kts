@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "${libs.versions.app.applicationId.get()}.debug"
+    namespace = "${libs.versions.app.applicationId.get()}.tools.debug"
 }
 
 dependencies {
