@@ -33,8 +33,7 @@ fun Project.setUpCompose() {
 
     composeCompiler {
         reportsDestination = layout.buildDirectory.dir("compose_compiler")
-        stabilityConfigurationFile =
-            rootProject.layout.projectDirectory.file("compose_stability_config.conf")
+        stabilityConfigurationFiles.add(rootProject.layout.projectDirectory.file("compose_stability_config.conf"))
     }
 
     dependencies {
