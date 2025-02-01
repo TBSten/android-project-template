@@ -10,11 +10,11 @@ import org.gradle.kotlin.dsl.dependencies
  */
 internal fun Project.configureBasic() {
     dependencies {
-        if (path != ":common") {
+        if (!path.startsWith(":common")) {
             implementation(project(":common"))
         }
 
-        if (project.path != ":testing") {
+        if (!path.startsWith(":testing")) {
             testImplementation(project(":common:testing"))
         }
     }
