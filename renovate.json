@@ -26,6 +26,20 @@
                 "com.google.devtools.ksp"
             ],
             "groupName": "kotlin"
+        },
+        {
+            "matchPackagePatterns": [
+                "gradle"
+            ],
+            "groupName": "Android and Gradle"
+        },
+        {
+            "matchPackagePatterns": [
+                "com.android.tools.build",
+                "com.android.library",
+                "com.android.application"
+            ],
+            "groupName": "Android and Gradle"
         }
     ]
 }
