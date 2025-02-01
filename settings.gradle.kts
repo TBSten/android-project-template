@@ -26,7 +26,6 @@ rootProject.name = "AndroidProjectTemplate"
 include(":common")
 include(":common:testing")
 include(":tools:debug")
-include(":tools:lintRules:composeNavigation")
 include(":app")
 include(":data")
 include(":data:api")
