@@ -4,6 +4,8 @@ plugins {
     alias(libs.plugins.buildLogicModuleAndroidLibrary)
 }
 
+// buildLogic.primitive.compose を apply してしまうと 循環参照になってしまうため、直接 setUpCompose を呼び出す。
+@Suppress("DEPRECATION")
 setUpCompose()
 
 android {
