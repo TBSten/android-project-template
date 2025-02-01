@@ -18,7 +18,9 @@ import org.gradle.kotlin.dsl.dependencies
 open class ComposePlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
+            @Suppress("DEPRECATION")
             setUpCompose()
+
             plugins {
                 apply(RoborazziPlugin::class)
             }
@@ -26,6 +28,10 @@ open class ComposePlugin : Plugin<Project> {
     }
 }
 
+@Deprecated(
+    message = "Don't use setUpCompose() directly. Please use `buildLogic.primitive.compose`.",
+    replaceWith = ReplaceWith("plugins {\n    alias(libs.buildLogicPrimitiveCompose)\n}\n"),
+)
 fun Project.setUpCompose() {
     plugins {
         alias(libs.plugin("kotlinCompose"))
