@@ -15,6 +15,7 @@ last updated: 2025/01/26
 - [x] デバッグメニュー
 
 - [x] Ktlint
+- [x] Detekt
 - [x] Roborazzi による VRT
 - [x] Github Actions ベースの CI
 
@@ -26,22 +27,22 @@ last updated: 2025/01/26
 
 - applicationId
     - デフォルトでは `your.projectPackage` になっています。
-    - `changeApplicationId` Gradle タスクを使用してapplicationIdの定義とパッケージディレクトリ・パッケージ文を置換します。
+    - **`changeApplicationId` Gradle タスクを実行** してapplicationIdの定義とパッケージディレクトリ・パッケージ文を置換します。
 
 ```shell
-./gradlew changeApplicationId -PnewApplicationId=me.tbsten.test
+./gradlew changeApplicationId -PnewApplicationId=your.new.package.name
 ```
 
-- compileSdk, targetSdk
+- compileSdk, targetSdk (任意)
     - デフォルトでは 35 になっています。
     - gradle/libs.versions.toml の `app-compileSdk`, `app-compileSdk` を編集します。
-- minSdk
+- minSdk (任意)
     - デフォルトでは 28 になっています。
     - gradle/libs.versions.toml の `app-minSdk` を編集します。
 
 ### 2. サンプルコードを削除する
 
-`delete-samples` ブランチをマージすることで ができます。
+**`delete-samples` ブランチをマージ** することで サンプルコードを削除できます。
 
 ```shell
 git merge delete-samples
@@ -49,13 +50,13 @@ git merge delete-samples
 
 ### 3. README を用意する。
 
-**このファイルを削除して、 `README.template.md` を `README.md` にリネームします。**
+**このファイルを削除して、 `README.template.md` を `README.md` にリネーム** します。
 
 リネーム後 `<` `>` で囲まれた箇所などを適宜修正してください。
 
 ### 4. コードオーナー の設定
 
-`.github/CODEOWNERS` ファイルを追加し、PR の Approve が必須となる Github ユーザをリストします。
+**`.github/CODEOWNERS` ファイルを追加** し、PR の Approve が必須となる Github ユーザをリストします。
 
 プロジェクト用のチームを作成し、そのチーム名を設定すると管理しやすいのでおすすめです。
 

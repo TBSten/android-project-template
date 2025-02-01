@@ -16,6 +16,7 @@ cd <your project name>
 - Room
 - Retrofit + okhttp, OpenAPI
 - Ktlint
+- Detekt
 - Roborazzi
 - Github Actions
 - composite build
