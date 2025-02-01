@@ -14,7 +14,7 @@ internal fun Project.configureBasic() {
             implementation(project(":common"))
         }
 
-        if (!path.startsWith(":testing")) {
+        if (!path.startsWith(":common:testing")) {
             testImplementation(project(":common:testing"))
         }
     }
