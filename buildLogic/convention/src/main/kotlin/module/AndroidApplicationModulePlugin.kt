@@ -49,6 +49,14 @@ open class AndroidApplicationModulePlugin : Plugin<Project> {
                         )
                     }
                 }
+
+                packaging {
+                    resources {
+                        excludes += "/META-INF/{AL2.0,LGPL2.1}"
+                        merges += "META-INF/LICENSE.md"
+                        merges += "META-INF/LICENSE-notice.md"
+                    }
+                }
             }
 
             dependencies {

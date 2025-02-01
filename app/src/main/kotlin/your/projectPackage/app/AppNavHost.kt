@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import your.projectPackage.feature.example.Examples
-import your.projectPackage.feature.example.examples
+import your.projectPackage.ui.feature.example.Examples
+import your.projectPackage.ui.feature.example.examples
 import your.projectPackage.ui.navigation.NavControllerWrapper
 
 @Composable
