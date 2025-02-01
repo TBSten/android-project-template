@@ -9,6 +9,7 @@ import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.SizeTransform
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.window.DialogProperties
+import androidx.lifecycle.SavedStateHandle
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavDeepLink
 import androidx.navigation.NavGraphBuilder
@@ -16,6 +17,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.dialog
 import androidx.navigation.compose.navigation
+import androidx.navigation.toRoute
 import kotlin.reflect.KType
 
 @PublishedApi
@@ -90,4 +92,8 @@ inline fun <reified D : Dialog> NavGraphBuilder.dialog(
     deepLinks = deepLinks,
     dialogProperties = dialogProperties,
     content = content,
+)
+
+inline fun <reified D : Dialog> SavedStateHandle.toRoute() = toRoute<D>(
+    typeMap = customTypeMap,
 )
