@@ -14,6 +14,7 @@ local.properties
 !.idea/icon_dark.png
 !.idea/runConfigurations
 !.idea/codeInsightSettings.xml
+!.idea/detekt.xml
 
 build/
 
