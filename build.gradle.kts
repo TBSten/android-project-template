@@ -22,7 +22,6 @@ plugins {
     // other plugins
     alias(libs.plugins.androidApplication) apply false
     alias(libs.plugins.androidLibrary) apply false
-    alias(libs.plugins.kotlinJvm) apply false
     alias(libs.plugins.kotlinAndroid) apply false
     alias(libs.plugins.kotlinCompose) apply false
     alias(libs.plugins.kotlinPluginSerialization) apply false
@@ -61,7 +60,7 @@ val changeApplicationId by tasks.creating {
         libsVersionsToml.writeText(
             rootProject.file("gradle/libs.versions.toml")
                 .readText()
-                .replace(oldApplicationId, newApplicationId)
+                .replace(oldApplicationId, newApplicationId),
         )
     }
 
@@ -87,7 +86,7 @@ val changeApplicationId by tasks.creating {
             )
             newFile.writeText(
                 newFile.readText()
-                    .replace(oldPackage, newPackage)
+                    .replace(oldPackage, newPackage),
             )
         }
     }
