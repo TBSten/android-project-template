@@ -12,7 +12,6 @@ local.properties
 !.idea/dictionaries/__projectName__.xml
 !.idea/icon.png
 !.idea/icon_dark.png
-!.idea/runConfigurations
 !.idea/codeInsightSettings.xml
 !.idea/detekt.xml
 !.idea/ktlint-plugin.xml
