@@ -15,6 +15,7 @@ local.properties
 !.idea/runConfigurations
 !.idea/codeInsightSettings.xml
 !.idea/detekt.xml
+!.idea/ktlint-plugin.xml
 
 build/
 
