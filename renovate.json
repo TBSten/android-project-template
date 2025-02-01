@@ -10,36 +10,36 @@
     ],
     "packageRules": [
         {
-            "matchPackagePatterns": [
-                "androidx.compose.compiler:compiler"
-            ],
-            "groupName": "kotlin"
+            "groupName": "kotlin",
+            "matchPackageNames": [
+                "/androidx.compose.compiler:compiler/"
+            ]
         },
         {
-            "matchPackagePatterns": [
-                "org.jetbrains.kotlin:.*"
-            ],
-            "groupName": "kotlin"
+            "groupName": "kotlin",
+            "matchPackageNames": [
+                "/org.jetbrains.kotlin:.*/"
+            ]
         },
         {
-            "matchPackagePatterns": [
-                "com.google.devtools.ksp"
-            ],
-            "groupName": "kotlin"
+            "groupName": "kotlin",
+            "matchPackageNames": [
+                "/com.google.devtools.ksp/"
+            ]
         },
         {
-            "matchPackagePatterns": [
-                "gradle"
-            ],
-            "groupName": "Android and Gradle"
+            "groupName": "Android and Gradle",
+            "matchPackageNames": [
+                "/gradle/"
+            ]
         },
         {
-            "matchPackagePatterns": [
-                "com.android.tools.build",
-                "com.android.library",
-                "com.android.application"
-            ],
-            "groupName": "Android and Gradle"
+            "groupName": "Android and Gradle",
+            "matchPackageNames": [
+                "/com.android.tools.build/",
+                "/com.android.library/",
+                "/com.android.application/"
+            ]
         }
     ]
 }
