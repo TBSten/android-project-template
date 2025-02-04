@@ -108,7 +108,11 @@ val updateAppNames by tasks.creating {
         }
 
         // replace package name
-        rootProject.fileTree("./").forEach { file ->
+        rootProject.fileTree("./") {
+            exclude(".gradle/**")
+            exclude("gradle/wrapper/**")
+            exclude("**/build/**")
+        }.forEach { file ->
             file.writeText(
                 file.readText()
                     .replace(oldPackage, newPackage),
