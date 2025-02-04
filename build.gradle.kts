@@ -38,19 +38,42 @@ plugins {
  * usages
  *
  * ```shell
- * ./gradlew changeApplicationId -PnewApplicationId=new.packageName
+ * ./gradlew updateAppNames -PnewName=NewAppName -PnewApplicationId=new.packageName
  * # or
- * ./gradlew changeApplicationId -PoldApplicationId=old.packageName -PnewApplicationId=new.packageName
+ * ./gradlew updateAppNames -PnewName=NewAppName -PoldApplicationId=old.packageName -PnewApplicationId=new.packageName
  * ```
  */
-val changeApplicationId by tasks.creating {
+val updateAppNames by tasks.creating {
 
+    val newNameProperty = providers.gradleProperty("newName")
     val newApplicationIdProperty = providers.gradleProperty("newApplicationId")
     val oldApplicationIdProperty = providers.gradleProperty("oldApplicationId")
 
+    // update AppName
+    doLast {
+        val newName = newNameProperty.orNull ?: return@doLast
+        println("newName: $newName")
+
+        // replace settings.gradle.kts
+        val settingsGradleKts = rootProject.file("settings.gradle.kts")
+        settingsGradleKts.writeText(
+            settingsGradleKts
+                .readText()
+                .replace(Regex("rootProject.name = \".*\""), "rootProject.name = \"$newName\""),
+        )
+
+        // replace app/src/main/res/values/strings.xml
+        val appStringsXml = rootProject.file("app/src/main/res/values/strings.xml")
+        appStringsXml.writeText(
+            appStringsXml
+                .readText()
+                .replace(Regex("<string name=\"app_name\">.*</string>"), "<string name=\"app_name\">$newName</string>"),
+        )
+    }
+
     // replace libs.versions.toml app-applicationId
     doLast {
-        val newApplicationId = newApplicationIdProperty.get()
+        val newApplicationId = newApplicationIdProperty.orNull ?: return@doLast
         val oldApplicationId = oldApplicationIdProperty.orNull ?: "your.projectPackage"
 
         println("newApplicationId: $newApplicationId")
@@ -58,7 +81,7 @@ val changeApplicationId by tasks.creating {
 
         val libsVersionsToml = rootProject.file("gradle/libs.versions.toml")
         libsVersionsToml.writeText(
-            rootProject.file("gradle/libs.versions.toml")
+            libsVersionsToml
                 .readText()
                 .replace(oldApplicationId, newApplicationId),
         )
@@ -67,7 +90,7 @@ val changeApplicationId by tasks.creating {
     // replace directories and replace package name
     doLast {
         val newPackage =
-            newApplicationIdProperty.get()
+            newApplicationIdProperty.orNull ?: return@doLast
         val newPackagePath = newPackage.replace(".", "/")
         val oldPackage = oldApplicationIdProperty.orNull ?: "your.projectPackage"
         val oldPackagePath = oldPackage.replace(".", "/")

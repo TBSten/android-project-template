@@ -25,12 +25,12 @@ last updated: 2025/01/26
 
 以下を決めて変更作業を実施する。
 
-- applicationId
+- アプリ名, applicationId
     - デフォルトでは `your.projectPackage` になっています。
-    - **`changeApplicationId` Gradle タスクを実行** してapplicationIdの定義とパッケージディレクトリ・パッケージ文を置換します。
+    - **`updateAppNames` Gradle タスクを実行** して Gradle Project 名とアプリ名、applicationIdの定義とパッケージディレクトリ・パッケージ文を置換します。
 
 ```shell
-./gradlew changeApplicationId -PnewApplicationId=your.new.package.name
+./gradlew updateAppNames -PnewName=NewAppName -PnewApplicationId=your.new.package.name
 ```
 
 - compileSdk, targetSdk (任意)
