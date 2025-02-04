@@ -71,8 +71,8 @@ val updateAppNames by tasks.creating {
         )
     }
 
-    // replace libs.versions.toml app-applicationId
     doLast {
+        // replace libs.versions.toml app-applicationId
         val newApplicationId = newApplicationIdProperty.orNull ?: return@doLast
         val oldApplicationId = oldApplicationIdProperty.orNull ?: "your.projectPackage"
 
@@ -85,10 +85,8 @@ val updateAppNames by tasks.creating {
                 .readText()
                 .replace(oldApplicationId, newApplicationId),
         )
-    }
 
-    // replace directories and replace package name
-    doLast {
+        // replace directories
         val newPackage =
             newApplicationIdProperty.orNull ?: return@doLast
         val newPackagePath = newPackage.replace(".", "/")
@@ -107,8 +105,12 @@ val updateAppNames by tasks.creating {
                 oldFile.toPath(),
                 newFile,
             )
-            newFile.writeText(
-                newFile.readText()
+        }
+
+        // replace package name
+        rootProject.fileTree("./").forEach { file ->
+            file.writeText(
+                file.readText()
                     .replace(oldPackage, newPackage),
             )
         }
