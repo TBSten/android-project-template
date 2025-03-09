@@ -8,7 +8,7 @@ app-versionName = "1.0"
 
 androidGradle = "8.8.0"
 kotlin = "2.1.10"
-ksp = "2.1.10-1.0.29"
+ksp = "2.1.10-1.0.31"
 coreKtx = "1.15.0"
 junit = "4.13.2"
 androidxJunit = "1.2.1"
@@ -30,12 +30,12 @@ composePreviewScanner = "0.5.1"
 slackComposeLint = "1.4.2"
 mockk = "1.13.17"
 retrofit = "2.11.0"
-openApi = "7.10.0"
+openApi = "7.12.0"
 okhttp = "4.12.0"
 timber = "5.0.1"
 
-ktlintGradlePlugin = "12.1.2"
-detekt = "1.23.7"
+ktlintGradlePlugin = "12.2.0"
+detekt = "1.23.8"
 
 [libraries]
 # TODO 並び順を build-logic用 > 通常のライブラリ にする
