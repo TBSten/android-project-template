@@ -19,9 +19,11 @@ import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.withTimeoutOrNull
+import sergio.sastre.composable.preview.scanner.android.AndroidComposablePreviewScanner
 import sergio.sastre.composable.preview.scanner.android.AndroidPreviewInfo
 import sergio.sastre.composable.preview.scanner.android.screenshotid.AndroidPreviewScreenshotIdBuilder
 import sergio.sastre.composable.preview.scanner.core.preview.ComposablePreview
+import your.projectPackage.ui.testingAnnotation.IgnoreVrt
 
 @Suppress("unused")
 @OptIn(ExperimentalRoborazziApi::class)
@@ -33,6 +35,20 @@ class AppComposePreviewTester : ComposePreviewTester<AndroidPreviewInfo> by Andr
             testRuleFactory = { composeTestRule },
         )
         return super.options().copy(testLifecycleOptions = testLifecycleOptions)
+    }
+
+    override fun previews(): List<ComposablePreview<AndroidPreviewInfo>> {
+        val options = options()
+        return AndroidComposablePreviewScanner()
+            .scanPackageTrees(*options.scanOptions.packages.toTypedArray())
+            .excludeIfAnnotatedWithAnyOf(IgnoreVrt::class.java)
+            .let {
+                if (options.scanOptions.includePrivatePreviews) {
+                    it.includePrivatePreviews()
+                } else {
+                    it
+                }
+            }.getPreviews()
     }
 
     @OptIn(InternalRoborazziApi::class)
