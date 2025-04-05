@@ -178,9 +178,14 @@ jobs:
             | [diff](${{ steps.get_outputs.outputs.pages_url }}#changed)   | [${{ steps.get_outputs.outputs.diffItems }}](${{ steps.get_outputs.outputs.pages_url }}#changed) |
             | [delete](${{ steps.get_outputs.outputs.pages_url }}#deleted) | [${{ steps.get_outputs.outputs.deletedItems }}](${{ steps.get_outputs.outputs.pages_url }}#deleted) |
 
-            <details>
-            <summary>Screenshots</summary>
+            ${{
+              steps.get_outputs.outputs.hasChanges == 'true'
+                && '<details>
+                  <summary>Screenshots</summary>
 
-            ${{ steps.get_outputs.outputs.images_markdown }}
+                  ${{ steps.get_outputs.outputs.images_markdown }}
 
-            </details>
+                  </details>
+                  '
+                      || ''
+            }}
