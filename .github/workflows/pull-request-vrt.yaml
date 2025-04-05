@@ -63,6 +63,9 @@ jobs:
     permissions:
       contents: write # for peaceiris/actions-gh-pages
       pull-requests: write # for yumemi-inc/comment-pull-request
+    concurrency:
+      group: pages
+      cancel-in-progress: false
     steps:
       - uses: actions/checkout@v4
       - uses: yumemi-inc/setup-java-gradle@v2
