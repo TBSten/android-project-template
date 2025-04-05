@@ -94,6 +94,7 @@ jobs:
 
       - id: get_outputs
         run: |
+          # items count
           newItems=$(jq ".newItems | length" .reg/out.json)
           echo "newItems=$newItems" >> $GITHUB_OUTPUT
 
@@ -116,6 +117,47 @@ jobs:
 
           echo "pages_url=$pages_url" >> $GITHUB_OUTPUT
 
+          # images markdown table
+          images_markdown=""
+
+          images_markdown="${images_markdown}| name | before | after | diff |\n"
+          images_markdown="${images_markdown}|---|---|---|---|\n"
+
+          table_rows() {
+              target=$1
+
+              for item in $(jq -r ".$target[]" .reg/out.json); do
+                  images_markdown="${images_markdown}|"
+                  images_markdown="${images_markdown} $(basename $item) |"
+
+                  if [ "$target" = "newItems" ]; then
+                      images_markdown="${images_markdown} --- |"
+                  else
+                      images_markdown="${images_markdown} <img src="./.reg/expected/${item}" width="100" /> |"
+                  fi
+
+                  if [ "$target" = "deletedItems" ]; then
+                      images_markdown="${images_markdown} --- |"
+                  else
+                      images_markdown="${images_markdown} <img src="./.reg/actual/${item}" width="100" /> |"
+                  fi
+
+                  if [ "$target" = "newItems" ] || [ "$target" = "deletedItems" ]; then
+                      images_markdown="${images_markdown} --- |"
+                  else
+                      images_markdown="${images_markdown} <img src="./.reg/diff/${item}" width="100" /> |"
+                  fi
+
+                  images_markdown="${images_markdown}\n"
+              done
+          }
+
+          table_rows "newItems"
+          table_rows "diffItems"
+          table_rows "deletedItems"
+
+          echo "images_markdown=$images_markdown" >> $GITHUB_OUTPUT
+
       - uses: yumemi-inc/comment-pull-request@v1
         with:
           comment: |
@@ -134,3 +176,10 @@ jobs:
             | [new](${{ steps.get_outputs.outputs.pages_url }}#new)    | [${{ steps.get_outputs.outputs.newItems }}](${{ steps.get_outputs.outputs.pages_url }}#new) |
             | [diff](${{ steps.get_outputs.outputs.pages_url }}#changed)   | [${{ steps.get_outputs.outputs.diffItems }}](${{ steps.get_outputs.outputs.pages_url }}#changed) |
             | [delete](${{ steps.get_outputs.outputs.pages_url }}#deleted) | [${{ steps.get_outputs.outputs.deletedItems }}](${{ steps.get_outputs.outputs.pages_url }}#deleted) |
+
+            <details>
+            <summary>Screenshots</summary>
+
+            ${{ steps.get_outputs.outputs.images_markdown }}
+
+            </details>
