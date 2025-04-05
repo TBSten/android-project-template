@@ -129,24 +129,24 @@ jobs:
 
               for item in $(jq -r ".${target}Items[]" .reg/out.json); do
                   images_markdown="${images_markdown}|"
-                  images_markdown="${images_markdown} [[${target}] $(basename $item)]($pages_url/?id=$id_prefix$item) |"
+                  images_markdown="${images_markdown} [[${target}] $(basename $item)]($pages_url?id=$id_prefix$item) |"
 
                   if [ "$target" = "new" ]; then
                       images_markdown="${images_markdown} --- |"
                   else
-                      images_markdown="${images_markdown} <img src="./.reg/expected/${item}" width="100" /> |"
+                      images_markdown="${images_markdown} <img src="$pages_url/expected/${item}" width="100" /> |"
                   fi
 
                   if [ "$target" = "deleted" ]; then
                       images_markdown="${images_markdown} --- |"
                   else
-                      images_markdown="${images_markdown} <img src="./.reg/actual/${item}" width="100" /> |"
+                      images_markdown="${images_markdown} <img src="$pages_url/actual/${item}" width="100" /> |"
                   fi
 
                   if [ "$target" = "new" ] || [ "$target" = "deleted" ]; then
                       images_markdown="${images_markdown} --- |"
                   else
-                      images_markdown="${images_markdown} <img src="./.reg/diff/${item}" width="100" /> |"
+                      images_markdown="${images_markdown} <img src="$pages_url/diff/${item}" width="100" /> |"
                   fi
 
                   images_markdown="${images_markdown}\n"
