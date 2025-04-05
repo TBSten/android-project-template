@@ -134,19 +134,19 @@ jobs:
                   if [ "$target" = "new" ]; then
                       images_markdown="${images_markdown} --- |"
                   else
-                      images_markdown="${images_markdown} <img src="$pages_url/expected/${item}" width="100" /> |"
+                      images_markdown="${images_markdown} <img src="$pages_url/expected/${item}" width="250" /> |"
                   fi
 
                   if [ "$target" = "deleted" ]; then
                       images_markdown="${images_markdown} --- |"
                   else
-                      images_markdown="${images_markdown} <img src="$pages_url/actual/${item}" width="100" /> |"
+                      images_markdown="${images_markdown} <img src="$pages_url/actual/${item}" width="250" /> |"
                   fi
 
                   if [ "$target" = "new" ] || [ "$target" = "deleted" ]; then
                       images_markdown="${images_markdown} --- |"
                   else
-                      images_markdown="${images_markdown} <img src="$pages_url/diff/${item}" width="100" /> |"
+                      images_markdown="${images_markdown} <img src="$pages_url/diff/${item}" width="250" /> |"
                   fi
 
                   images_markdown="${images_markdown}\n"
