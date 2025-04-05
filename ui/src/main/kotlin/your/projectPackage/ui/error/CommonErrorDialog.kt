@@ -88,10 +88,6 @@ class CommonErrorDialogPreviewParameters :
             AppException.Api.NoBody(),
             ErrorHandleType.Dialog,
         ),
-        ErrorState.HandleError(
-            Exception("Normal Exception"),
-            ErrorHandleType.Dialog,
-        ),
     )
 
 @Preview
@@ -106,4 +102,10 @@ private fun CommonErrorDialogPreview(
         onClose = { },
         onRetry = { },
     )
+}
+
+@Preview
+@Composable
+private fun NewPreview1() = PreviewRoot {
+    Text("this is new preview")
 }
