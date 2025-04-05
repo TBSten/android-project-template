@@ -125,24 +125,25 @@ jobs:
 
           table_rows() {
               target=$1
+              id_prefix=${2:-$1}-
 
-              for item in $(jq -r ".$target[]" .reg/out.json); do
+              for item in $(jq -r ".${target}Items[]" .reg/out.json); do
                   images_markdown="${images_markdown}|"
-                  images_markdown="${images_markdown} $(basename $item) |"
+                  images_markdown="${images_markdown} [[${target}] $(basename $item)]($pages_url/?id=id_prefix$item) |"
 
-                  if [ "$target" = "newItems" ]; then
+                  if [ "$target" = "new" ]; then
                       images_markdown="${images_markdown} --- |"
                   else
                       images_markdown="${images_markdown} <img src="./.reg/expected/${item}" width="100" /> |"
                   fi
 
-                  if [ "$target" = "deletedItems" ]; then
+                  if [ "$target" = "deleted" ]; then
                       images_markdown="${images_markdown} --- |"
                   else
                       images_markdown="${images_markdown} <img src="./.reg/actual/${item}" width="100" /> |"
                   fi
 
-                  if [ "$target" = "newItems" ] || [ "$target" = "deletedItems" ]; then
+                  if [ "$target" = "new" ] || [ "$target" = "deleted" ]; then
                       images_markdown="${images_markdown} --- |"
                   else
                       images_markdown="${images_markdown} <img src="./.reg/diff/${item}" width="100" /> |"
@@ -152,9 +153,9 @@ jobs:
               done
           }
 
-          table_rows "newItems"
-          table_rows "diffItems"
-          table_rows "deletedItems"
+          table_rows "new"
+          table_rows "diff" "changed"
+          table_rows "deleted"
 
           echo "images_markdown=$images_markdown" >> $GITHUB_OUTPUT
 
