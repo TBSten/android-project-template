@@ -2,6 +2,7 @@ package primitive
 
 import dsl.alias
 import dsl.android
+import dsl.implementation
 import dsl.library
 import dsl.libs
 import dsl.plugin
@@ -55,6 +56,10 @@ private fun Project.configureComposePreviewTests() {
     dependencies {
         testImplementation(libs.library("roborazziComposePreviewScannerSupport"))
         testImplementation(libs.library("composePreviewScanner"))
+
+        if (this@configureComposePreviewTests.path != ":ui:testingAnnotation") {
+            implementation(rootProject.project(":ui:testingAnnotation"))
+        }
         if (this@configureComposePreviewTests.path != ":ui:testing") {
             testImplementation(rootProject.project(":ui:testing"))
         }
