@@ -188,7 +188,8 @@ jobs:
 
           echo "images_markdown=$images_markdown" >> $GITHUB_OUTPUT
 
-      - uses: yumemi-inc/comment-pull-request@v1
+      - name: Comment Pull Request
+        uses: yumemi-inc/comment-pull-request@v1
         with:
           comment: |
             #### VRT Result
@@ -215,3 +216,21 @@ jobs:
                 )
                 || ''
             }}
+
+      - name: Update PR Body
+        run: |
+          pr_body=$(gh pr view ${{ github.event.pull_request.number }} --json body -q .body)
+
+          current_date=$(date "+%Y-%m-%d %H:%M:%S")
+          commit_sha="${{ github.event.pull_request.head.sha }}"
+          commit_short=${commit_sha:0:7}
+          screenshot_info="<!-- {{screenshots}} -->\n\n**最終更新:** ${current_date}\n**コミット:** ${commit_short}\n\n${{ steps.get_outputs.outputs.images_markdown }}"
+          screenshot_info_with_toggle="<details>\n<summary>Screenshots</summary>\n\n${screenshot_info}\n\n</details>"
+
+          updated_pr_body=$pr_body
+          updated_pr_body="${updated_pr_body/<!-- {{screenshots}} -->/$screenshot_info}"
+          updated_pr_body="${updated_pr_body/<!-- {{screenshots-with-toggle}} -->/$screenshot_info_with_toggle}"
+
+          echo "$updated_pr_body" | gh pr edit ${{ github.event.pull_request.number }} --body-file -
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
