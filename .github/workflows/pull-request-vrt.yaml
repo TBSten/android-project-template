@@ -228,8 +228,8 @@ jobs:
           screenshot_info_with_toggle="<details>\n<summary>Screenshots</summary>\n\n${screenshot_info}\n\n</details>"
 
           updated_pr_body=$pr_body
-          updated_pr_body="${updated_pr_body/<!-- {{screenshots}} -->/$screenshot_info}"
-          updated_pr_body="${updated_pr_body/<!-- {{screenshots-with-toggle}} -->/$screenshot_info_with_toggle}"
+          updated_pr_body="${updated_pr_body/<\!-- {{screenshots}} -->/$screenshot_info}"
+          updated_pr_body="${updated_pr_body/<\!-- {{screenshots-with-toggle}} -->/$screenshot_info_with_toggle}"
 
           echo "$updated_pr_body" | gh pr edit ${{ github.event.pull_request.number }} --body-file -
         env:
