@@ -160,19 +160,19 @@ jobs:
 
                   if [ "$target" = "new" ]; then
                       images_markdown="${images_markdown}<tr>\n"
-                      images_markdown="${images_markdown}<td> <img src="$pages_url/actual/${item}" width="200" /> </td>\n"
+                      images_markdown="${images_markdown}<td align=center> <img src="$pages_url/actual/${item}" width="200" /> </td>\n"
                       images_markdown="${images_markdown}</tr>\n"
                   fi
                   if [ "$target" = "deleted" ]; then
                       images_markdown="${images_markdown}<tr>\n"
-                      images_markdown="${images_markdown}<td> <img src="$pages_url/expected/${item}" width="200" /> </td>\n"
+                      images_markdown="${images_markdown}<td align=center> <img src="$pages_url/expected/${item}" width="200" /> </td>\n"
                       images_markdown="${images_markdown}</tr>\n"
                   fi
                   if [ "$target" = "diff" ]; then
                       images_markdown="${images_markdown}<tr>\n"
-                      images_markdown="${images_markdown}<td> <img src="$pages_url/expected/${item}" width="200" /> </td>\n"
-                      images_markdown="${images_markdown}<td> <img src="$pages_url/diff/${item}" width="200" /> </td>\n"
-                      images_markdown="${images_markdown}<td> <img src="$pages_url/actual/${item}" width="200" /> </td>\n"
+                      images_markdown="${images_markdown}<td align=center> <img src="$pages_url/expected/${item}" width="200" /> </td>\n"
+                      images_markdown="${images_markdown}<td align=center> <img src="$pages_url/diff/${item}" width="200" /> </td>\n"
+                      images_markdown="${images_markdown}<td align=center> <img src="$pages_url/actual/${item}" width="200" /> </td>\n"
                       images_markdown="${images_markdown}</tr>\n"
                   fi
 
@@ -210,7 +210,7 @@ jobs:
             ${{
               steps.get_outputs.outputs.hasChanges == 'true'
                 && format(
-                  '<details>\n<summary>Screenshots</summary>\n\n{0}\n\n</details>', 
+                  '<details>\n<summary>Screenshots</summary>\n\n{0}\n\n</details>',
                   steps.get_outputs.outputs.images_markdown
                 )
                 || ''
