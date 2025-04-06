@@ -120,36 +120,65 @@ jobs:
           # images markdown table
           images_markdown=""
 
-          images_markdown="${images_markdown}| name | before | after | diff |\n"
-          images_markdown="${images_markdown}|---|---|---|---|\n"
-
           table_rows() {
               target=$1
               id_prefix=${2:-$1}-
 
               for item in $(jq -r ".${target}Items[]" .reg/out.json); do
-                  images_markdown="${images_markdown}|"
-                  images_markdown="${images_markdown} [[${target}] $(basename $item)]($pages_url?id=$id_prefix$item) |"
+                  images_markdown="${images_markdown}<!-- [$target] $(basename $item) -->\n"
+                  images_markdown="${images_markdown}<table>\n"
+
+                  # header title
+                  images_markdown="${images_markdown}<thead>\n"
+
+                  if [ "$target" = "diff" ]; then
+                      images_markdown="${images_markdown}<tr><td colspan='3'>\n\n"
+                      images_markdown="${images_markdown}[**[${target}] $(basename $item)**]($pages_url?id=$id_prefix$item)"
+                      images_markdown="${images_markdown}\n\n</td></tr>\n"
+                  else
+                      images_markdown="${images_markdown}<tr><td>\n\n"
+                      images_markdown="${images_markdown}[**[${target}] $(basename $item)**]($pages_url?id=$id_prefix$item)"
+                      images_markdown="${images_markdown}\n\n</td></tr>\n"
+                  fi
+
+                  # header before/diff/after
+                  images_markdown="${images_markdown}<tr>\n"
+                  if [ "$target" != "new" ]; then
+                      images_markdown="${images_markdown}<td align="center">before</td>\n"
+                  fi
+                  if [ "$target" = "diff" ]; then
+                      images_markdown="${images_markdown}<td align="center">diff</td>\n"
+                  fi
+                  if [ "$target" != "deleted" ]; then
+                      images_markdown="${images_markdown}<td align="center">after</td>\n"
+                  fi
+
+                  images_markdown="${images_markdown}</thead>\n"
+
+                  # body
+                  images_markdown="${images_markdown}<tbody>\n"
 
                   if [ "$target" = "new" ]; then
-                      images_markdown="${images_markdown} --- |"
-                  else
-                      images_markdown="${images_markdown} <img src="$pages_url/expected/${item}" width="250" /> |"
+                      images_markdown="${images_markdown}<tr>\n"
+                      images_markdown="${images_markdown}<td> <img src="$pages_url/actual/${item}" width="200" /> </td>\n"
+                      images_markdown="${images_markdown}</tr>\n"
                   fi
-
                   if [ "$target" = "deleted" ]; then
-                      images_markdown="${images_markdown} --- |"
-                  else
-                      images_markdown="${images_markdown} <img src="$pages_url/actual/${item}" width="250" /> |"
+                      images_markdown="${images_markdown}<tr>\n"
+                      images_markdown="${images_markdown}<td> <img src="$pages_url/expected/${item}" width="200" /> </td>\n"
+                      images_markdown="${images_markdown}</tr>\n"
+                  fi
+                  if [ "$target" = "diff" ]; then
+                      images_markdown="${images_markdown}<tr>\n"
+                      images_markdown="${images_markdown}<td> <img src="$pages_url/expected/${item}" width="200" /> </td>\n"
+                      images_markdown="${images_markdown}<td> <img src="$pages_url/diff/${item}" width="200" /> </td>\n"
+                      images_markdown="${images_markdown}<td> <img src="$pages_url/actual/${item}" width="200" /> </td>\n"
+                      images_markdown="${images_markdown}</tr>\n"
                   fi
 
-                  if [ "$target" = "new" ] || [ "$target" = "deleted" ]; then
-                      images_markdown="${images_markdown} --- |"
-                  else
-                      images_markdown="${images_markdown} <img src="$pages_url/diff/${item}" width="250" /> |"
-                  fi
+                  images_markdown="${images_markdown}</tbody>\n"
 
-                  images_markdown="${images_markdown}\n"
+                  images_markdown="${images_markdown}</table>\n\n"
               done
           }
 
