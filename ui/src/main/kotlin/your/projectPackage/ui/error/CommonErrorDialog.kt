@@ -78,6 +78,7 @@ private val Throwable.displayText: String
     }
 
 private const val NOT_FOUND_STATUS_CODE = 404
+
 class CommonErrorDialogPreviewParameters :
     ValuesPreviewParameterProvider<ErrorState.HandleError>(
         ErrorState.HandleError(
@@ -88,10 +89,7 @@ class CommonErrorDialogPreviewParameters :
             AppException.Api.NoBody(),
             ErrorHandleType.Dialog,
         ),
-        ErrorState.HandleError(
-            Exception("Normal Exception"),
-            ErrorHandleType.Dialog,
-        ),
+        // Delete
     )
 
 @Preview
@@ -106,4 +104,10 @@ private fun CommonErrorDialogPreview(
         onClose = { },
         onRetry = { },
     )
+}
+
+@Preview
+@Composable
+private fun NewPreview() = PreviewRoot {
+    Text("new preview")
 }
