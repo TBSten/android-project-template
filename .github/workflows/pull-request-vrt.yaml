@@ -224,7 +224,7 @@ jobs:
           current_date=$(date "+%Y-%m-%d %H:%M:%S")
           commit_sha="${{ github.event.pull_request.head.sha }}"
           commit_short=${commit_sha:0:7}
-          screenshot_info="<!-- {{screenshots}} -->\n\n**最終更新:** ${current_date}\n**コミット:** ${commit_short}\n\n${{ steps.get_outputs.outputs.images_markdown }}"
+          screenshot_info="<\!-- {{screenshots}} -->\n\n**最終更新:** ${current_date}\n**コミット:** ${commit_short}\n\n${{ steps.get_outputs.outputs.images_markdown }}"
           screenshot_info_with_toggle="<details>\n<summary>Screenshots</summary>\n\n${screenshot_info}\n\n</details>"
 
           updated_pr_body=$pr_body
