@@ -17,7 +17,7 @@ import org.gradle.kotlin.dsl.dependencies
 import primitive.ComposePlugin
 import primitive.HiltPlugin
 
-open class AndroidApplicationModulePlugin : Plugin<Project> {
+class AndroidApplicationModulePlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             plugins {

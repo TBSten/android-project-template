@@ -15,7 +15,7 @@ import org.gradle.kotlin.dsl.withType
 import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 import org.jlleitschuh.gradle.ktlint.tasks.GenerateReportsTask
 
-open class LintPlugin : Plugin<Project> {
+class LintPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             configureKtlint()

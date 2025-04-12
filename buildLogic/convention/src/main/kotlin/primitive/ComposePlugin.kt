@@ -15,7 +15,7 @@ import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.assign
 import org.gradle.kotlin.dsl.dependencies
 
-open class ComposePlugin : Plugin<Project> {
+class ComposePlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             @Suppress("DEPRECATION")

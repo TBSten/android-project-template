@@ -15,7 +15,7 @@ import primitive.ComposePlugin
 import primitive.HiltPlugin
 import primitive.NavigationComposePlugin
 
-open class FeatureModulePlugin : Plugin<Project> {
+class FeatureModulePlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             plugins {

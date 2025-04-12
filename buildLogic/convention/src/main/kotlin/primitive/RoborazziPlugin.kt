@@ -14,7 +14,7 @@ import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.assign
 import org.gradle.kotlin.dsl.dependencies
 
-open class RoborazziPlugin : Plugin<Project> {
+class RoborazziPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             plugins {
