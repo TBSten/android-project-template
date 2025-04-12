@@ -14,7 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: yumemi-inc/setup-java-gradle@v2
+      - uses: yumemi-inc/setup-java-gradle@v3
+        with:
+          cache-read-only: false
       - uses: reviewdog/action-setup@v1
       - uses: actions/setup-node@v4 # for merge sarif
       - run: npm i -g @microsoft/sarif-multitool
@@ -51,7 +53,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: yumemi-inc/setup-java-gradle@v2
+      - uses: yumemi-inc/setup-java-gradle@v3
+        with:
+          cache-read-only: false
       - uses: reviewdog/action-setup@v1
       - uses: actions/setup-node@v4 # for merge sarif
       - run: npm i -g @microsoft/sarif-multitool
@@ -88,7 +92,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: yumemi-inc/setup-java-gradle@v2
+      - uses: yumemi-inc/setup-java-gradle@v3
+        with:
+          cache-read-only: false
       - uses: reviewdog/action-setup@v1
       - uses: actions/setup-node@v4 # for merge sarif
       - run: npm i -g @microsoft/sarif-multitool
@@ -125,7 +131,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: yumemi-inc/setup-java-gradle@v2
+      - uses: yumemi-inc/setup-java-gradle@v3
+        with:
+          cache-read-only: false
       - run: ./gradlew test
       - uses: yumemi-inc/comment-pull-request@v1
         if: cancelled() != true
@@ -143,7 +151,9 @@ jobs:
           - release
     steps:
       - uses: actions/checkout@v4
-      - uses: yumemi-inc/setup-java-gradle@v2
+      - uses: yumemi-inc/setup-java-gradle@v3
+        with:
+          cache-read-only: false
       - run: ./gradlew :app:assemble${{ matrix.variants }}
       - uses: yumemi-inc/comment-pull-request@v1
         if: cancelled() != true

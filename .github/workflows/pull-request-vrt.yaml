@@ -23,7 +23,9 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.base.sha }}
 
-      - uses: yumemi-inc/setup-java-gradle@v2
+      - uses: yumemi-inc/setup-java-gradle@v3
+        with:
+          cache-read-only: false
 
       - name: Take Expect Screenshot from Base Branch
         run: ./gradlew recordRoborazziDebug
@@ -44,7 +46,9 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           clean: false
-      - uses: yumemi-inc/setup-java-gradle@v2
+      - uses: yumemi-inc/setup-java-gradle@v3
+        with:
+          cache-read-only: false
 
       - name: Take Actual Screenshot from Head Branch
         run: ./gradlew recordRoborazziDebug
@@ -68,7 +72,6 @@ jobs:
       cancel-in-progress: false
     steps:
       - uses: actions/checkout@v4
-      - uses: yumemi-inc/setup-java-gradle@v2
       - uses: actions/setup-node@v4 # for reg-suit
         with:
           node-version: 22.x
