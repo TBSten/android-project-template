@@ -1,4 +1,4 @@
-package your.projectPackage.ui.error
+package your.projectPackage.ui.common.error
 
 import androidx.compose.animation.Crossfade
 import androidx.compose.runtime.Composable

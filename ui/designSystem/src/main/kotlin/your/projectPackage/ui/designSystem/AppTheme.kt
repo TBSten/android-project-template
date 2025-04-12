@@ -57,7 +57,7 @@ private fun MaterialThemeFromAppTheme(
     content: @Composable () -> Unit,
 ) {
     MaterialTheme(
-        colorScheme = appTheme.colors.asMaterial,
+        colorScheme = AppTheme.colors.asMaterial,
         shapes = AppTheme.shapes.asMaterial,
         typography = AppTheme.textStyles.asMaterial,
     ) {

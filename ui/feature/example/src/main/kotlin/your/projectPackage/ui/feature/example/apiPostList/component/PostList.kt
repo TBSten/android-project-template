@@ -20,8 +20,8 @@ import androidx.compose.ui.unit.sp
 import your.projectPackage.domain.example.post.Post
 import your.projectPackage.domain.example.post.PostId
 import your.projectPackage.domain.example.post.UserId
-import your.projectPackage.ui.PreviewRoot
-import your.projectPackage.ui.ValuesPreviewParameterProvider
+import your.projectPackage.ui.common.PreviewRoot
+import your.projectPackage.ui.common.ValuesPreviewParameterProvider
 
 @Composable
 internal fun PostList(

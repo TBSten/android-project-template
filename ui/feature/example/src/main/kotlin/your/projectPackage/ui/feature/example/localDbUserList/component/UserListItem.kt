@@ -15,8 +15,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import your.projectPackage.domain.example.user.User
 import your.projectPackage.domain.example.user.UserId
-import your.projectPackage.ui.PreviewRoot
-import your.projectPackage.ui.error.handleUiEvent
+import your.projectPackage.ui.common.PreviewRoot
+import your.projectPackage.ui.common.error.handleUiEvent
 
 @Composable
 internal fun UserListItem(

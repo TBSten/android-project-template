@@ -20,12 +20,12 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import your.projectPackage.domain.example.user.User
 import your.projectPackage.domain.example.user.UserId
-import your.projectPackage.ui.Dispatch
-import your.projectPackage.ui.PreviewRoot
-import your.projectPackage.ui.ValuesPreviewParameterProvider
-import your.projectPackage.ui.component.AppButton
-import your.projectPackage.ui.consumeViewModel
-import your.projectPackage.ui.error.handleUiEvent
+import your.projectPackage.ui.common.Dispatch
+import your.projectPackage.ui.common.PreviewRoot
+import your.projectPackage.ui.common.ValuesPreviewParameterProvider
+import your.projectPackage.ui.common.component.AppButton
+import your.projectPackage.ui.common.consumeViewModel
+import your.projectPackage.ui.common.error.handleUiEvent
 import your.projectPackage.ui.feature.example.localDbUserList.component.UserListItem
 
 @Composable

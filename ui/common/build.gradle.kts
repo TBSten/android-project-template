@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "${libs.versions.app.applicationId.get()}.ui"
+    namespace = "${libs.versions.app.applicationId.get()}.ui.common"
 }
 
 dependencies {
