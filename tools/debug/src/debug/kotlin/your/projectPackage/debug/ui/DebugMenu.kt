@@ -20,10 +20,7 @@ import your.projectPackage.ui.common.consumeViewModel
 import your.projectPackage.ui.common.error.SafeLaunchedEffect
 
 @Composable
-internal fun DebugMenu(
-    modifier: Modifier = Modifier,
-    viewModel: DebugMenuViewModel = hiltViewModel(),
-) {
+internal fun DebugMenu(modifier: Modifier = Modifier, viewModel: DebugMenuViewModel = hiltViewModel()) {
     val (uiState, dispatch) = consumeViewModel(viewModel)
 
     DebugMenu(

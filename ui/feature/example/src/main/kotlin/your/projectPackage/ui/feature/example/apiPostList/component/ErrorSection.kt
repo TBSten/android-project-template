@@ -13,10 +13,7 @@ import androidx.compose.ui.unit.dp
 import your.projectPackage.ui.common.PreviewRoot
 
 @Composable
-internal fun ErrorSection(
-    message: String,
-    modifier: Modifier = Modifier,
-) {
+internal fun ErrorSection(message: String, modifier: Modifier = Modifier) {
     Surface(
         modifier = modifier,
         shape = MaterialTheme.shapes.medium,

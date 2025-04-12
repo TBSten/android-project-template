@@ -12,7 +12,5 @@ import your.projectPackage.domain.example.user.UserRepository
 internal interface UserRepositoryModule {
     @Binds
     @Singleton
-    fun bindsUserRepository(
-        impl: UserRepositoryImpl,
-    ): UserRepository
+    fun bindsUserRepository(impl: UserRepositoryImpl): UserRepository
 }

@@ -11,7 +11,5 @@ import javax.inject.Singleton
 internal interface DeleteUserUseCaseModule {
     @Binds
     @Singleton
-    fun bindDeleteUserUseCase(
-        impl: DeleteUserUseCaseImpl,
-    ): DeleteUserUseCase
+    fun bindDeleteUserUseCase(impl: DeleteUserUseCaseImpl): DeleteUserUseCase
 }

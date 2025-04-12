@@ -10,9 +10,8 @@ import your.projectPackage.error.ApplicationErrorStateHolder
 import your.projectPackage.ui.common.BaseViewModel
 
 @HiltViewModel
-internal class DebugMenuViewModel @Inject constructor(
-    exceptionStateHolder: ApplicationErrorStateHolder,
-) : BaseViewModel<DebugMenuUiState, DebugMenuUiAction>(exceptionStateHolder) {
+internal class DebugMenuViewModel @Inject constructor(exceptionStateHolder: ApplicationErrorStateHolder) :
+    BaseViewModel<DebugMenuUiState, DebugMenuUiAction>(exceptionStateHolder) {
     private val _uiState = MutableStateFlow(DebugMenuUiState(selectedDebugMenuTab = DebugMenuTab.SampleDebugMenuTab))
     override val uiState: StateFlow<DebugMenuUiState> = _uiState.asStateFlow()
 

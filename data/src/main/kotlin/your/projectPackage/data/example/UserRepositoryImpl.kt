@@ -9,9 +9,7 @@ import your.projectPackage.domain.example.user.User
 import your.projectPackage.domain.example.user.UserId
 import your.projectPackage.domain.example.user.UserRepository
 
-internal class UserRepositoryImpl @Inject constructor(
-    appDatabase: AppDatabase,
-) : UserRepository {
+internal class UserRepositoryImpl @Inject constructor(appDatabase: AppDatabase) : UserRepository {
     private val userDao = appDatabase.userDao()
     override suspend fun getUsers(): List<User> = withContext(Dispatchers.IO) {
         userDao
