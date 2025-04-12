@@ -8,12 +8,10 @@ import dsl.plugin
 import dsl.plugins
 import dsl.roborazzi
 import dsl.testImplementation
-import org.gradle.api.DefaultTask
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.assign
-import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 
 open class RoborazziPlugin : Plugin<Project> {
@@ -49,11 +47,10 @@ open class RoborazziPlugin : Plugin<Project> {
                 compare.outputDir = outputDirectory
             }
 
-            tasks.findByName("clean")?.configure<DefaultTask> {
-                doLast {
+            tasks.findByName("clean")
+                ?.doLast {
                     outputDirectory.asFile.deleteRecursively()
                 }
-            }
 
             configureComposePreviewTests()
         }
