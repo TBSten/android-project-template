@@ -38,13 +38,19 @@ open class RoborazziPlugin : Plugin<Project> {
                 testImplementation(libs.library("roborazziJunit"))
             }
 
+            val projectDir = target.path.split(":").filter { it.isNotEmpty() }.joinToString("/")
+            val outputDirectory = rootProject.layout.projectDirectory.dir("build/roborazzi-outputs").dir(projectDir)
+
             roborazzi {
-                val projectDir = target.path.split(":").filter { it.isNotEmpty() }.joinToString("/")
-                val outputDirectory = rootProject.layout.projectDirectory.dir("build/roborazzi-outputs").dir(projectDir)
                 logger.info("roborazzi.outputDir = $outputDirectory")
                 outputDir = outputDirectory
                 compare.outputDir = outputDirectory
             }
+
+            tasks.findByName("clean")
+                ?.doLast {
+                    outputDirectory.asFile.deleteRecursively()
+                }
 
             configureComposePreviewTests()
         }
