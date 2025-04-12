@@ -8,8 +8,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import your.projectPackage.debug.ui.InjectDebugMenu
 import your.projectPackage.error.ApplicationErrorStateHolder
+import your.projectPackage.ui.common.error.HandleErrors
 import your.projectPackage.ui.designSystem.AppTheme
-import your.projectPackage.ui.error.HandleErrors
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {

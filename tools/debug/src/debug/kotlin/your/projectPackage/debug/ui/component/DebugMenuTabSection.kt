@@ -10,9 +10,9 @@ import androidx.compose.ui.unit.dp
 import your.projectPackage.debug.ui.DebugMenuTab
 import your.projectPackage.debug.ui.DebugMenuUiAction
 import your.projectPackage.debug.ui.DebugMenuUiState
-import your.projectPackage.ui.Dispatch
-import your.projectPackage.ui.PreviewRoot
-import your.projectPackage.ui.error.handleUiEvent
+import your.projectPackage.ui.common.Dispatch
+import your.projectPackage.ui.common.PreviewRoot
+import your.projectPackage.ui.common.error.handleUiEvent
 
 @Composable
 internal fun DebugMenuTabSection(

@@ -24,12 +24,12 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import your.projectPackage.domain.example.post.Post
 import your.projectPackage.domain.example.post.PostId
 import your.projectPackage.domain.example.post.UserId
-import your.projectPackage.ui.Dispatch
-import your.projectPackage.ui.PreviewRoot
-import your.projectPackage.ui.ValuesPreviewParameterProvider
-import your.projectPackage.ui.component.AppButton
-import your.projectPackage.ui.consumeViewModel
-import your.projectPackage.ui.error.handleUiEvent
+import your.projectPackage.ui.common.Dispatch
+import your.projectPackage.ui.common.PreviewRoot
+import your.projectPackage.ui.common.ValuesPreviewParameterProvider
+import your.projectPackage.ui.common.component.AppButton
+import your.projectPackage.ui.common.consumeViewModel
+import your.projectPackage.ui.common.error.handleUiEvent
 import your.projectPackage.ui.feature.example.apiPostList.component.ErrorSection
 import your.projectPackage.ui.feature.example.apiPostList.component.PostList
 

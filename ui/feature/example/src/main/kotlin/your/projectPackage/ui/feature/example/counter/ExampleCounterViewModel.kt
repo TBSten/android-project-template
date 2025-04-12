@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import your.projectPackage.error.ApplicationErrorStateHolder
-import your.projectPackage.ui.BaseViewModel
+import your.projectPackage.ui.common.BaseViewModel
 
 @HiltViewModel
 internal class ExampleCounterViewModel @Inject constructor(

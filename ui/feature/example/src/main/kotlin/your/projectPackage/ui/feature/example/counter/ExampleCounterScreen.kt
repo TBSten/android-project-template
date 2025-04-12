@@ -10,10 +10,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import your.projectPackage.ui.Dispatch
-import your.projectPackage.ui.PreviewRoot
-import your.projectPackage.ui.component.AppButton
-import your.projectPackage.ui.consumeViewModel
+import your.projectPackage.ui.common.Dispatch
+import your.projectPackage.ui.common.PreviewRoot
+import your.projectPackage.ui.common.component.AppButton
+import your.projectPackage.ui.common.consumeViewModel
 
 @Composable
 internal fun ExampleCounterScreen(

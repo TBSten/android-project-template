@@ -1,4 +1,4 @@
-package your.projectPackage.ui.error
+package your.projectPackage.ui.common.error
 
 import android.annotation.SuppressLint
 import androidx.compose.runtime.compositionLocalOf

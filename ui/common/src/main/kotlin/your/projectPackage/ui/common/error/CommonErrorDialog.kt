@@ -1,4 +1,4 @@
-package your.projectPackage.ui.error
+package your.projectPackage.ui.common.error
 
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Text
@@ -9,10 +9,10 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import your.projectPackage.error.AppException
 import your.projectPackage.error.ErrorHandleType
 import your.projectPackage.error.ErrorState
-import your.projectPackage.ui.PreviewRoot
-import your.projectPackage.ui.R
-import your.projectPackage.ui.ValuesPreviewParameterProvider
-import your.projectPackage.ui.component.AppButton
+import your.projectPackage.ui.common.PreviewRoot
+import your.projectPackage.ui.common.R
+import your.projectPackage.ui.common.ValuesPreviewParameterProvider
+import your.projectPackage.ui.common.component.AppButton
 
 @Composable
 internal fun CommonErrorDialog(
@@ -78,6 +78,7 @@ private val Throwable.displayText: String
     }
 
 private const val NOT_FOUND_STATUS_CODE = 404
+
 class CommonErrorDialogPreviewParameters :
     ValuesPreviewParameterProvider<ErrorState.HandleError>(
         ErrorState.HandleError(

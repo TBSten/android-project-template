@@ -14,10 +14,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import your.projectPackage.debug.ui.component.DebugMenuTabSection
-import your.projectPackage.ui.Dispatch
-import your.projectPackage.ui.PreviewRoot
-import your.projectPackage.ui.consumeViewModel
-import your.projectPackage.ui.error.SafeLaunchedEffect
+import your.projectPackage.ui.common.Dispatch
+import your.projectPackage.ui.common.PreviewRoot
+import your.projectPackage.ui.common.consumeViewModel
+import your.projectPackage.ui.common.error.SafeLaunchedEffect
 
 @Composable
 internal fun DebugMenu(

@@ -1,4 +1,4 @@
-package your.projectPackage.ui
+package your.projectPackage.ui.common
 
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.Lifecycle

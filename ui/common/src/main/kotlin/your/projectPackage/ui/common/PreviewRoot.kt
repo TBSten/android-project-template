@@ -1,4 +1,4 @@
-package your.projectPackage.ui
+package your.projectPackage.ui.common
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Box
@@ -8,8 +8,8 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import your.projectPackage.error.AbstractErrorStateHolder
+import your.projectPackage.ui.common.error.LocalErrorStateHolder
 import your.projectPackage.ui.designSystem.AppTheme
-import your.projectPackage.ui.error.LocalErrorStateHolder
 
 @SuppressLint("ComposeModifierMissing")
 @Composable

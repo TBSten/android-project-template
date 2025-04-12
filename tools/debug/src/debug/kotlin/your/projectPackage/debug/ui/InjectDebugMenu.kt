@@ -16,7 +16,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import your.projectPackage.ui.error.SafeLaunchedEffect
+import your.projectPackage.ui.common.error.SafeLaunchedEffect
 
 @SuppressLint("ComposeModifierMissing")
 @Composable

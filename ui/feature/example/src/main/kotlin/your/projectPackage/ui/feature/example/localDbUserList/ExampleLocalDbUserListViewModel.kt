@@ -15,7 +15,7 @@ import your.projectPackage.domain.example.user.GetUsersUseCase
 import your.projectPackage.domain.example.user.User
 import your.projectPackage.domain.example.user.UserId
 import your.projectPackage.error.ApplicationErrorStateHolder
-import your.projectPackage.ui.BaseViewModel
+import your.projectPackage.ui.common.BaseViewModel
 
 private const val INITIAL_FETCH_DELAY = 1000L
 private val randomRange = 1..1_000_000
