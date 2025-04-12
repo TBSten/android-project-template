@@ -1,0 +1,44 @@
+export const updatePr = async ({
+  github,
+  core,
+  context,
+  prNumber,
+  imageMarkdown,
+}) => {
+  try {
+    // Create GitHub client
+    const octokit = github;
+
+    // Get PR details
+    const { data: pr } = await octokit.rest.pulls.get({
+      owner: github.context.repo.owner,
+      repo: github.context.repo.repo,
+      pull_number: prNumber
+    });
+
+    // Replace content between screenshots tags
+    const newBody = pr.body.replace(
+      /<!--\s*screenshots-start(\s+toggle)?\s*-->[\s\S]*?<!--\s*screenshots-end\s*-->/g,
+      (_, hasToggle) => {
+        const content = hasToggle
+          ? `<details><summary>Screenshots</summary>\n${imageMarkdown}\n</details>`
+          : imageMarkdown;
+        return `<!--screenshots-start${hasToggle ? ' toggle' : ''}-->\n${content}\n<!--screenshots-end-->`;
+      }
+    );
+
+    console.log("newBody", newBody)
+    console.log("context", context,)
+    console.log("context.repo", context.repo)
+    console.log("prNumber", prNumber)
+    // Update PR body
+    await octokit.rest.pulls.update({
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+      pull_number: prNumber,
+      body: newBody
+    });
+  } catch (error) {
+    core.setFailed(error.message);
+  }
+}
