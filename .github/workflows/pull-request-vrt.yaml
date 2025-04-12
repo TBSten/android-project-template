@@ -191,7 +191,8 @@ jobs:
 
           echo "images_markdown=$images_markdown" >> $GITHUB_OUTPUT
 
-      - uses: yumemi-inc/comment-pull-request@v1
+      - name: Comment Pull Request
+        uses: yumemi-inc/comment-pull-request@v1
         with:
           comment: |
             #### VRT Result
@@ -218,3 +219,15 @@ jobs:
                 )
                 || ''
             }}
+      - name: Update PR Body
+        uses: actions/github-script@v7
+        with:
+          script: |
+            require('${{ github.workspace }}/.github/workflows/report-vrt-to-pr-body.js').updatePr({
+              github,
+              core,
+              context,
+              prNumber: context.payload.pull_request.number,
+              hasChanges: ${{ steps.get_outputs.outputs.hasChanges == 'true' }},
+              imageMarkdown: `${{ steps.get_outputs.outputs.images_markdown }}`
+            })
