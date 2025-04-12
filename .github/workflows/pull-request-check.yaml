@@ -151,6 +151,7 @@ jobs:
           comment-if-failure: |
             > [!CAUTION]
             > There was a problem with the **Unit Test** check. See details [here](${{ env.LOG_URL }}).
+            > Or check test report from [here](https://$owner_name.github.io/$repo_name/pr/${{ github.event.pull_request.number }}/unit-test/).
 
   deploy-unit-test-report:
     needs: [unit-test]
