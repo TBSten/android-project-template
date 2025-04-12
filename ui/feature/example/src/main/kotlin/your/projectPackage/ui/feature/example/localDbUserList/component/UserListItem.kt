@@ -19,11 +19,7 @@ import your.projectPackage.ui.common.PreviewRoot
 import your.projectPackage.ui.common.error.handleUiEvent
 
 @Composable
-internal fun UserListItem(
-    user: User,
-    onDelete: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
+internal fun UserListItem(user: User, onDelete: () -> Unit, modifier: Modifier = Modifier) {
     Row(
         modifier = modifier.fillMaxWidth(),
     ) {

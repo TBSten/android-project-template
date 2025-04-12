@@ -9,10 +9,7 @@ import kotlinx.coroutines.CoroutineScope
 import your.projectPackage.error.LaunchSafe
 
 @Composable
-fun SafeLaunchedEffect(
-    vararg keys: Any?,
-    effect: suspend CoroutineScope.() -> Unit,
-) {
+fun SafeLaunchedEffect(vararg keys: Any?, effect: suspend CoroutineScope.() -> Unit) {
     val errorStateHolder = LocalErrorStateHolder.current
     val launchSafe = remember(errorStateHolder) { LaunchSafe(errorStateHolder) }
 

@@ -11,7 +11,5 @@ import javax.inject.Singleton
 internal interface GetPostsUseCaseModule {
     @Binds
     @Singleton
-    fun provideGetPostsUseCase(
-        impl: GetPostsUseCaseImpl,
-    ): GetPostsUseCase
+    fun provideGetPostsUseCase(impl: GetPostsUseCaseImpl): GetPostsUseCase
 }

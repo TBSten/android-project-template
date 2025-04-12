@@ -10,13 +10,8 @@ import your.projectPackage.error.ErrorHandleType
 import your.projectPackage.error.ErrorState
 import your.projectPackage.error.ErrorStateHolder
 
-@Suppress("NAME_SHADOWING")
 @Composable
-fun HandleErrors(
-    errorStateHolder: ErrorStateHolder,
-    modifier: Modifier = Modifier,
-    content: @Composable () -> Unit,
-) {
+fun HandleErrors(errorStateHolder: ErrorStateHolder, modifier: Modifier = Modifier, content: @Composable () -> Unit) {
     val errorState by errorStateHolder.errorState.collectAsStateWithLifecycle()
 
     CompositionLocalProvider(LocalErrorStateHolder provides errorStateHolder) {

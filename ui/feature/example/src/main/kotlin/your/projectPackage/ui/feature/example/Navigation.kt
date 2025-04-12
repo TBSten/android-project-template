@@ -23,9 +23,7 @@ data object ExampleLocalDbUserList : Screen
 @Serializable
 data object ExampleApiPostList : Screen
 
-fun NavGraphBuilder.examples(
-    navControllerWrapper: NavControllerWrapper,
-) {
+fun NavGraphBuilder.examples(navControllerWrapper: NavControllerWrapper) {
     navigation<Examples>(startDestination = ExampleCounter) {
         composable<ExampleCounter> {
             ExampleCounterScreen(

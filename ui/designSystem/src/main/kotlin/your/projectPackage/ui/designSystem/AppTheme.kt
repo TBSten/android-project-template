@@ -37,9 +37,7 @@ private val LocalAppShapes = staticCompositionLocalOf<AppShapes> { DefaultAppSha
 private val LocalAppTextStyles = staticCompositionLocalOf<AppTextStyles> { DefaultAppTextStyles }
 
 @Composable
-fun AppTheme(
-    content: @Composable () -> Unit,
-) {
+fun AppTheme(content: @Composable () -> Unit) {
     CompositionLocalProvider(
         LocalAppColors provides DefaultAppColors,
         LocalAppShapes provides DefaultAppShapes,
@@ -53,10 +51,7 @@ fun AppTheme(
 
 @Suppress("UNUSED_PARAMETER")
 @Composable
-private fun MaterialThemeFromAppTheme(
-    appTheme: AppTheme,
-    content: @Composable () -> Unit,
-) {
+private fun MaterialThemeFromAppTheme(appTheme: AppTheme, content: @Composable () -> Unit) {
     MaterialTheme(
         colorScheme = AppTheme.colors.asMaterial,
         shapes = AppTheme.shapes.asMaterial,

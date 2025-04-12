@@ -24,10 +24,7 @@ import your.projectPackage.ui.common.PreviewRoot
 import your.projectPackage.ui.common.ValuesPreviewParameterProvider
 
 @Composable
-internal fun PostList(
-    posts: List<Post>,
-    modifier: Modifier = Modifier,
-) {
+internal fun PostList(posts: List<Post>, modifier: Modifier = Modifier) {
     LazyColumn(modifier = modifier) {
         if (posts.isEmpty()) {
             item {
@@ -58,10 +55,7 @@ private fun EmptyListItem(modifier: Modifier = Modifier) {
 }
 
 @Composable
-private fun PostItem(
-    post: Post,
-    modifier: Modifier = Modifier,
-) {
+private fun PostItem(post: Post, modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
             .clickable { },

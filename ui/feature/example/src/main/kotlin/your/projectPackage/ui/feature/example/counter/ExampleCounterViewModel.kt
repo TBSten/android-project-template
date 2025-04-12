@@ -11,9 +11,8 @@ import your.projectPackage.error.ApplicationErrorStateHolder
 import your.projectPackage.ui.common.BaseViewModel
 
 @HiltViewModel
-internal class ExampleCounterViewModel @Inject constructor(
-    applicationErrorStateHolder: ApplicationErrorStateHolder,
-) : BaseViewModel<ExampleCounterUiState, ExampleCounterUiAction>(applicationErrorStateHolder) {
+internal class ExampleCounterViewModel @Inject constructor(applicationErrorStateHolder: ApplicationErrorStateHolder) :
+    BaseViewModel<ExampleCounterUiState, ExampleCounterUiAction>(applicationErrorStateHolder) {
     private val _uiState = MutableStateFlow(
         ExampleCounterUiState(
             count = Random.nextInt(),

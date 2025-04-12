@@ -12,7 +12,5 @@ import your.projectPackage.domain.example.post.PostsRepository
 internal interface PostsRepositoryModule {
     @Binds
     @Singleton
-    fun providePostsRepository(
-        impl: PostsRepositoryImpl,
-    ): PostsRepository
+    fun providePostsRepository(impl: PostsRepositoryImpl): PostsRepository
 }

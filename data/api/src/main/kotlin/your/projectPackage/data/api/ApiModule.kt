@@ -14,7 +14,5 @@ import your.projectPackage.data.api.generated.api.PostsApi
 internal object ApiModule {
     @Provides
     @Singleton
-    fun provideApi(
-        retrofit: Retrofit,
-    ): PostsApi = retrofit.create<PostsApi>()
+    fun provideApi(retrofit: Retrofit): PostsApi = retrofit.create<PostsApi>()
 }

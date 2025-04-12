@@ -11,7 +11,5 @@ import javax.inject.Singleton
 internal interface CreateUsersUseCaseModule {
     @Binds
     @Singleton
-    fun bindGetUsersUseCase(
-        impl: CreateUserUseCaseImpl,
-    ): CreateUserUseCase
+    fun bindGetUsersUseCase(impl: CreateUserUseCaseImpl): CreateUserUseCase
 }

@@ -78,11 +78,10 @@ class AppComposePreviewTester : ComposePreviewTester<AndroidPreviewInfo> by Andr
             .captureRoboImage(filePath)
     }
 
-    private fun createScreenshotIdFor(
-        preview: ComposablePreview<AndroidPreviewInfo>,
-    ) = AndroidPreviewScreenshotIdBuilder(preview)
-        .ignoreClassName()
-        .build()
+    private fun createScreenshotIdFor(preview: ComposablePreview<AndroidPreviewInfo>) =
+        AndroidPreviewScreenshotIdBuilder(preview)
+            .ignoreClassName()
+            .build()
 
     /**
      * @return maxDuration 以上 awaitIdle() がかかって タイムアウトされたか？

@@ -9,9 +9,7 @@ import your.projectPackage.data.example.bodyOrThrow
 import your.projectPackage.domain.example.post.Post
 import your.projectPackage.domain.example.post.PostsRepository
 
-internal class PostsRepositoryImpl @Inject constructor(
-    private val postsApi: PostsApi,
-) : PostsRepository {
+internal class PostsRepositoryImpl @Inject constructor(private val postsApi: PostsApi) : PostsRepository {
     override suspend fun getPosts(): List<Post> = withContext(Dispatchers.IO) {
         postsApi
             .getPosts()
