@@ -9,7 +9,7 @@ android {
 }
 
 dependencies {
-    implementation(projects.ui)
+    implementation(projects.ui.common)
     implementation(projects.domain)
     implementation(libs.composeUi)
     implementation(libs.composeUiGraphics)
