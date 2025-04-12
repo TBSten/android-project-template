@@ -18,7 +18,7 @@ import org.gradle.kotlin.dsl.named
 import org.gradle.kotlin.dsl.withType
 import org.openapitools.generator.gradle.plugin.tasks.GenerateTask
 
-open class OpenApiPlugin : Plugin<Project> {
+class OpenApiPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             plugins {
@@ -60,7 +60,9 @@ open class OpenApiPlugin : Plugin<Project> {
                             it.dir("src/main/kotlin/${packageNameDir.get()}")
                         }
                         .get().asFile
-                    val targetSrcDir = target.layout.projectDirectory.dir("src/main/kotlin/${packageNameDir.get()}").asFile
+                    val targetSrcDir = target.layout.projectDirectory.dir(
+                        "src/main/kotlin/${packageNameDir.get()}"
+                    ).asFile
                     generatedSrcDir.copyRecursively(targetSrcDir, overwrite = true)
                 }
             }
