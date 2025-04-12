@@ -1,6 +1,6 @@
 name: Pull Request Check
 
-on: [ pull_request ]
+on: [pull_request]
 
 concurrency:
   group: pull-request-check-${{ github.event.pull_request.number }}
@@ -135,12 +135,43 @@ jobs:
         with:
           cache-read-only: false
       - run: ./gradlew test
-      - uses: yumemi-inc/comment-pull-request@v1
+      - uses: actions/github-script@v7
+        with:
+          script: require("${{ github.workspace }}/.github/workflows/pull-request-check.yaml")
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: "unit-test-reports"
+          path: |
+            build/build-outputs/unit-test-report
+      - name: Comment Pull Request
+        uses: yumemi-inc/comment-pull-request@v1
         if: cancelled() != true
         with:
           comment-if-failure: |
             > [!CAUTION]
             > There was a problem with the **Unit Test** check. See details [here](${{ env.LOG_URL }}).
+
+  deploy-unit-test-report:
+    needs: [unit-test]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # for peaceiris/actions-gh-pages
+      pull-requests: write # for yumemi-inc/comment-pull-request
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: "unit-test-reports"
+          path: build/build-outputs/unit-test-report
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build/build-outputs/unit-test-report
+          destination_dir: ./pr/${{ github.event.pull_request.number }}/unit-test/
+          keep_files: true
 
   build:
     runs-on: ubuntu-latest
