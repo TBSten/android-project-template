@@ -228,5 +228,6 @@ jobs:
               core,
               context,
               prNumber: context.payload.pull_request.number,
+              hasChanges: ${{ steps.get_outputs.outputs.hasChanges == 'true' }},
               imageMarkdown: `${{ steps.get_outputs.outputs.images_markdown }}`
             })

@@ -3,6 +3,7 @@ export const updatePr = async ({
   core,
   context,
   prNumber,
+  hasChanges,
   imageMarkdown,
 }) => {
   try {
@@ -20,10 +21,14 @@ export const updatePr = async ({
     const newBody = pr.body.replace(
       /<!--\s*screenshots-start(\s+toggle)?\s*-->[\s\S]*?<!--\s*screenshots-end\s*-->/g,
       (_, hasToggle) => {
-        const content = hasToggle
-          ? `<details><summary>Screenshots</summary>\n${imageMarkdown}\n</details>`
-          : imageMarkdown;
-        return `<!--screenshots-start${hasToggle ? ' toggle' : ''}-->\n${content}\n<!--screenshots-end-->`;
+        if(hasChanges) {
+          const content = hasToggle
+            ? `<details><summary>Screenshots</summary>\n${imageMarkdown}\n</details>`
+            : imageMarkdown;
+          return `<!--screenshots-start${hasToggle ? ' toggle' : ''}-->\n${content}\n<!--screenshots-end-->`;
+        } else {
+          return `> [!TIP]\n> No visual changes 👍`;
+        }
       }
     )
 
