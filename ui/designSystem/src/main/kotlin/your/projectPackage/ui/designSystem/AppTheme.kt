@@ -51,6 +51,7 @@ fun AppTheme(
     }
 }
 
+@Suppress("UNUSED_PARAMETER")
 @Composable
 private fun MaterialThemeFromAppTheme(
     appTheme: AppTheme,
