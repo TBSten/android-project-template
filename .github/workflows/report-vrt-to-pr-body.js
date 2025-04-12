@@ -11,8 +11,8 @@ export const updatePr = async ({
 
     // Get PR details
     const { data: pr } = await octokit.rest.pulls.get({
-      owner: github.context.repo.owner,
-      repo: github.context.repo.repo,
+      owner: context.repo.owner,
+      repo: context.repo.repo,
       pull_number: prNumber
     });
 
@@ -25,12 +25,10 @@ export const updatePr = async ({
           : imageMarkdown;
         return `<!--screenshots-start${hasToggle ? ' toggle' : ''}-->\n${content}\n<!--screenshots-end-->`;
       }
-    );
+    )
 
-    console.log("newBody", newBody)
-    console.log("context", context,)
-    console.log("context.repo", context.repo)
-    console.log("prNumber", prNumber)
+    console.log(newBody)
+
     // Update PR body
     await octokit.rest.pulls.update({
       owner: context.repo.owner,

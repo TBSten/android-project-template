@@ -228,7 +228,5 @@ jobs:
               core,
               context,
               prNumber: context.payload.pull_request.number,
-              imageMarkdown: process.env["images_markdown"],
+              imageMarkdown: `${{ steps.get_outputs.outputs.images_markdown }}`
             })
-        env:
-          images_markdown: ${{ steps.get_outputs.outputs.images_markdown }}
