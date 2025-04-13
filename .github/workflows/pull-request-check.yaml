@@ -1,6 +1,6 @@
 name: Pull Request Check
 
-on: [ pull_request ]
+on: [pull_request]
 
 concurrency:
   group: pull-request-check-${{ github.event.pull_request.number }}
@@ -134,7 +134,7 @@ jobs:
       - uses: yumemi-inc/setup-java-gradle@v3
         with:
           cache-read-only: false
-      - run: ./gradlew test
+      - run: ./gradlew test --continue
       - uses: actions/github-script@v7
         if: ${{ !cancelled() }}
         with:
@@ -147,8 +147,8 @@ jobs:
             build/build-outputs/unit-test-report
 
   report-unit-test:
-    needs: [ unit-test ]
-    if: ${{ !cancelled() }}
+    needs: [unit-test]
+    if: ${{ !failure() }}
     runs-on: ubuntu-latest
     permissions:
       contents: write # for peaceiris/actions-gh-pages
