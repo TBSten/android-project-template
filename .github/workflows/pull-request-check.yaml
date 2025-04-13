@@ -1,6 +1,6 @@
 name: Pull Request Check
 
-on: [pull_request]
+on: [ pull_request ]
 
 concurrency:
   group: pull-request-check-${{ github.event.pull_request.number }}
@@ -136,6 +136,7 @@ jobs:
           cache-read-only: false
       - run: ./gradlew test
       - uses: actions/github-script@v7
+        if: ${{ !cancelled() }}
         with:
           script: require("${{ github.workspace }}/.github/workflows/unit-test-top-html.js").createTopHtml()
       - uses: actions/upload-artifact@v4
@@ -146,7 +147,7 @@ jobs:
             build/build-outputs/unit-test-report
 
   report-unit-test:
-    needs: [unit-test]
+    needs: [ unit-test ]
     if: ${{ !cancelled() }}
     runs-on: ubuntu-latest
     permissions:
