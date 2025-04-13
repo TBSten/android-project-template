@@ -144,22 +144,8 @@ jobs:
           name: "unit-test-reports"
           path: |
             build/build-outputs/unit-test-report
-      - id: get-outputs
-        run: |
-          owner_name=${{ github.repository_owner }}
-          repo_name=$(echo ${{ github.repository }} | cut -d'/' -f2)
-          pages_url="https://$owner_name.github.io/$repo_name/pr/${{ github.event.pull_request.number }}/unit-test/"
-          echo "pages_url=$pages_url" >> $GITHUB_OUTPUT
-      - name: Comment Pull Request
-        uses: yumemi-inc/comment-pull-request@v1
-        if: cancelled() != true
-        with:
-          comment-if-failure: |
-            > [!CAUTION]
-            > There was a problem with the **Unit Test** check. See details [here](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).
-            > Or check test report from [here](${{ steps.get-outputs.outputs.pages_url }}).
 
-  deploy-unit-test-report:
+  report-unit-test:
     needs: [unit-test]
     if: ${{ !cancelled() }}
     runs-on: ubuntu-latest
@@ -180,6 +166,20 @@ jobs:
           publish_dir: build/build-outputs/unit-test-report
           destination_dir: ./pr/${{ github.event.pull_request.number }}/unit-test/
           keep_files: true
+      - id: get-outputs
+        run: |
+          owner_name=${{ github.repository_owner }}
+          repo_name=$(echo ${{ github.repository }} | cut -d'/' -f2)
+          pages_url="https://$owner_name.github.io/$repo_name/pr/${{ github.event.pull_request.number }}/unit-test/"
+          echo "pages_url=$pages_url" >> $GITHUB_OUTPUT
+      - name: Comment Pull Request
+        uses: yumemi-inc/comment-pull-request@v1
+        if: cancelled() != true
+        with:
+          comment-if-failure: |
+            > [!CAUTION]
+            > There was a problem with the **Unit Test** check. See details [here](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).
+            > Or check test report from [here](${{ steps.get-outputs.outputs.pages_url }}).
 
   build:
     runs-on: ubuntu-latest
