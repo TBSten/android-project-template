@@ -161,6 +161,7 @@ jobs:
 
   deploy-unit-test-report:
     needs: [unit-test]
+    if: ${{ !cancelled() }}
     runs-on: ubuntu-latest
     permissions:
       contents: write # for peaceiris/actions-gh-pages
