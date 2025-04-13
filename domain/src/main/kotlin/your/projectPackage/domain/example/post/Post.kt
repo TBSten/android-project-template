@@ -13,19 +13,12 @@ sealed class State {
     abstract val fuga: String
 
     @optics
-    data class Initial(
-        override val hoge: String,
-        override val fuga: String,
-    ) : State() {
+    data class Initial(override val hoge: String, override val fuga: String,) : State() {
         companion object
     }
 
     @optics
-    data class Stable(
-        override val hoge: String,
-        override val fuga: String,
-        val piyo: String,
-    ) : State() {
+    data class Stable(override val hoge: String, override val fuga: String, val piyo: String,) : State() {
         companion object
     }
 
