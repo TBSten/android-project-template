@@ -78,5 +78,9 @@ gradlePlugin {
             id = "buildLogic.primitive.open.api"
             implementationClass = "primitive.OpenApiPlugin"
         }
+        register("arrow.kt") {
+            id = "buildLogic.primitive.arrow.kt.optics"
+            implementationClass = "primitive.ArrowKtOpticsPlugin"
+        }
     }
 }
