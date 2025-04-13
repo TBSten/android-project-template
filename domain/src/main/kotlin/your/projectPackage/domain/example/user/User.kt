@@ -1,6 +1,13 @@
 package your.projectPackage.domain.example.user
 
-data class User(val uid: UserId, val name: String?)
+import arrow.optics.optics
 
+data class User(val uid: UserId, val name: String?) {
+    companion object
+}
+
+@optics
 @JvmInline
-value class UserId(val value: Int)
+value class UserId(val value: Int) {
+    companion object
+}
