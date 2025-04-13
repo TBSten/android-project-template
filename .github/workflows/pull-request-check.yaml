@@ -176,7 +176,7 @@ jobs:
         uses: yumemi-inc/comment-pull-request@v1
         if: cancelled() != true
         with:
-          comment-if-failure: |
+          comment: |
             > [!CAUTION]
             > There was a problem with the **Unit Test** check. See details [here](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).
             > Or check test report from [here](${{ steps.get-outputs.outputs.pages_url }}).
