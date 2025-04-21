@@ -189,6 +189,14 @@ jobs:
           table_rows "diff" "changed"
           table_rows "deleted"
 
+          # メタデータの追加
+          current_time=$(TZ=Asia/Tokyo date '+%Y-%m-%d %H:%M:%S %Z')
+          commit_sha="${{ github.event.pull_request.head.sha }}"
+          meta_data=""
+          meta_data="${meta_data}_Last updated: ${current_time}_\n"
+          meta_data="${meta_data}_Commit SHA: ${commit_sha}_\n"
+          images_markdown="$meta_data\n\n$images_markdown"
+
           echo "images_markdown=$images_markdown" >> $GITHUB_OUTPUT
 
       - name: Comment Pull Request
