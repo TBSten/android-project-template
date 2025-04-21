@@ -22,12 +22,11 @@ export const updatePr = async ({
     const newBody = pr.body.replace(
       /<!--\s*screenshots-start(\s+toggle)?\s*-->[\s\S]*?<!--\s*screenshots-end\s*-->/g,
       (_, hasToggle) => {
-        if (!hasChanges) {
-          return `No visual changes 👍\n\n${metaDataMarkdown}`;
-        }
-        const content = hasToggle
-          ? `<details>\n<summary>Screenshots</summary>\n${imageMarkdown}\n</details>`
-          : `${imageMarkdown}\n\n${metaDataMarkdown}`;
+        const content = !hasChanges
+          ? `No visual changes 👍\n\n${metaDataMarkdown}`
+          : hasToggle
+            ? `<details>\n<summary>Screenshots</summary>\n${imageMarkdown}\n</details>`
+            : `${imageMarkdown}\n\n${metaDataMarkdown}`;
         return `<!--screenshots-start${hasToggle ? ' toggle' : ''}-->\n${content}\n<!--screenshots-end-->`;
       }
     )
