@@ -5,6 +5,7 @@ export const updatePr = async ({
   prNumber,
   hasChanges,
   imageMarkdown,
+  metaDataMarkdown,
 }) => {
   try {
     // Create GitHub client
@@ -21,14 +22,12 @@ export const updatePr = async ({
     const newBody = pr.body.replace(
       /<!--\s*screenshots-start(\s+toggle)?\s*-->[\s\S]*?<!--\s*screenshots-end\s*-->/g,
       (_, hasToggle) => {
-        if(hasChanges) {
-          const content = hasToggle
-            ? `<details><summary>Screenshots</summary>\n${imageMarkdown}\n</details>`
-            : imageMarkdown;
-          return `<!--screenshots-start${hasToggle ? ' toggle' : ''}-->\n${content}\n<!--screenshots-end-->`;
-        } else {
-          return `> [!TIP]\n> No visual changes 👍`;
-        }
+        const content = !hasChanges
+          ? `No visual changes 👍\n\n${metaDataMarkdown}`
+          : hasToggle
+            ? `<details>\n<summary>Screenshots</summary>\n${imageMarkdown}\n</details>`
+            : `${imageMarkdown}\n\n${metaDataMarkdown}`;
+        return `<!--screenshots-start${hasToggle ? ' toggle' : ''}-->\n${content}\n<!--screenshots-end-->`;
       }
     )
 
