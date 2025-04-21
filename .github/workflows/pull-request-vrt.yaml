@@ -189,15 +189,16 @@ jobs:
           table_rows "diff" "changed"
           table_rows "deleted"
 
+          echo "images_markdown=$images_markdown" >> $GITHUB_OUTPUT
+
           # メタデータの追加
           current_time=$(TZ=Asia/Tokyo date '+%Y-%m-%d %H:%M:%S %Z')
           commit_sha="${{ github.event.pull_request.head.sha }}"
           meta_data=""
           meta_data="${meta_data}_Last updated: ${current_time}_\n"
           meta_data="${meta_data}_Commit SHA: ${commit_sha}_\n"
-          images_markdown="$meta_data\n\n$images_markdown"
 
-          echo "images_markdown=$images_markdown" >> $GITHUB_OUTPUT
+          echo "meta_data_markdown=$meta_data_markdown" >> $GITHUB_OUTPUT
 
       - name: Comment Pull Request
         uses: yumemi-inc/comment-pull-request@v1
@@ -225,7 +226,7 @@ jobs:
                   '<details>\n<summary>Screenshots</summary>\n\n{0}\n\n</details>',
                   steps.get_outputs.outputs.images_markdown
                 )
-                || ''
+                || steps.get_outputs.outputs.meta_data_markdown
             }}
       - name: Update PR Body
         uses: actions/github-script@v7
@@ -237,5 +238,6 @@ jobs:
               context,
               prNumber: context.payload.pull_request.number,
               hasChanges: ${{ steps.get_outputs.outputs.hasChanges == 'true' }},
-              imageMarkdown: `${{ steps.get_outputs.outputs.images_markdown }}`
+              imageMarkdown: `${{ steps.get_outputs.outputs.images_markdown }}`,
+              metaDataMarkdown: `${{ steps.get_outputs.outputs.meta_data_markdown }}`,
             })
