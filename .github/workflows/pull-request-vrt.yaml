@@ -194,9 +194,9 @@ jobs:
           # メタデータの追加
           current_time=$(TZ=Asia/Tokyo date '+%Y-%m-%d %H:%M:%S %Z')
           commit_sha="${{ github.event.pull_request.head.sha }}"
-          meta_data=""
-          meta_data="${meta_data}_Last updated: ${current_time}_\n"
-          meta_data="${meta_data}_Commit SHA: ${commit_sha}_\n"
+          meta_data_markdown=""
+          meta_data_markdown="${meta_data_markdown}_Last updated: ${current_time}_\n"
+          meta_data_markdown="${meta_data_markdown}_Commit SHA: ${commit_sha}_\n"
 
           echo "meta_data_markdown=$meta_data_markdown" >> $GITHUB_OUTPUT
 
