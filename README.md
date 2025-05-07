@@ -18,6 +18,7 @@ last updated: 2025/01/26
 - [x] Detekt
 - [x] Roborazzi による VRT
 - [x] Github Actions ベースの CI
+- [x] 諸々の Utility
 
 ## TODO
 
