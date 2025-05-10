@@ -15,6 +15,7 @@ import dsl.version
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
+import org.gradle.kotlin.dsl.assign
 import org.gradle.kotlin.dsl.dependencies
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
@@ -58,6 +59,8 @@ internal fun Project.configureAndroid() {
         }
     }
 
+    configureAndroidTest()
+
     val kotlin = kotlinExtension as KotlinAndroidProjectExtension
     kotlin.compilerOptions {
         jvmTarget.set(JvmTarget.JVM_17)
@@ -71,5 +74,18 @@ internal fun Project.configureAndroid() {
 
         androidTestImplementation(libs.library("androidxJunit"))
         androidTestImplementation(libs.library("androidxEspressoCore"))
+    }
+}
+
+private fun Project.configureAndroidTest() {
+    android {
+        @Suppress("UnstableApiUsage")
+        testOptions {
+            // unitTest.reportDir looks like not work
+            // refs: https://issuetracker.google.com/issues/37132023
+            unitTests.all {
+                it.reports.html.outputLocation = BuildOutputFiles(rootProject).unitTestReportDir(project)
+            }
+        }
     }
 }
