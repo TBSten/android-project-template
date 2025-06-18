@@ -18,6 +18,10 @@ internal class BuildOutputFiles(private val rootDir: Directory) {
         .dir(projectDir(project))
         .dir("android-lint-report")
         .file("lint-result.${type.extension}")
+
+    fun unitTestReportDir(project: Project): Directory = rootDir
+        .dir("unit-test-report")
+        .dir(projectDir(project))
 }
 
 internal enum class AndroidLintReportType(val extension: String) {
