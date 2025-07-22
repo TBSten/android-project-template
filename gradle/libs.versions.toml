@@ -35,7 +35,7 @@ okhttp = "5.1.0"
 timber = "5.0.1"
 arrowKt = "2.1.2"
 
-ktlintGradlePlugin = "12.2.0"
+ktlintGradlePlugin = "13.0.0"
 detekt = "1.23.8"
 
 [libraries]
