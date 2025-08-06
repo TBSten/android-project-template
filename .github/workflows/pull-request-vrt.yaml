@@ -77,11 +77,11 @@ jobs:
           node-version: 22.x
       - run: npm i
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v5
         with:
           name: ${{ env.expect-artifact }}
           path: .reg/expected
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v5
         with:
           name: ${{ env.actual-artifact }}
           path: build/roborazzi-outputs
