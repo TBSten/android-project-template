@@ -13,7 +13,7 @@ jobs:
   android-lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: yumemi-inc/setup-java-gradle@v3
         with:
           cache-read-only: false
@@ -52,7 +52,7 @@ jobs:
   ktlint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: yumemi-inc/setup-java-gradle@v3
         with:
           cache-read-only: false
@@ -91,7 +91,7 @@ jobs:
   detekt:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: yumemi-inc/setup-java-gradle@v3
         with:
           cache-read-only: false
@@ -130,7 +130,7 @@ jobs:
   unit-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: yumemi-inc/setup-java-gradle@v3
         with:
           cache-read-only: false
@@ -150,7 +150,7 @@ jobs:
           - debug
           - release
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: yumemi-inc/setup-java-gradle@v3
         with:
           cache-read-only: false
