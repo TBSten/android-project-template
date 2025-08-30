@@ -1,6 +1,6 @@
 name: Pull Request Check
 
-on: [ pull_request ]
+on: [pull_request]
 
 concurrency:
   group: pull-request-check-${{ github.event.pull_request.number }}
@@ -134,13 +134,53 @@ jobs:
       - uses: yumemi-inc/setup-java-gradle@v3
         with:
           cache-read-only: false
-      - run: ./gradlew test
-      - uses: yumemi-inc/comment-pull-request@v1
+      - run: ./gradlew test --continue
+      - uses: actions/github-script@v7
+        if: ${{ !cancelled() }}
+        with:
+          script: require("${{ github.workspace }}/.github/workflows/unit-test-top-html.js").createTopHtml()
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: "unit-test-reports"
+          path: |
+            build/build-outputs/unit-test-report
+
+  report-unit-test:
+    needs: [unit-test]
+    if: ${{ !failure() }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # for peaceiris/actions-gh-pages
+      pull-requests: write # for yumemi-inc/comment-pull-request
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: "unit-test-reports"
+          path: build/build-outputs/unit-test-report
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build/build-outputs/unit-test-report
+          destination_dir: ./pr/${{ github.event.pull_request.number }}/unit-test/
+          keep_files: true
+      - id: get-outputs
+        run: |
+          owner_name=${{ github.repository_owner }}
+          repo_name=$(echo ${{ github.repository }} | cut -d'/' -f2)
+          pages_url="https://$owner_name.github.io/$repo_name/pr/${{ github.event.pull_request.number }}/unit-test/"
+          echo "pages_url=$pages_url" >> $GITHUB_OUTPUT
+      - name: Comment Pull Request
+        uses: yumemi-inc/comment-pull-request@v1
         if: cancelled() != true
         with:
-          comment-if-failure: |
+          comment: |
             > [!CAUTION]
-            > There was a problem with the **Unit Test** check. See details [here](${{ env.LOG_URL }}).
+            > There was a problem with the **Unit Test** check. See details [here](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).
+            > Or check test report from [here](${{ steps.get-outputs.outputs.pages_url }}).
 
   build:
     runs-on: ubuntu-latest
