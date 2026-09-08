@@ -23,7 +23,7 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.base.sha }}
 
-      - uses: yumemi-inc/setup-java-gradle@v3
+      - uses: yumemi-inc/setup-java-gradle@v4.0.0
         with:
           cache-read-only: false
 
@@ -46,7 +46,7 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           clean: false
-      - uses: yumemi-inc/setup-java-gradle@v3
+      - uses: yumemi-inc/setup-java-gradle@v4.0.0
         with:
           cache-read-only: false
 
