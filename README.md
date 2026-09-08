@@ -1,5 +1,11 @@
 # Android Project Template
 
+> [!CAUTION]
+> このテンプレートは非推奨になりました。
+> 
+> 以降新しいプロジェクトを作成したい場合は [Compose multiplatform wizard](https://terrakok.github.io/Compose-Multiplatform-Wizard/) などのプロジェクトジェネレータから最新のツールチェインを含んだプロジェクトを作成後、[TBSten/skills](https://github.com/TBSten/skills) などから使いたい要素をピックアップしてインストールすることをお勧めします。
+>
+
 last updated: 2025/01/26
 
 - [x] build-logic ベースのビルド設定
